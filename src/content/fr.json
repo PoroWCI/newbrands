@@ -1,0 +1,26 @@
+{
+    "header": {
+        "home": "Accueil",
+        "contact": "Contact"
+    },
+    "contact": {
+        "title": "Comment pouvons-nous vous aider ?",
+        "subtitle": "Nous vous répondons en moyenne dans les 24 heures jour ouvré uniquement, du Lundi au vendredi de 9h30 à 18h.",
+        "nameInputLabel": "Nom complet *",
+        "mailInputLabel": "Adresse e-mail *",
+        "messageInputLabel": "Votre message *",
+        "messageInput": "Écrivez-nous",
+        "sendBtn": "Envoyer",
+        "policy": "En cliquant sur envoyer, vous acceptez nos ",
+        "policyLink": "Règles de Confidentialité.",
+        "file": "Pièce jointe",
+        "sidePanel": {
+            "headOffice": "#SiègeSocial",
+            "contactUs": "#NosCoordonnées"
+        }
+    },
+    "footer": {
+        "copyright": "© Copyright 2017-2021, NewBrands, SAS et ses partenaires / Siège Social: NEWBRANDS, 10 Place Vendôme, 75001 Paris. / № SIRET: 829 419 100 000 21 / № APE: 6201 Z / R.C.S: PARIS / № TVA: FR 23 829419100",
+        "legals": "Mentions légales"
+    }
+}
