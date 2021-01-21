@@ -20,7 +20,7 @@
     "react-router-dom": "*",
     "react-scripts": "*",
     "serviceworker": "*",
-    "styled-components": "*",
+    "styled-components": "^5.2.1",
     "web-vitals": "*"
   },
   "scripts": {

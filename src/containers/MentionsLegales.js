@@ -1,13 +1,11 @@
 import Header from '../components/header'
-import Content from '../components/contactContainer'
-import Footer from '../components/footer'
+import Content from '../components/legalsContainer'
 
 function MentionsLegales() {
   return (
     <div>
       <Header />
       <Content />
-      <Footer />
     </div>
   );
 }
