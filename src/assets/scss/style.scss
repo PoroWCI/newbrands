@@ -105,26 +105,6 @@ a:active {
 /**************/
 /*** HEADER ***/
 
-header {
-    font-family: "Gelion Medium";
-    display: flex;
-    flex-direction: row;
-    width: 95%;
-    align-items: center;
-    margin: auto;
-    height: 8vh;
-}
-
-header ul {
-    list-style: none;
-    margin-left: auto;
-}
-
-header ul li {
-    float: left;
-    margin: 20px;
-}
-
 header ul li::after {
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
@@ -145,12 +125,6 @@ header ul li:active::after {
     width: 50%;
     position: relative;
     background: #212529;
-}
-
-.burgerMenu {
-    margin-left: auto !important;
-    outline: none;
-    display: none !important;
 }
 
 /***************/
