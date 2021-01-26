@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Gelion";
+  src: local("Gelion Regular"), url(./assets/fonts/Gelion-Regular.ttf) format("ttf");
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
