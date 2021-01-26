@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 import { AiOutlineTwitter, AiFillInstagram } from 'react-icons/ai'
+import classes from '../assets/footer.module.css'
 
 function Footer() {
     return (

@@ -1,70 +1,24 @@
 import { useTranslation } from "react-i18next";
-import styled from 'styled-components'
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    margin: 2%;
-    h1 {
-        font-size: 2rem;
-    }
-    h3 {
-        margin-top: 5rem;
-        color: #333333;
-        font-size: 1.5rem;
-    }
-    p{
-        font-size: 0.9rem;
-    }
-`
-
-const SideMenu = styled.div`
-    max-width: 15vw;
-    margin-right: 5rem;
-    h2 {
-        font-size: 1.6rem;
-    }
-    ul{
-        padding: 0;
-        margin: 50px 0;
-    }
-    .active, li:hover{
-        transition: 0.2s;
-        color: #000;
-        border-left: 3px solid #00798C;
-        font-weight: bolder;
-        padding-left: 1.5rem;
-        cursor: pointer;
-    }
-    ul li{
-        transition: 0.2s;
-        border-left: 3px solid transparent;
-        padding: 10px 0;
-        margin: 10px 0;
-        font-size: 0.85rem;
-        color: grey;
-        list-style: none;
-    }
-`
+import classes from '../assets/legals.module.css'
 
 function LegalsContainer() {
     const { t, i18n } = useTranslation('common');
     return (
-        <Container>
-            <SideMenu>
+        <div className={classes.container}>
+            <div className={classes.sideMenu}>
                 <h2>Ressources légales</h2>
                 <ul>
-                    <li className="active">Mentions légales</li>
+                    <li className={classes.active}>Mentions légales</li>
                     <li>Conditions Générales d’Utilisation</li>
                     <li>Politique de Confidentialité et RGPD</li>
                     <li>Conditions Particulières et Générales de Service</li>
                     <li>Chartes Cookies</li>
                 </ul>
-                <span style={styles.footer}>© Copyright 2017-2021, NewBrands, SAS et ses partenaires</span>
-            </SideMenu>
-            <div style={styles.content}>
+                <span className={classes.footer}>© Copyright 2017-2021, NewBrands, SAS et ses partenaires</span>
+            </div>
+            <div className={classes.content}>
                 <span>Dernière mise à jour le 9 juillet 2020 /</span><a>Archived versions</a>
-                <h1>Mention légale</h1>
+                <h1>{t('legals.title')}</h1>
                 <span>Version 2.1 -  4ème révision</span><span>· Effective September 30, 2020</span>
                 <h3>Using our service</h3>
                 <p>You must follow any policis made available to you within the Services.</p>
@@ -93,18 +47,8 @@ function LegalsContainer() {
                 </ul>
                 <span>If you have questions, you can contact NewBrands and our data protection office. And you can contact your local data protection authority if you have concerns regarding your rights under local law.</span>
             </div>
-        </Container>
+        </div>
     );
-}
-
-const styles = {
-    content: {
-        maxWidth: "65vw"
-    },
-    footer: {
-        fontSize: "0.7rem"
-    }
-
 }
 
 export default LegalsContainer;

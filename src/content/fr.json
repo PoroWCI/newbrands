@@ -19,6 +19,9 @@
             "contactUs": "#NosCoordonnées"
         }
     },
+    "legals": {
+        "title": "Mention légale" 
+    },
     "footer": {
         "copyright": "© Copyright 2017-2021, NewBrands, SAS et ses partenaires / Siège Social: NEWBRANDS, 10 Place Vendôme, 75001 Paris. / № SIRET: 829 419 100 000 21 / № APE: 6201 Z / R.C.S: PARIS / № TVA: FR 23 829419100",
         "legals": "Mentions légales"

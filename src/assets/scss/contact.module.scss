@@ -110,8 +110,11 @@ textarea {
     .rowAlign {
         flex-direction: column;
     }
-    .left-column-contact {
+    .leftColumnContact {
         width: 80vw;
         text-align: center;
+    }
+    .sendContainer, form {
+        text-align: left;
     }
 }

@@ -1,18 +1,3 @@
-/*** FONTS ***/
-
-@font-face {
-    font-family: "Gelion Light";
-    src: local("Gelion Light"), url(./fonts/Gelion-Light.ttf) format("ttf");
-}
-
-@font-face {
-    font-family: "Gelion";
-    src: local("Gelion Regular"), url(./fonts/Gelion-Regular.ttf) format("ttf");
-}
-
-*{
-    font-family: "Gelion"!important;
-}
 /******************/
 /*** ANIMATIONS ***/
 
@@ -86,12 +71,6 @@
 
 /****************/
 /*** DEFAULTS ***/
-
-body,
-* {
-    font-size: 1rem;
-    font-family: "Gelion Medium";
-}
 
 a,
 a:visited,

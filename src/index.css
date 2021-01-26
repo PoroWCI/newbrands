@@ -1,6 +1,20 @@
 @font-face {
-  font-family: "Gelion";
-  src: local("Gelion Regular"), url(./assets/fonts/Gelion-Regular.ttf) format("ttf");
+  font-family: 'Gelion Light';
+  src: local('Gelion Light'), url(./assets/fonts/Gelion-Light.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Gelion';
+  src: local('Gelion'), url(./assets/fonts/Gelion-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Gelion Bold';
+  src: local('Gelion Bold'), url(./assets/fonts/Gelion-Bold.ttf) format('truetype');
+}
+
+* {
+  font-family: 'Gelion';
 }
 
 body {
