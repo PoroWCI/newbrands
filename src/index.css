@@ -4,8 +4,18 @@
 }
 
 @font-face {
+  font-family: 'Gelion Medium';
+  src: local('Gelion Medium'), url(./assets/fonts/Gelion-Medium.ttf) format('truetype');
+}
+
+@font-face {
   font-family: 'Gelion';
   src: local('Gelion'), url(./assets/fonts/Gelion-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Gelion SemiBold';
+  src: local('Gelion SemiBold'), url(./assets/fonts/Gelion-SemiBold.ttf) format('truetype');
 }
 
 @font-face {
@@ -15,6 +25,10 @@
 
 * {
   font-family: 'Gelion';
+}
+
+html{
+  font-size: 18px;
 }
 
 body {

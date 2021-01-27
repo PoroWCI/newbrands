@@ -1,12 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 .header {
-    display: flex;
-    flex-direction: row;
-    width: 95%;
-    align-items: center;
-    margin: auto;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    background: #FFF;
     height: 8vh;
+    div{
+        height: 8vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: auto;
+        width: 85%;
+    }
 }
 
 header ul {

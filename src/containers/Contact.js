@@ -7,7 +7,7 @@ function Contact() {
     <div>
       <Header />
       <Content />
-      <Footer />
+      <Footer isHome={false} />
     </div>
   );
 }
