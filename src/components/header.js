@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Route } from "react-router-dom";
 import classes from "../assets/header.module.css";
 
-function Header() {
+function Header(props) {
   const { t, i18n } = useTranslation("common");
   const [isActive, setIsActive] = useState(false);
   const toggleButton = useCallback(
@@ -20,7 +20,7 @@ function Header() {
           <Route
             render={({ history }) => (
               <li
-                className={classes.menuElement}
+                className={`${classes.menuElement} ${props.page === "Home" ? classes.active : null}`}
                 onClick={() => history.push("/")}
               >
                 <a className={classes.link} href="">
@@ -32,7 +32,7 @@ function Header() {
           <Route
             render={({ history }) => (
               <li
-                className={classes.menuElement}
+              className={`${classes.menuElement} ${props.page === "Contact" ? classes.active : null}`}
                 onClick={() => history.push("/contact")}
               >
                 <a className={classes.link} href="">

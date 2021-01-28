@@ -9,7 +9,7 @@ function ContactContainer() {
             <div className={classes.leftColumnContact}>
             <h1 className={classes.h1}>{t('contact.title')}</h1>
             <p>{t('contact.subtitle')}</p>
-            <form>
+            <form className={classes.form}>
                 <label htmlFor="name">{t('contact.nameInputLabel')}</label>
                 <input className={classes.input} type="text" placeholder="John Doe" id="name" />
                 <label htmlFor="mail">{t('contact.mailInputLabel')}</label>

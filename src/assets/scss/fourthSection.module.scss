@@ -1,6 +1,6 @@
 .container {
     background: #00798C;
-    height: 120vh;
+    height: 150vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,6 +105,7 @@
     transition: 0.2s;
     outline: none;
     display: flex;
+    flex-wrap: nowrap;
     flex-direction: row;
     align-items: center;
     text-align: center;
@@ -117,7 +118,7 @@
     background: #00798c;
     border-radius: 10px;
     margin-left: 4rem;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     font-family: 'Gelion Medium';
     &:hover {
         transition: 0.2s;

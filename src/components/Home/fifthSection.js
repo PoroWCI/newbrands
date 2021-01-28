@@ -26,7 +26,7 @@ function fifthSection() {
               multiple
               className={classes.questionContainer}
             >
-              <AccordionItem>
+              <AccordionItem className={classes.borderedContainer}>
                 <h3 className={classes.questionTitle}>
                   <AccordionButton className={classes.titleBtn}>
                     <h5>Qu'est-ce que Newbrands ?</h5><BiChevronUp className={classes.arrow} size="24" />
@@ -48,7 +48,51 @@ function fifthSection() {
                   </p>
                 </AccordionPanel>
               </AccordionItem>
-              <AccordionItem>
+              <AccordionItem className={classes.borderedContainer}>
+                <h3 className={classes.questionTitle}>
+                  <AccordionButton className={classes.titleBtn} >
+                    <h5>Qu'est-ce que Newbrands ?</h5><BiChevronUp className={classes.arrow} size="24" />
+                  </AccordionButton>
+                </h3>
+                <AccordionPanel className={classes.collapsibleContent}>
+                  <p>
+                    NewBrands met les marques en relations avec les manufactures
+                    françaises et européennes ainsi qu’avec des fournisseurs de
+                    matières premières éthiques et biosourcées européenne afin
+                    de rendre l’industrie textile plus verte.
+                    <br />
+                    <br />
+                    Notre objectif premier est de connecter l’industrie de façon
+                    innovante et intelligente grâce l’utilisation d’algorithmes
+                    et d’intelligence artificielle dans la sélection des
+                    partenaires pouvant répondre de façon concrète aux besoins
+                    des marques.
+                  </p>
+                </AccordionPanel>
+              </AccordionItem>
+              <AccordionItem className={classes.borderedContainer}>
+                <h3 className={classes.questionTitle}>
+                  <AccordionButton className={classes.titleBtn} >
+                    <h5>Qu'est-ce que Newbrands ?</h5><BiChevronUp className={classes.arrow} size="24" />
+                  </AccordionButton>
+                </h3>
+                <AccordionPanel className={classes.collapsibleContent}>
+                  <p>
+                    NewBrands met les marques en relations avec les manufactures
+                    françaises et européennes ainsi qu’avec des fournisseurs de
+                    matières premières éthiques et biosourcées européenne afin
+                    de rendre l’industrie textile plus verte.
+                    <br />
+                    <br />
+                    Notre objectif premier est de connecter l’industrie de façon
+                    innovante et intelligente grâce l’utilisation d’algorithmes
+                    et d’intelligence artificielle dans la sélection des
+                    partenaires pouvant répondre de façon concrète aux besoins
+                    des marques.
+                  </p>
+                </AccordionPanel>
+              </AccordionItem>
+              <AccordionItem className={classes.borderedContainer}>
                 <h3 className={classes.questionTitle}>
                   <AccordionButton className={classes.titleBtn} >
                     <h5>Qu'est-ce que Newbrands ?</h5><BiChevronUp className={classes.arrow} size="24" />

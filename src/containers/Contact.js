@@ -3,11 +3,13 @@ import Content from '../components/contactContainer'
 import Footer from '../components/footer'
 
 function Contact() {
+  const isHome = "contact";
+  
   return (
     <div>
-      <Header />
+      <Header page={"Contact"} />
       <Content />
-      <Footer isHome={false} />
+      <Footer isHome={isHome} />
     </div>
   );
 }

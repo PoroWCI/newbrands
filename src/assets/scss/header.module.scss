@@ -42,7 +42,7 @@ header ul li::after {
 }
 
 header ul li:hover::after,
-header ul li:active::after {
+.active::after {
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     font-weight: 500;

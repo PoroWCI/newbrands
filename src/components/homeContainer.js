@@ -5,6 +5,7 @@ import Simplify from './Home/thirdSection'
 import Prices from './Home/fourthSection'
 import Faq from './Home/fifthSection'
 import Maker from './Home/sixthSection'
+import LogoList from './Home/seventhSection'
 
 function HomeContainer() {
 
@@ -16,7 +17,7 @@ function HomeContainer() {
         <Prices />
         <Faq />
         <Maker />
-
+        <LogoList />
     </div>
   );
 }
