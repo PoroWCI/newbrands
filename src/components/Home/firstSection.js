@@ -10,7 +10,7 @@ function FirstSection() {
     e.preventDefault();
     console.log(data);
     axios
-      .post("http://localhost:4000/newsletter", data)
+      .post("http://dev.newbrands.fr:4000/newsletter", data)
       .then(function (response) {
         console.log(response);
       })

@@ -11,7 +11,7 @@ function ContactContainer() {
     e.preventDefault();
     console.log(data);
     axios
-      .post("http://localhost:4000/contact", data)
+      .post("http://dev.newbrands.fr:4000/contact", data)
       .then(function (response) {
         console.log(response);
       })
