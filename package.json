@@ -5,6 +5,7 @@
   "dependencies": {
     "@reach/accordion": "^0.13.0",
     "@testing-library/react": "*",
+    "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-flowtype": "^5.2.0",
