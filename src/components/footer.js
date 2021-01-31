@@ -9,7 +9,7 @@ function Footer(props) {
             <div className={classes.contactVersion}>
             <span>© Copyright 2017-2021, NewBrands, SAS et ses partenaires / Siège Social: NEWBRANDS, 10 Place Vendôme, 75001 Paris. 
                 / № SIRET: 829 419 100 000 21 / № APE: 6201 Z / R.C.S: PARIS / № TVA: FR 23 829419100</span>
-            <a href="/mentions-legales">Mentions légales</a>
+            <a href="/legals">Mentions légales</a>
             </div>
             <ul>
                 <li><a href="https://twitter.com/newbrandsfr"><AiOutlineTwitter color="#343A40" size="1.2rem" /></a></li>
