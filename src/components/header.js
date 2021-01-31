@@ -1,12 +1,12 @@
 import logo from "../assets/img/logo-newbrands.svg";
-import { HamburgerSpring } from "react-animated-burgers";
 import React, { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Route } from "react-router-dom";
 import classes from "../assets/header.module.css";
+import { HamburgerSqueeze } from 'react-animated-burgers';
 
 function Header(props) {
-  const { t, i18n } = useTranslation("common");
+  const { t } = useTranslation("common");
   const [isActive, setIsActive] = useState(false);
   const toggleButton = useCallback(
     () => setIsActive((prevState) => !prevState),
@@ -14,8 +14,16 @@ function Header(props) {
   );
   return (
     <header className={classes.header}>
-      <div>
+      <div className={classes.container}>
         <img src={logo} alt="logo" />
+            <div className={classes.burgerMenu}>
+            <HamburgerSqueeze
+      buttonColor="transparent"
+      barColor="#333333"
+      buttonWidth={20}
+      {...{ isActive, toggleButton }}
+    />
+        </div>
         <ul className={isActive === true ? classes.openMobile : null}>
           <Route
             render={({ history }) => (
@@ -23,9 +31,9 @@ function Header(props) {
                 className={`${classes.menuElement} ${props.page === "Home" ? classes.active : null}`}
                 onClick={() => history.push("/")}
               >
-                <a className={classes.link} href="">
+                <button className={classes.link}>
                   {t("header.home")}
-                </a>
+                </button>
               </li>
             )}
           />
@@ -35,21 +43,14 @@ function Header(props) {
               className={`${classes.menuElement} ${props.page === "Contact" ? classes.active : null}`}
                 onClick={() => history.push("/contact")}
               >
-                <a className={classes.link} href="">
+                <button className={classes.link}>
                   {t("header.contact")}
-                </a>
+                </button>
               </li>
             )}
           />
         </ul>
-        <HamburgerSpring
-          className={classes.burgerMenu}
-          isActive={isActive}
-          toggleButton={toggleButton}
-          buttonColor="transparent"
-          barColor="#333333"
-          buttonWidth={20}
-        />
+    
       </div>
     </header>
   );

@@ -20,13 +20,13 @@ function thirdSection() {
                 modélisme, confection, sourcing), jusqu’au nombre de produits
                 que vous souhaitez confectionner !
               </p>
-              <a href="#">
+              <a href="/demo">
                 Demandez une demo <span>{">"}</span>
               </a>
             </div>
-              <img className={classes.rightImg} src={projectSample} alt="Image" />
+              <img className={classes.rightImg} src={projectSample} alt="Project" />
                 <div className={classes.secondContainer}>
-                <img className={classes.rightImg} src={projectCreation} alt="Image" />
+                <img className={classes.rightImg} src={projectCreation} alt="Project creation" />
               <div  className={classes.textLeft}>
                 <h2>Un suivi complet et flexible</h2>
                 <div>

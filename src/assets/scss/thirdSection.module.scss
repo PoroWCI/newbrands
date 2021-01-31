@@ -52,3 +52,25 @@
     -webkit-box-shadow: 0 0 20px #e9e9e9;
     box-shadow: 0 0 20px #e9e9e9;
 }
+
+@media screen and (max-width: 400px) {
+    .container {
+        height: 200vh;
+    }
+    .firstContainer {
+        flex-direction: column;
+        margin-top: 0;
+    }
+    .secondContainer {
+        flex-direction: column-reverse;
+        margin-top: 0;
+    }
+    .rightImg {
+        max-width: 90%;
+    }
+    .textLeft {
+        width: 95%;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+}

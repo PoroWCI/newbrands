@@ -27,3 +27,15 @@
         max-height: 45px;
     }   
 }
+
+@media screen and (max-width: 400px) {
+    .logoList {
+        flex-direction: column;
+        h4 {
+            margin-bottom: 0;
+        }
+        li {
+            margin: 1rem;
+        }
+    }
+}

@@ -96,3 +96,27 @@
         color: #00798C;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .container{
+        margin-bottom: 0;
+    }
+    .faqContainer {
+        min-width: 90%;
+        max-width: 90vw;
+    }
+    .titleBtn {
+        position: relative;
+        justify-content: center;
+        svg {
+            position: absolute;
+            right: 0;
+        }
+    }
+    .questionTitle {
+        justify-content: center;
+        h5 {
+            max-width: 80%;
+        }
+    }
+}

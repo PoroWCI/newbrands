@@ -130,3 +130,36 @@
         }
     }
 }
+
+@media (max-width: 400px){
+    .container {
+        height: auto;
+        padding: 4rem 0 0;
+        text-align: center;
+    }
+    .leftColumn {
+        img {
+            max-width: 80vw;
+        }
+    }
+    .inputDiv {
+        flex-wrap: wrap;
+    }
+    .mailInput {
+        width: 85%;
+        text-align: center;
+    }
+    .dottedHr {
+        margin: 2rem auto;
+    }
+    .btnDiv {
+        width: 100%;
+    }
+    .btn {
+        margin: 1rem auto;
+    }
+    .noSpam {
+        margin: 0;
+        margin-bottom: 1rem;
+    }
+}

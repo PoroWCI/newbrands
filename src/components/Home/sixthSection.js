@@ -1,5 +1,4 @@
 import classes from '../../assets/sixthSection.module.css'
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
 
 function sixthSection() {
     return (

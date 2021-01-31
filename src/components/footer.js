@@ -4,7 +4,6 @@ import { AiOutlineTwitter, AiFillInstagram } from 'react-icons/ai'
 import classes from '../assets/footer.module.css'
 
 function Footer(props) {
-    console.log(props.isHome)
     return (
         <footer>
             <div className={classes.contactVersion}>
@@ -13,10 +12,10 @@ function Footer(props) {
             <a href="/mentions-legales">Mentions légales</a>
             </div>
             <ul>
-                <li><a><AiOutlineTwitter color="#343A40" size="1.2rem" /></a></li>
-                <li><a><FaFacebookF color="#343A40" size="1rem" /></a></li>
-                <li><a><AiFillInstagram color="#343A40" size="1.2rem" /></a></li>
-                <li><a><FaLinkedinIn color="#343A40" size="1.2rem" /></a></li>
+                <li><a href="https://twitter.com/newbrandsfr"><AiOutlineTwitter color="#343A40" size="1.2rem" /></a></li>
+                <li><a href="https://facebook.com"><FaFacebookF color="#343A40" size="1rem" /></a></li>
+                <li><a href="https://instagram.com"><AiFillInstagram color="#343A40" size="1.2rem" /></a></li>
+                <li><a href="https://linkedin.com"><FaLinkedinIn color="#343A40" size="1.2rem" /></a></li>
             </ul>
         </footer>
     );

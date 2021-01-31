@@ -1,11 +1,11 @@
 import Header from '../components/header'
 import Content from '../components/legalsContainer'
 
-function MentionsLegales() {
+function MentionsLegales(props) {
   return (
     <div>
       <Header />
-      <Content />
+      <Content page={props.page} />
     </div>
   );
 }

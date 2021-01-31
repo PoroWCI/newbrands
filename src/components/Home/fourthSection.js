@@ -21,29 +21,29 @@ function fourthSection() {
                   </span>
                 </div>
                 <div className={classes.listColumn}>
-                  <div class={classes.item}>
+                  <div className={classes.item}>
                     <FaCheckCircle color="#01798c" size="24px" />
                     <span>Échantillons des matières</span>
                   </div>
-                  <div class={classes.item}>
+                  <div className={classes.item}>
                     <FaCheckCircle color="#01798c" size="24px" />
                     <span>Gestion des commandes</span>
                   </div>
-                  <div class={classes.item}>
+                  <div className={classes.item}>
                     <FaCheckCircle color="#01798c" size="24px" />
                     <span>Suivi en temps réels</span>
                   </div>
                 </div>
                 <div className={classes.listColumn}>
-                  <div class={classes.item}>
+                  <div className={classes.item}>
                     <FaCheckCircle color="#01798c" size="24px" />
                     <span>Stratégie de production</span>
                   </div>
-                  <div class={classes.item}>
+                  <div className={classes.item}>
                     <FaCheckCircle color="#01798c" size="24px" />
                     <span>Gestion des projets</span>
                   </div>
-                  <div class={classes.item}>
+                  <div className={classes.item}>
                     <FaCheckCircle color="#01798c" size="24px" />
                     <span>Resp. production dédiés</span>
                   </div>
@@ -62,29 +62,29 @@ function fourthSection() {
                   </span>
                 </div>
                 <div className={classes.listColumn}>
-                  <div class={classes.item}>
+                  <div className={classes.item}>
                     <FaCheckCircle color="#FFF" size="24px" />
                     <span>Échantillons des matières</span>
                   </div>
-                  <div class={classes.item}>
+                  <div className={classes.item}>
                     <FaCheckCircle color="#FFF" size="24px" />
                     <span>Gestion des commandes</span>
                   </div>
-                  <div class={classes.item}>
+                  <div className={classes.item}>
                     <FaCheckCircle color="#FFF" size="24px" />
                     <span>Suivi en temps réels</span>
                   </div>
                 </div>
                 <div className={classes.listColumn}>
-                  <div class={classes.item}>
+                  <div className={classes.item}>
                     <FaCheckCircle color="#FFF" size="24px" />
                     <span>Resp. production dédiés</span>
                   </div>
-                  <div class={classes.item}>
+                  <div className={classes.item}>
                     <FaTimesCircle color="#FFF" size="24px" />
                     <span>Stratégie de production</span>
                   </div>
-                  <div class={classes.item}>
+                  <div className={classes.item}>
                     <FaTimesCircle color="#FFF" size="24px" />
                     <span>Gestion des projets</span>
                   </div>

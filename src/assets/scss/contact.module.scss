@@ -110,11 +110,20 @@
     .rowAlign {
         flex-direction: column;
     }
+    .contentContainer {
+        min-height: 200vh;
+    }
     .leftColumnContact {
         width: 80vw;
         text-align: center;
     }
     .sendContainer, form {
         text-align: left;
+    }
+    .sendContainer {
+        overflow: hidden;
+    }
+    .sideInfo {
+        max-width: 60%;
     }
 }

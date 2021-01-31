@@ -18,7 +18,7 @@
     "i18next": "*",
     "npm": "*",
     "react": "^16.14.0",
-    "react-animated-burgers": "*",
+    "react-animated-burgers": "^1.2.8",
     "react-dom": "^16.14.0",
     "react-i18next": "*",
     "react-icons": "*",

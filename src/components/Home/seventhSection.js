@@ -10,11 +10,11 @@ function seventhSection() {
         <div>
             <ul className={classes.logoList}>
                 <li><h4 className={classes.text}>Avec le soutien de</h4></li>
-                <li><img src={frenchTech} /></li>
-                <li><img src={frenchImpact} /></li>
-                <li><img src={techForGood} /></li>
-                <li><img src={capDigital} /></li>
-                <li><img src={bpiFrance} /></li>
+                <li><img src={frenchTech} alt="frenchTech" /></li>
+                <li><img src={frenchImpact} alt="frenchImpact" /></li>
+                <li><img src={techForGood} alt="techForGood" /></li>
+                <li><img src={capDigital} alt="capDigital" /></li>
+                <li><img src={bpiFrance} alt="bpiFrance" /></li>
             </ul>
         </div>
     )

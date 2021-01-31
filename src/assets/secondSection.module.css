@@ -1,1 +1,117 @@
-.container{height:100vh}.introduction{text-align:center;max-width:680px;margin:auto}.h2{font-size:2.5rem;margin-bottom:.5rem}.lightText{line-height:1.5;color:#343a40;font-family:"Gelion Light"}.grid{margin-top:1.5rem}.grid img{height:36px;width:36px}.row{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;width:85%;place-content:center;margin:auto;-webkit-box-align:baseline;-ms-flex-align:baseline;align-items:baseline}.tile{max-width:33%;-webkit-box-flex:0;-ms-flex:0 0 33%;flex:0 0 33%}.tile div{padding:1.5rem}.tile h5{font-size:1.25rem;color:#000000;line-height:120%;letter-spacing:-3%;font-family:"Gelion Medium";margin-bottom:.5rem}.tile span{color:#00798C;font-family:"Gelion"}.soon{opacity:0.5}.soonText{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;color:#343a40 !important;font-family:'Gelion';font-style:italic}.soonText img{margin-right:1rem}
+.container {
+  height: 100vh;
+}
+
+.introduction {
+  text-align: center;
+  max-width: 680px;
+  margin: auto;
+}
+
+.h2 {
+  font-size: 2.5rem;
+  margin-bottom: .5rem;
+}
+
+.lightText {
+  line-height: 1.5;
+  color: #343a40;
+  font-family: "Gelion Light";
+}
+
+.grid {
+  margin-top: 1.5rem;
+}
+
+.grid img {
+  height: 36px;
+  width: 36px;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 85%;
+  place-content: center;
+  margin: auto;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+.tile {
+  max-width: 33%;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 33%;
+  flex: 0 0 33%;
+}
+
+.tile div {
+  padding: 1.5rem;
+}
+
+.tile h5 {
+  font-size: 1.25rem;
+  color: #000000;
+  line-height: 120%;
+  letter-spacing: -3%;
+  font-family: "Gelion Medium";
+  margin-bottom: .5rem;
+}
+
+.tile span {
+  color: #00798C;
+  font-family: "Gelion";
+}
+
+.soon {
+  opacity: 0.5;
+}
+
+.soonText {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #343a40 !important;
+  font-family: 'Gelion';
+  font-style: italic;
+}
+
+.soonText img {
+  margin-right: 1rem;
+}
+
+@media screen and (max-width: 400px) {
+  .container {
+    height: 230vh;
+    margin: 2rem;
+  }
+  .tile {
+    max-width: 100%;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+  }
+  .tile div {
+    padding: 0;
+    text-align: center;
+  }
+  .tile div h5 {
+    margin-top: 1rem;
+  }
+  .tile .soonText {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}

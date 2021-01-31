@@ -151,3 +151,17 @@
     flex-direction: row;
     align-items: center;
 }
+
+@media screen and (max-width: 400px) {
+    .container {
+        height: 200vh;
+        overflow: auto;
+    }
+    .firstCard, .card {
+        width: 65rem;
+    }
+    
+    .row {
+        width: 60rem;
+    }
+}

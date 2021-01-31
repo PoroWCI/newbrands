@@ -7,14 +7,12 @@ import axios from "axios";
 function ContactContainer() {
   const [data, setData] = useState({ name: "", mail: "", message: "" });
   const handleSubmit = (e) => {
-    console.log("submit");
     e.preventDefault();
-    console.log(data);
     axios
-      .post("http://dev.newbrands.fr:4000/contact", data)
-      .then(function (response) {
-        console.log(response);
-      })
+      .post("http://localhost:4000/contact", data)
+      .then((res) => {
+        console.log(res.data)
+        })
       .catch(function (error) {
         console.log(error);
       });
@@ -27,7 +25,7 @@ function ContactContainer() {
     });
   };
 
-  const { t, i18n } = useTranslation("common");
+  const { t } = useTranslation("common");
   return (
     <div
       id="contact"
@@ -82,7 +80,7 @@ function ContactContainer() {
           </div>
         </form>
       </div>
-      <div>
+      <div className={classes.sideInfo}>
         <h2 className={classes.h2}>{t("contact.sidePanel.headOffice")}</h2>
         <p>10 Place Vendôme, 75001 Paris, France</p>
         <br />

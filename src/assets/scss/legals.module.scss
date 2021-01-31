@@ -67,3 +67,17 @@
 .footer {
     font-size: 0.7rem;
 }
+
+@media screen and (max-width: 400px) {
+    .container {
+        flex-direction: column-reverse;
+    }
+    .sideMenu {
+        max-width: 95%;
+        margin: 2rem 0;
+    }
+    .content {
+        max-width: 95%;
+        margin: auto;
+    }
+}

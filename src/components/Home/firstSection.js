@@ -51,7 +51,7 @@ function FirstSection() {
                   onChange={handleChange}
                   value={data.mail}
                 />
-                <div>
+                <div className={classes.btnDiv}>
                   <button type="submit" name="submit" className={classes.btn}>
                     Être prévenu
                   </button>

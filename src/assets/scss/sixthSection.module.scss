@@ -70,3 +70,22 @@
         opacity: 0.5;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .card{
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        height: 25rem;
+        .row{
+            flex-direction: column;
+        }
+        .textContainer {
+            width: 100%;
+        }
+        .btn {
+            margin: 0;
+            width: 90%;
+        }
+    }
+}
