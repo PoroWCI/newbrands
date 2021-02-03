@@ -16,7 +16,7 @@
     padding: 3rem;
     h6 {
         margin: 0;
-        font-aize: 1rem;
+        font-size: 1rem;
         font-family: "Gelion Light";
     }
     h3 {
@@ -71,7 +71,7 @@
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 420px) {
     .card{
         flex-direction: column;
         text-align: center;

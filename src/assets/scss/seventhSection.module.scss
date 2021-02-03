@@ -22,13 +22,14 @@
     align-items: center;
     margin-bottom: 3rem;
     -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
     img{
         max-width: 120px;
         max-height: 45px;
     }   
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 420px) {
     .logoList {
         flex-direction: column;
         h4 {

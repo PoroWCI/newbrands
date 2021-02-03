@@ -131,7 +131,7 @@
     }
 }
 
-@media (max-width: 400px){
+@media (max-width: 420px){
     .container {
         height: auto;
         padding: 4rem 0 0;
@@ -144,6 +144,8 @@
     }
     .inputDiv {
         flex-wrap: wrap;
+        flex-direction: column;
+        -webkit-box-pack: center;
     }
     .mailInput {
         width: 85%;
