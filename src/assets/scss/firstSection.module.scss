@@ -133,7 +133,7 @@
 
 @media (max-width: 420px){
     .container {
-        height: auto;
+        height: 80rem;
         padding: 4rem 0 0;
         text-align: center;
     }
@@ -143,10 +143,8 @@
         }
     }
     .inputDiv {
-        display:-webkit-flexbox;
-        flex-wrap: wrap;
-        flex-direction: column;
-        -webkit-box-pack: center;
+        display: block;
+        margin: auto;
     }
     .mailInput {
         width: 85%;

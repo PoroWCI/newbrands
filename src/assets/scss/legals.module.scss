@@ -49,6 +49,27 @@
 
 .content {
     max-width: 65vw;
+    button {
+        border: none;
+        outline: none;
+        background: none;
+        cursor: pointer;
+    }
+}
+
+.dottedHr {
+    border-top: 1px dashed #D1D1D1;
+    width: 70%;
+    margin: 2rem 0;
+  }
+
+.lastUpdate {
+    color:#33333380;
+    font-size: 1rem;
+    button {
+        font-size: 1rem;
+        color: #00798C;
+    }
 }
 
 .a{
@@ -71,10 +92,13 @@
 @media screen and (max-width: 420px) {
     .container {
         flex-direction: column-reverse;
+        h3 {
+            margin-top: 1rem;
+        }
     }
     .sideMenu {
         max-width: 95%;
-        margin: 2rem 0;
+        margin: 2rem auto;
     }
     .content {
         max-width: 95%;

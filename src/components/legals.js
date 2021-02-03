@@ -4,11 +4,11 @@ function Legals() {
     const { t } = useTranslation('common');
   return (
     <div className={classes.content}>
-      <span>Dernière mise à jour le 9 juillet 2020 /</span>
-      <button>Archived versions</button>
+      <span className={classes.lastUpdate}>Dernière mise à jour le 9 juillet 2020 / <button>Archived versions</button></span>
       <h1>{t("legals.title")}</h1>
       <span>Version 2.1 - 4ème révision</span>
       <span>· Effective September 30, 2020</span>
+      <div className={classes.dottedHr}></div>
       <h3>Using our service</h3>
       <p>
         You must follow any policis made available to you within the Services.

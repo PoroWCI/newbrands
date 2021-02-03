@@ -111,19 +111,21 @@
         flex-direction: column;
     }
     .contentContainer {
-        min-height: 200vh;
+        min-height: 80rem;
     }
     .leftColumnContact {
-        width: 80vw;
+        width: 85vw;
         text-align: center;
     }
-    .sendContainer, form {
+    .sendContainer, .form {
         text-align: left;
+    }
+    .form {
+        margin-top: 3rem;
     }
     .sendContainer {
         overflow: hidden;
-    }
-    .sideInfo {
-        max-width: 60%;
+        flex-direction: column-reverse;
+        height: 10rem;
     }
 }

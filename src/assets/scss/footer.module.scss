@@ -64,6 +64,7 @@ footer ul li a {
 @media screen and (max-width: 420px) {
     footer {
         flex-direction: column-reverse !important;
+        margin-bottom: 5rem;
     }
     footer ul {
         margin: 20px auto;
