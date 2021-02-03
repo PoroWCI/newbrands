@@ -143,6 +143,7 @@
         }
     }
     .inputDiv {
+        display:-webkit-flexbox;
         flex-wrap: wrap;
         flex-direction: column;
         -webkit-box-pack: center;
