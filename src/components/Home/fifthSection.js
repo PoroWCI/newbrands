@@ -14,9 +14,9 @@ function FifthSection() {
     <section className={classes.container}>
       <div>
         <div>
-          <h2 className={classes.h2}>{t("home.FifthSection.title")}</h2>
+          <h2 className={classes.h2}>{t("home.fifthSection.title")}</h2>
           <p className={classes.introduction}>
-            {t("home.FifthSection.subtitle")}
+            {t("home.fifthSection.subtitle")}
             <span>{t("contact.mail")}</span>
           </p>
         </div>
@@ -30,45 +30,45 @@ function FifthSection() {
               <AccordionItem className={classes.borderedContainer}>
                 <h3 className={classes.questionTitle}>
                   <AccordionButton className={classes.titleBtn}>
-                    <h5>{t("home.FifthSection.whatsNewbrands")}</h5>
+                    <h5>{t("home.fifthSection.whatsNewbrands")}</h5>
                     <BiChevronDown className={classes.arrow} size="24" />
                   </AccordionButton>
                 </h3>
                 <AccordionPanel>
-                  <p>{t("home.FifthSection.whatsNewbrandsDescription")}</p>
+                  <p>{t("home.fifthSection.whatsNewbrandsDescription")}</p>
                 </AccordionPanel>
               </AccordionItem>
               <AccordionItem className={classes.borderedContainer}>
                 <h3 className={classes.questionTitle}>
                   <AccordionButton className={classes.titleBtn}>
-                    <h5>{t("home.FifthSection.timeToWork")}</h5>
+                    <h5>{t("home.fifthSection.timeToWork")}</h5>
                     <BiChevronDown className={classes.arrow} size="24" />
                   </AccordionButton>
                 </h3>
                 <AccordionPanel className={classes.collapsibleContent}>
-                  <p>{t("home.FifthSection.timeToWorkDescription")}</p>
+                  <p>{t("home.fifthSection.timeToWorkDescription")}</p>
                 </AccordionPanel>
               </AccordionItem>
               <AccordionItem className={classes.borderedContainer}>
                 <h3 className={classes.questionTitle}>
                   <AccordionButton className={classes.titleBtn}>
-                    <h5>{t("home.FifthSection.timeToCraft")}</h5>
+                    <h5>{t("home.fifthSection.timeToCraft")}</h5>
                     <BiChevronDown className={classes.arrow} size="24" />
                   </AccordionButton>
                 </h3>
                 <AccordionPanel className={classes.collapsibleContent}>
-                  <p>{t("home.FifthSection.timeToCraftDescription")}</p>
+                  <p>{t("home.fifthSection.timeToCraftDescription")}</p>
                 </AccordionPanel>
               </AccordionItem>
               <AccordionItem className={classes.borderedContainer}>
                 <h3 className={classes.questionTitle}>
                   <AccordionButton className={classes.titleBtn}>
-                    <h5>{t("home.FifthSection.whyNewbrands")}</h5>
+                    <h5>{t("home.fifthSection.whyNewbrands")}</h5>
                     <BiChevronDown className={classes.arrow} size="24" />
                   </AccordionButton>
                 </h3>
                 <AccordionPanel className={classes.collapsibleContent}>
-                  <p>{t("home.FifthSection.whyNewbrandsDescription")}</p>
+                  <p>{t("home.fifthSection.whyNewbrandsDescription")}</p>
                 </AccordionPanel>
               </AccordionItem>
             </Accordion>

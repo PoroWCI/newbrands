@@ -8,11 +8,11 @@ function ThirdSection() {
   return (
     <div className={classes.container}>
       <div>
-        <h2 className={classes.h2}>{t("home.thirdSection.Title")}</h2>
+        <h2 className={classes.h2}>{t("home.thirdSection.title")}</h2>
         <div className={classes.firstContainer}>
           <div className={classes.textLeft}>
             <h2>{t("home.thirdSection.subtitle")}</h2>
-            <p>{t("home.thirdSection.subtitle")}</p>
+            <p>{t("home.thirdSection.text")}</p>
             <a href="/demo">
               {t("home.thirdSection.demo")}
               <span>{">"}</span>

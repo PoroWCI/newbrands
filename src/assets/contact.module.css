@@ -7,7 +7,7 @@
 }
 
 .contentContainer {
-  min-height: 100vh;
+  min-height: 110vh;
 }
 
 .margedContainer {
@@ -80,6 +80,14 @@
 
 .sendContainer .attachment img {
   margin: 0 10px;
+}
+
+.validationMsg {
+  margin: 2rem auto;
+}
+
+.validationMsg span {
+  font-family: "Gelion Light";
 }
 
 /*** BUTTON ***/

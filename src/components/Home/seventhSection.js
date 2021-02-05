@@ -11,7 +11,7 @@ function SeventhSection() {
     return (
         <div>
             <ul className={classes.logoList}>
-                <li><h4 className={classes.text}>{t("home.seventhSubtitle.withTheHelp")}</h4></li>
+                <li><h4 className={classes.text}>{t("home.seventhSection.withTheHelp")}</h4></li>
                 <li><img src={frenchTech} alt="frenchTech" /></li>
                 <li><img src={frenchImpact} alt="frenchImpact" /></li>
                 <li><img src={techForGood} alt="techForGood" /></li>

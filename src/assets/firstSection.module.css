@@ -117,11 +117,20 @@
 .dottedHr {
   border-top: 1px dashed #D1D1D1;
   width: 70%;
-  margin: 0.8rem 0 3rem;
+  margin: 0.8rem 0 2rem;
 }
 
 .leftColumn {
   max-width: 100%;
+}
+
+.validationMsg {
+  margin: 1rem;
+  opacity: 0.5;
+}
+
+.validationMsg span {
+  font-family: "Gelion Light";
 }
 
 .boldText {

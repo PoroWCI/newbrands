@@ -110,6 +110,14 @@
     max-width: 100%;
 }
 
+.validationMsg{
+    margin: 1rem;
+    opacity: 0.5;
+    span{
+        font-family: "Gelion Light";
+    }
+}
+
 .boldText {
     font-family: 'Gelion Medium';
 }

@@ -5,17 +5,25 @@ import { useState } from "react";
 import axios from "axios";
 
 function ContactContainer() {
+  const [msgSent, setMsgSent] = useState();
+  const { t } = useTranslation("common");
+  const [submitBtn, setSubmitBtn] = useState(`${t("contact.sendBtn")}`);
   const [data, setData] = useState({ name: "", mail: "", message: "" });
+  const request = async () => {
+    setSubmitBtn("ENVOI");
+    await axios
+      .post("http://192.168.1.26:4000/contact", data)
+      .then((res) => {
+        if (res.data.status === true) setMsgSent(true);
+      })
+      .catch(function (error) {
+        setMsgSent(false);
+      });
+      setSubmitBtn(`${t("contact.sendBtn")}`);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:4000/contact", data)
-      .then((res) => {
-        console.log(res.data)
-        })
-      .catch(function (error) {
-        console.log(error);
-      });
+    request();
   };
 
   const handleChange = (event) => {
@@ -25,7 +33,6 @@ function ContactContainer() {
     });
   };
 
-  const { t } = useTranslation("common");
   return (
     <div
       id="contact"
@@ -68,7 +75,7 @@ function ContactContainer() {
             <button
               className={`${classes.btn} ${classes.blueBtn} ${classes.rounded}`}
             >
-              {t("contact.sendBtn")}
+              {submitBtn}
             </button>
             <label>
               {t("contact.policy")}
@@ -79,6 +86,15 @@ function ContactContainer() {
             </span>
           </div>
         </form>
+        <div className={classes.validationMsg}>
+          <span>
+            {msgSent === true
+              ? "Message envoyé"
+              : msgSent === false
+              ? "Une erreur s'est produite, veuillez réessayer."
+              : null}
+          </span>
+        </div>
       </div>
       <div className={classes.sideInfo}>
         <h2 className={classes.h2}>{t("contact.sidePanel.headOffice")}</h2>

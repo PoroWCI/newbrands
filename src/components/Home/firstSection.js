@@ -5,21 +5,24 @@ import { useState } from "react";
 import axios from "axios";
 
 function FirstSection() {
+  const [msgSent, setMsgSent] = useState();
   const [data, setData] = useState({ mail: "" });
   const { t } = useTranslation("common");
-  const handleSubmit = (e) => {
-    console.log("submit");
-    e.preventDefault();
-    console.log(data);
-    axios
+  const request = async () => {
+    await axios
       .post("http://dev.newbrands.fr:4000/newsletter", data)
-      .then(function (response) {
-        console.log(response);
+      .then((res) => {
+        if (res.data.status === true) setMsgSent(true);
       })
       .catch(function (error) {
-        console.log(error);
+        setMsgSent(false);
       });
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    request();
+  }
+    
   const handleChange = (event) => {
     setData({
       ...data,
@@ -54,6 +57,15 @@ function FirstSection() {
                 </div>
               </div>
             </form>
+            <div className={classes.validationMsg}>
+          <span>
+            {msgSent === true
+              ? "Message envoyé"
+              : msgSent === false
+              ? "Une erreur s'est produite, veuillez réessayer."
+              : null}
+          </span>
+        </div>
           </div>
         </div>
         <div className={classes.noSpam}>
