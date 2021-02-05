@@ -1,10 +1,12 @@
 import working from "../../assets/img/working.svg";
+import { useTranslation } from "react-i18next";
 import classes from "../../assets/firstSection.module.css";
 import { useState } from "react";
 import axios from "axios";
 
 function FirstSection() {
   const [data, setData] = useState({ mail: "" });
+  const { t } = useTranslation("common");
   const handleSubmit = (e) => {
     console.log("submit");
     e.preventDefault();
@@ -28,14 +30,8 @@ function FirstSection() {
   return (
     <div className={classes.container}>
       <div className={classes.leftColumn}>
-        <h1 className={classes.h1}>
-          Optimisons les chaînes de valeur de l’industrie textile française
-        </h1>
-        <p className={classes.lightText}>
-          NewBrands permet de simplifier et réduire les coûts de la chaîne de
-          production Made In France en sélectionnant pour vous les acteurs les
-          plus adaptés à vos projets de productions.
-        </p>
+        <h1 className={classes.h1}>{t("home.firstSection.title")}</h1>
+        <p className={classes.lightText}>{t("home.firstSection.subtitle")} </p>
         <div>
           <div>
             <div className={classes.dottedHr}></div>
@@ -44,7 +40,7 @@ function FirstSection() {
                 <input
                   type="email"
                   name="email"
-                  placeholder="Entrez votre adresse e-mail"
+                  placeholder={t("home.firstSection.mailInput")}
                   required
                   className={classes.mailInput}
                   id="mail"
@@ -53,7 +49,7 @@ function FirstSection() {
                 />
                 <div className={classes.btnDiv}>
                   <button type="submit" name="submit" className={classes.btn}>
-                    Être prévenu
+                    {t("home.firstSection.btnNewsletter")}
                   </button>
                 </div>
               </div>
@@ -63,9 +59,10 @@ function FirstSection() {
         <div className={classes.noSpam}>
           <div>
             <span className={classes.lightText}>
-              Nous vous préviendrons par e-mail de la disponibilité de notre
-              plateforme gratuitement et sans engagement.{" "}
-              <span className={classes.boldText}>Promis, sans spam.</span>
+              {t("home.firstSection.noSpamContainer")}
+              <span className={classes.boldText}>
+                {t("home.firstSection.noSpam")}
+              </span>
             </span>
           </div>
         </div>

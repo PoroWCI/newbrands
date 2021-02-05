@@ -1,114 +1,118 @@
-import classes from '../../assets/fourthSection.module.css'
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa'
+import classes from "../../assets/fourthSection.module.css";
+import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
-function fourthSection() {
-    return (
+function FourthSection() {
+  const { t } = useTranslation("common");
+  return (
     <section className={classes.container}>
-        <div className={classes.cardContainer}>
-          <div className={classes.introduction}>
-            <h2 className={classes.h2}>Lancez votre première production gratuite*</h2>
-            <p className={classes.p}>Bénéficiez d’une première production hors frais de commission en sélectionnant notre offre avec engagement.</p>
+      <div className={classes.cardContainer}>
+        <div className={classes.introduction}>
+          <h2 className={classes.h2}>{t("home.fourthSection.title")}</h2>
+          <p className={classes.p}>{t("home.fourthSection.subtitle")}</p>
+        </div>
+        <div className={classes.column}>
+          <div className={classes.firstCard}>
+            <div className={classes.row}>
+              <div className={classes.firstColumn}>
+                <h6>{t("home.fourthSection.startingFrom")}</h6>
+                <h3>{t("home.fourthSection.99perMonth")}</h3>
+                <span>{t("home.fourthSection.99description")}</span>
+              </div>
+              <div className={classes.listColumn}>
+                <div className={classes.item}>
+                  <FaCheckCircle color="#01798c" size="24px" />
+                  <span>{t("home.fourthSection.sample")}</span>
+                </div>
+                <div className={classes.item}>
+                  <FaCheckCircle color="#01798c" size="24px" />
+                  <span>{t("home.fourthSection.commands")}</span>
+                </div>
+                <div className={classes.item}>
+                  <FaCheckCircle color="#01798c" size="24px" />
+                  <span>{t("home.fourthSection.monitoring")}</span>
+                </div>
+              </div>
+              <div className={classes.listColumn}>
+                <div className={classes.item}>
+                  <FaCheckCircle color="#01798c" size="24px" />
+                  <span>{t("home.fourthSection.strategy")}</span>
+                </div>
+                <div className={classes.item}>
+                  <FaCheckCircle color="#01798c" size="24px" />
+                  <span>{t("home.fourthSection.projectManage")}</span>
+                </div>
+                <div className={classes.item}>
+                  <FaCheckCircle color="#01798c" size="24px" />
+                  <span>{t("home.fourthSection.dedicatedProduction")}</span>
+                </div>
+              </div>
+              <button className={classes.btn}>
+                {t("home.fourthSection.select")}
+              </button>
+            </div>
           </div>
-          <div className={classes.column}>
-            <div className={classes.firstCard}>
-              <div className={classes.row}>
-                <div className={classes.firstColumn}>
-                  <h6>À partir de</h6>
-                  <h3>99.99€/mois</h3>
-                  <span>
-                    + Commission par palier comprise entre 0.80% et 7.00%, selon
-                    le volume de production
-                  </span>
-                </div>
-                <div className={classes.listColumn}>
-                  <div className={classes.item}>
-                    <FaCheckCircle color="#01798c" size="24px" />
-                    <span>Échantillons des matières</span>
-                  </div>
-                  <div className={classes.item}>
-                    <FaCheckCircle color="#01798c" size="24px" />
-                    <span>Gestion des commandes</span>
-                  </div>
-                  <div className={classes.item}>
-                    <FaCheckCircle color="#01798c" size="24px" />
-                    <span>Suivi en temps réels</span>
-                  </div>
-                </div>
-                <div className={classes.listColumn}>
-                  <div className={classes.item}>
-                    <FaCheckCircle color="#01798c" size="24px" />
-                    <span>Stratégie de production</span>
-                  </div>
-                  <div className={classes.item}>
-                    <FaCheckCircle color="#01798c" size="24px" />
-                    <span>Gestion des projets</span>
-                  </div>
-                  <div className={classes.item}>
-                    <FaCheckCircle color="#01798c" size="24px" />
-                    <span>Resp. production dédiés</span>
-                  </div>
-                </div>
-                <button className={classes.btn}>Sélectionner</button>
+        </div>
+        <div className={classes.column}>
+          <div className={classes.card}>
+            <div className={classes.row}>
+              <div className={classes.firstColumn}>
+                <h3>{t("home.fourthSection.0perMonth")}</h3>
+                <span>{t("home.fourthSection.0description")}</span>
               </div>
-            </div>
-            </div>
-            <div className={classes.column}>
-            <div className={classes.card}>
-              <div className={classes.row}>
-                <div className={classes.firstColumn}>
-                  <h3>0€/mois</h3>
-                  <span>
-                    + Commission par palier compris entre 7% et 12,50%, selon le volume de production
-                  </span>
+              <div className={classes.listColumn}>
+                <div className={classes.item}>
+                  <FaCheckCircle color="#FFF" size="24px" />
+                  <span>{t("home.fourthSection.sample")}</span>
                 </div>
-                <div className={classes.listColumn}>
-                  <div className={classes.item}>
-                    <FaCheckCircle color="#FFF" size="24px" />
-                    <span>Échantillons des matières</span>
-                  </div>
-                  <div className={classes.item}>
-                    <FaCheckCircle color="#FFF" size="24px" />
-                    <span>Gestion des commandes</span>
-                  </div>
-                  <div className={classes.item}>
-                    <FaCheckCircle color="#FFF" size="24px" />
-                    <span>Suivi en temps réels</span>
-                  </div>
+                <div className={classes.item}>
+                  <FaCheckCircle color="#FFF" size="24px" />
+                  <span>{t("home.fourthSection.commands")}</span>
                 </div>
-                <div className={classes.listColumn}>
-                  <div className={classes.item}>
-                    <FaCheckCircle color="#FFF" size="24px" />
-                    <span>Resp. production dédiés</span>
-                  </div>
-                  <div className={classes.item}>
-                    <FaTimesCircle color="#FFF" size="24px" />
-                    <span>Stratégie de production</span>
-                  </div>
-                  <div className={classes.item}>
-                    <FaTimesCircle color="#FFF" size="24px" />
-                    <span>Gestion des projets</span>
-                  </div>
+                <div className={classes.item}>
+                  <FaCheckCircle color="#FFF" size="24px" />
+                  <span>{t("home.fourthSection.monitoring")}</span>
                 </div>
-                <button className={`${classes.btn} ${classes.disabledBtn}`}>Bientôt disponible</button>
               </div>
-            </div>
-            </div>
-            <div className={classes.column}>
-            <div className={classes.card}>
-              <div className={classes.lastRow}>
-                <div className={classes.firstColumn}>
-                  <h6>Tarif spécial</h6>
-                  <h3>Incubées</h3>
+              <div className={classes.listColumn}>
+                <div className={classes.item}>
+                  <FaCheckCircle color="#FFF" size="24px" />
+                  <span>{t("home.fourthSection.strategy")}</span>
                 </div>
-                <div className={classes.listColumn}>
-                  <span>+ 40 incubateurs partenaires à travers la France Métropolitaine*</span>
+                <div className={classes.item}>
+                  <FaTimesCircle color="#FFF" size="24px" />
+                  <span>{t("home.fourthSection.projectManage")}</span>
                 </div>
-                <button className={classes.btn}>Vérifier éligibilité</button>
+                <div className={classes.item}>
+                  <FaTimesCircle color="#FFF" size="24px" />
+                  <span>{t("home.fourthSection.dedicatedProduction")}</span>
+                </div>
               </div>
+              <button className={`${classes.btn} ${classes.disabledBtn}`}>
+                {t("home.secondSection.soonAvailable")}
+              </button>
             </div>
+          </div>
+        </div>
+        <div className={classes.column}>
+          <div className={classes.card}>
+            <div className={classes.lastRow}>
+              <div className={classes.firstColumn}>
+                <h6>{t("home.fourthSection.specialPricing")}</h6>
+                <h3>{t("home.fourthSection.incubated")}</h3>
+              </div>
+              <div className={classes.listColumn}>
+                <span>{t("home.fourthSection.incubatedText")}</span>
+              </div>
+              <button className={classes.btn}>
+                {t("home.fourthSection.verifyEligibility")}
+              </button>
             </div>
-            </div>
-      </section>)
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
-export default fourthSection
+export default FourthSection;

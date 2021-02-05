@@ -20,6 +20,7 @@
     "react": "^16.14.0",
     "react-animated-burgers": "^1.2.8",
     "react-dom": "^16.14.0",
+    "react-file-dropzone": "^0.4.1",
     "react-i18next": "*",
     "react-icons": "*",
     "react-router-dom": "*",
