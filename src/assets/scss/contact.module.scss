@@ -11,14 +11,18 @@
 }
 
 .margedContainer {
-    width: 95%;
+    width: 85%;
     margin: auto;
+}
+
+.sideInfo{
+    margin-right: 7rem;
 }
 
 .rowAlign {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -29,7 +33,7 @@
 .sendContainer {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
     & a {
         color: #00798C;
@@ -38,8 +42,9 @@
         }
     }
     & label {
-        width: 15rem;
+        width: auto;
         padding: 10px;
+        margin-left: 2rem;
     }
     & label, label a{
         font-size: 0.7rem;

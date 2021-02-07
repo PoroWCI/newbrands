@@ -8,7 +8,7 @@ function ContactContainer() {
   const [msgSent, setMsgSent] = useState();
   const { t } = useTranslation("common");
   const [submitBtn, setSubmitBtn] = useState(`${t("contact.sendBtn")}`);
-  const [data, setData] = useState({ name: "", mail: "", message: "" });
+  const [data, setData] = useState({ name: "", mail: "", message: ""});
   const request = async () => {
     setSubmitBtn("ENVOI");
     await axios
@@ -19,7 +19,7 @@ function ContactContainer() {
       .catch(function (error) {
         setMsgSent(false);
       });
-      setSubmitBtn(`${t("contact.sendBtn")}`);
+    setSubmitBtn(`${t("contact.sendBtn")}`);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -81,9 +81,6 @@ function ContactContainer() {
               {t("contact.policy")}
               <a href="#">{t("contact.policyLink")}</a>
             </label>
-            <span className={classes.attachment}>
-              <img src={attachment} alt="logo" /> {t("contact.file")}
-            </span>
           </div>
         </form>
         <div className={classes.validationMsg}>
@@ -91,8 +88,8 @@ function ContactContainer() {
             {msgSent === true
               ? "Message envoyé"
               : msgSent === false
-              ? "Une erreur s'est produite, veuillez réessayer."
-              : null}
+                ? "Une erreur s'est produite, veuillez réessayer."
+                : null}
           </span>
         </div>
       </div>
