@@ -6,10 +6,10 @@
     "home":{
         "firstSection": {
             "title": "Optimisons les chaînes de valeur de l’industrie textile française",
-            "subtitle": "NewBrands permet de simplifier et réduire les coûts de la chaîne de production Made In France en sélectionnant pour vous les acteurs les plus adaptés à vos projets de productions.",
+            "subtitle": "NewBrands permet de simplifier et réduire les coûts de la chaîne de production Made In France en sélectionnant pour vous les acteurs les plus adaptés à vos projets de production.",
             "mailInput": "Entrez votre adresse e-mail",
             "btnNewsletter": "Être prévenu",
-            "noSpamContainer": "Nous vous préviendrons par e-mail de la disponibilité de notre plateforme gratuitement et sans engagement.",
+            "noSpamContainer": "Nous vous préviendrons par e-mail de la disponibilité de notre plateforme gratuitement et sans engagement. ",
             "noSpam": "Promis, sans spam."
         },
         "secondSection": {
@@ -17,19 +17,19 @@
             "subtitle": "Nous vous accompagnons dès le premier jours de votre projet, nous intervenons dès vos besoins de stylisme afin de donner vie à votre projet de marque, jusqu’aux prototypages de vos modèles et la production de votre collection.",
             "stylismTitle": "Stylisme",
             "stylism1": "Vous avez les idées, mais pas le talent ? Nos stylistes travaillant pour les plus grandes",
-            "stylism2": "#maisons_de_coutures",
+            "stylism2": " #maisons_de_coutures",
             "stylism3": " sont là pour vous.",
             "ethicalTitle": "Matières éthiques",
             "ethical1": "Sourcing des matières à travers l’union européenne parmi un portefeuille de partenaires labélisées",
-            "ethical2": "#GOTS #OEKO",
+            "ethical2": " #GOTS #OEKO",
             "developmentTitle": "Développement",
             "development1": "Mise en production dans l’une de nos ",
             "development2": "4 000 usines",
-            "development3": "aux quatre coins de l’hexagone, au plus proche de votre région.",
-            "productionTitle": "Production françaises",
+            "development3": " aux quatre coins de l’hexagone, au plus proche de votre région.",
+            "productionTitle": "Production française",
             "production1": "Mise en production dans l’une de nos ",
             "production2": "4 000 usines",
-            "production3": "aux quatre coins de l’hexagone, au plus proche de votre région.",
+            "production3": " aux quatre coins de l’hexagone, au plus proche de votre région.",
             "optimisationTitle": "Optimisation des transports",
             "optimisation1": "Nous réduisons aux maximums les transports routiers en favorisant le fret ferroviaires grâce à la coalition Européenne",
             "optimisation2": "Rail Freight Forward",
@@ -56,10 +56,10 @@
             "0description": "+ Commission par palier compris entre 7% et 12,50%, selon le volume de production",
             "sample": "Échantillons des matières",
             "commands": "Gestion des commandes",
-            "monitoring": "Suivi en temps réels",
+            "monitoring": "Suivi en temps réel",
             "strategy": "Stratégie de production",
             "projectManage": "Gestion des projets",
-            "dedicatedProduction": "Resp. production dédiés",
+            "dedicatedProduction": "Resp. production dédié",
             "select": "Sélectionner",
             "specialPricing": "Tarif spécial",
             "incubated": "Incubées",
@@ -68,20 +68,20 @@
         },
         "fifthSection": {
             "title": "Foire aux questions",
-            "subtitle": "Nous avons répondus aux questions les plus fréquentes, cependant, en cas de questions supplémentaires ; vous pouvez nous écrire à",
+            "subtitle": "Nous avons répondu aux questions les plus fréquentes, cependant, en cas de questions supplémentaires ; vous pouvez nous écrire à ",
             "whatsNewbrands": "Qu'est-ce que Newbrands ?",
-            "whatsNewbrandsDescription": "NewBrands met les marques en relations avec les manufactures françaises et européennes ainsi qu’avec des fournisseurs de matières premières éthiques et biosourcées européenne afin de rendre l’industrie textile plus verte. <br /> <br /> Notre objectif premier est de connecter l’industrie de façon innovante et intelligente grâce l’utilisation d’algorithmes et d’intelligence artificielle dans la sélection des partenaires pouvant répondre de façon concrète aux besoins des marques.",
+            "whatsNewbrandsDescription": "NewBrands met les marques en relation avec les manufactures françaises et européennes ainsi qu’avec des fournisseurs de matières premières éthiques et biosourcées européennes afin de rendre l’industrie textile plus verte. \n \n Notre objectif premier est de connecter l’industrie de façon innovante et intelligente grâce à l’utilisation d’algorithmes et d’intelligence artificielle dans la sélection des partenaires pouvant répondre de façon concrète aux besoins des marques.",
             "timeToWork": "Combien de temps faut-il pour que je puisse commencer à travailler avec un fabricant ?",
-            "timeToWorkDescription": "La création d’un compte prend en moyenne 5 minutes sur NewBrands, vous pouvez lancer votre appel d’offres aussitôt inscrit. Le temps de réponse varie généralement entre 48 heures et 5 jours ouvrés pour recevoir une proposition commerciale consolidée. <br /> <br /> Après réception de votre proposition commerciale, libre à vous de l’accepter, la décliner ou bien la renégocier. En cas d’acceptation, des éléments de vérification d’identité* seront obligatoires pour la signature tripartite entre les usines, votre entreprise et NewBrands. <br /> <br />* La vérification des éléments peut prendre 1 heure maximum.",
+            "timeToWorkDescription": "La création d’un compte prend en moyenne 5 minutes sur NewBrands, vous pouvez lancer votre appel d’offres aussitôt inscrit. Le temps de réponse varie généralement entre 48 heures et 5 jours ouvrés pour recevoir une proposition commerciale consolidée. \n \n Après réception de votre proposition commerciale, libre à vous de l’accepter, la décliner ou bien la renégocier. En cas d’acceptation, des éléments de vérification d’identité* seront obligatoires pour la signature tripartite entre les usines, votre entreprise et NewBrands. \n \n* La vérification des éléments peut prendre 1 heure maximum.",
             "timeToCraft": "Combien de temps faut-il pour passer du développement à la confection ?",
-            "timeToCraftDescription": "Plusieurs éléments sont à prendre en compte, cela dépendra de la complexité des pièces à développer ainsi que le sourcing des matières premières final. <br /> <br /> Nous vous conseillons de directement choisir le Sourcing + Développement + Confection lors de la création de projet. Cela permettra de faire une présélection des partenaires intervenant sur vos produits et ainsi accélérer la prise en charge de vos produits aussitôt le développement terminé par nos partenaires.",
+            "timeToCraftDescription": "Plusieurs éléments sont à prendre en compte, cela dépendra de la complexité des pièces à développer ainsi que le sourcing des matières premières final. \n \n Nous vous conseillons de directement choisir le Sourcing + Développement + Confection lors de la création de projet. Cela permettra de faire une présélection des partenaires intervenant sur vos produits et ainsi accélérer la prise en charge de vos produits aussitôt le développement terminé par nos partenaires.",
             "whyNewbrands": "Pourquoi devrais-je travailler avec NewBrands ?",
-            "whyNewbrandsDescription": "Nous sommes à vos côtés de la première à la dernière étape de vos projets de sourcing, développement, confection ou encore de distribution. <br /> <br /> Nous avons pour vocation d’être à la fois votre partenaire dans votre activité mais surtout d’être un outil vous permettant de facilité la gestion de vos projets de développement sourcing et confection au sein de votre activité, votre marque. <br /> <br /> NewBrands militent pour une industrie plus verte et respectueuse de l’environnement mais aussi de ses mains qui travaillent vos produits, pour une clarté de la chaîne de production, éthiques, et biosourcées. <br /> <br /> Nous apportons de la transparence à votre marque, à vos clients finaux."
+            "whyNewbrandsDescription": "Nous sommes à vos côtés de la première à la dernière étape de vos projets de sourcing, développement, confection ou encore de distribution. \n \n Nous avons pour vocation d’être à la fois votre partenaire dans votre activité mais surtout d’être un outil vous permettant de faciliter la gestion de vos projets de développement sourcing et confection au sein de votre activité, votre marque. \n \n NewBrands milite pour une industrie plus verte et respectueuse de l’environnement mais aussi de ses mains qui travaillent vos produits, pour une clarté de la chaîne de production, éthique, et biosourcée. \n \n Nous apportons de la transparence à votre marque et vos clients finaux."
         },
         "sixthSection": {
             "title": "Vous êtes un fabricant ?",
-            "subtitle": "Faites comme +8 000 usines à travers la France, rejoignez NewBrands et accompagner des milliers de marques dans leurs projets de production françaises",
-            "partner": "Devenons partenaire"
+            "subtitle": "Faites comme +8 000 usines à travers la France, rejoignez NewBrands et accompagnez des milliers de marques dans leurs projets de production française",
+            "partner": "Devenons partenaires"
         },
         "seventhSection": {
             "withTheHelp": "Avec le soutien de"
@@ -89,7 +89,7 @@
     },
     "contact": {
         "title": "Comment pouvons-nous vous aider ?",
-        "subtitle": "Nous vous répondons en moyenne dans les 24 heures jour ouvré uniquement, du Lundi au vendredi de 9h30 à 18h.",
+        "subtitle": "Nous vous répondons en moyenne dans les 24 heures, jours ouvrés uniquement, du lundi au vendredi de 9h30 à 18h.",
         "nameInputLabel": "Nom complet *",
         "mailInputLabel": "Adresse e-mail *",
         "messageInputLabel": "Votre message *",
