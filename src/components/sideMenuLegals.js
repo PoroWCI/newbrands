@@ -1,7 +1,9 @@
 import classes from "../assets/legals.module.css";
 import { Route } from "react-router-dom";
+import { useLocation } from "react-router";
 
 function LegalsContainer(props) {
+  const location = useLocation(); 
   return (
     <div className={classes.sideMenu}>
       <h2>Ressources légales</h2>
@@ -9,7 +11,7 @@ function LegalsContainer(props) {
         <Route
           render={({ history }) => (
             <li
-              className={props.page === "Legals" ? classes.active : null}
+              className={location.pathname === "/legals" ? classes.active : null}
               onClick={() => history.push("/legals")}
             >
               Mentions légales
@@ -19,14 +21,14 @@ function LegalsContainer(props) {
         <Route
           render={({ history }) => (
             <li
-              className={props.page === "Use" ? classes.active : null}
+              className={location.pathname === "/use" ? classes.active : null}
               onClick={() => history.push("/use")}
             >
               Conditions Générales d’Utilisation
             </li>
           )}
         />
-        <Route
+        {/* <Route
           render={({ history }) => (
             <li
               className={props.page === "Politics" ? classes.active : null}
@@ -55,7 +57,7 @@ function LegalsContainer(props) {
               Chartes Cookies
             </li>
           )}
-        />
+        /> */}
       </ul>
       <span className={classes.footer}>
         © Copyright 2017-2021, NewBrands, SAS et ses partenaires
