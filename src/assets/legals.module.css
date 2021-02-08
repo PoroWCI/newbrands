@@ -7,8 +7,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  margin: 2%;
+  margin: auto;
   margin-top: 5rem;
+  width: 85%;
 }
 
 .container h1 {
@@ -27,6 +28,7 @@
 
 .sideMenu {
   max-width: 15vw;
+  position: fixed;
   margin-right: 5rem;
 }
 
@@ -63,6 +65,7 @@
 
 .content {
   max-width: 65vw;
+  margin-left: auto;
 }
 
 .content button {

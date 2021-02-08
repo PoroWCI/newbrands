@@ -2,8 +2,9 @@
     display: flex;
     min-height: 100vh;
     flex-direction: row;
-    margin: 2%;
+    margin: auto;
     margin-top: 5rem;
+    width: 85%;
     h1 {
         font-size: 2rem;
     }
@@ -19,6 +20,7 @@
 
 .sideMenu {
     max-width: 15vw;
+    position: fixed;
     margin-right: 5rem;
     h2 {
         font-size: 1.6rem;
@@ -49,6 +51,7 @@
 
 .content {
     max-width: 65vw;
+    margin-left: auto;
     button {
         border: none;
         outline: none;

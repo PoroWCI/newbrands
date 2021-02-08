@@ -5,7 +5,7 @@
 }
 
 .h2 {
-    font-family: 'Gelion SemiBold';
+    font-family: "Gelion SemiBold";
     text-align: center;
     font-size: 2.5rem;
 }
@@ -49,8 +49,7 @@
     border: 1.4px solid #e9ecef;
 }
 
-.borderedContainer:not(:first-child)
-{
+.borderedContainer:not(:first-child) {
     margin-top: -1px;
 }
 
@@ -65,9 +64,9 @@
     cursor: pointer;
     justify-content: space-between;
     &:hover {
-        color: #00798C;
+        color: #00798c;
         h5 {
-            color: #00798C;
+            color: #00798c;
         }
     }
 }
@@ -80,25 +79,25 @@
     overflow: hidden;
 }
 
-
 [data-reach-accordion-item][data-state="open"] {
     p {
         padding: 0 1rem;
+        white-space: break-spaces;
     }
     .questionTitle {
         h5 {
-            color: #00798C;
+            color: #00798c;
         }
     }
     .arrow {
         transition: 0.5s;
         transform: rotate(180deg);
-        color: #00798C;
+        color: #00798c;
     }
 }
 
 @media screen and (max-width: 420px) {
-    .container{
+    .container {
         margin-bottom: 0;
     }
     .h2 {

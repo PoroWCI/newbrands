@@ -9,7 +9,7 @@
 }
 
 .h2 {
-  font-family: 'Gelion SemiBold';
+  font-family: "Gelion SemiBold";
   text-align: center;
   font-size: 2.5rem;
 }
@@ -90,11 +90,11 @@
 }
 
 .titleBtn:hover {
-  color: #00798C;
+  color: #00798c;
 }
 
 .titleBtn:hover h5 {
-  color: #00798C;
+  color: #00798c;
 }
 
 .arrow {
@@ -108,10 +108,11 @@
 
 [data-reach-accordion-item][data-state="open"] p {
   padding: 0 1rem;
+  white-space: break-spaces;
 }
 
 [data-reach-accordion-item][data-state="open"] .questionTitle h5 {
-  color: #00798C;
+  color: #00798c;
 }
 
 [data-reach-accordion-item][data-state="open"] .arrow {
@@ -119,7 +120,7 @@
   transition: 0.5s;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
-  color: #00798C;
+  color: #00798c;
 }
 
 @media screen and (max-width: 420px) {
