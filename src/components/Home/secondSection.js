@@ -69,10 +69,10 @@ function SecondSection() {
           <div className={classes.tile}>
             <div>
               <img src={transports} alt="Transports" />
-              <h5>#{t("home.secondSection.productionTitle")}</h5>
+              <h5>#{t("home.secondSection.optimisationTitle")}</h5>
               <p className={classes.lightText}>
-                {t("home.secondSection.production1")}
-                <span>{t("home.secondSection.production2")}</span>
+                {t("home.secondSection.optimisation1")}
+                <span>{t("home.secondSection.optimisation2")}</span>
               </p>
             </div>
           </div>
@@ -82,10 +82,10 @@ function SecondSection() {
                 <img src={recycling} alt="Recyclage" />
                 {t("home.secondSection.soonAvailable")}
               </span>
-              <h5>#{t("home.secondSection.productionTitle")}</h5>
+              <h5>#{t("home.secondSection.recyclingTitle")}</h5>
               <p className={classes.lightText}>
-                {t("home.secondSection.production1")}
-                <span>{t("home.secondSection.production2")}</span>
+                {t("home.secondSection.recycling1")}
+                <span>{t("home.secondSection.recycling2")}</span>
               </p>
             </div>
           </div>

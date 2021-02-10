@@ -29,6 +29,10 @@ function ThirdSection() {
               <h2> {t("home.thirdSection.projectCreationTitle")}</h2>
               <div>
                 <p>{t("home.thirdSection.projectCreation")}</p>
+                <a href="/demo">
+                  {t("home.thirdSection.demo")}
+                  <span>{">"}</span>
+                </a>
               </div>
             </div>
           </div>

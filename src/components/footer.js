@@ -14,10 +14,9 @@ function Footer() {
             <a href="/legals"> {t("footer.legals")}</a>
             </div>
             <ul>
-                <li><a href="https://twitter.com/newbrandsfr"><AiOutlineTwitter color="#343A40" size="1.2rem" /></a></li>
-                <li><a href="https://facebook.com"><FaFacebookF color="#343A40" size="1rem" /></a></li>
-                <li><a href="https://instagram.com"><AiFillInstagram color="#343A40" size="1.2rem" /></a></li>
-                <li><a href="https://linkedin.com"><FaLinkedinIn color="#343A40" size="1.2rem" /></a></li>
+                <li><a href="https://www.facebook.com/newbrandsfr-109483937526114"><FaFacebookF color="#343A40" size="1rem" /></a></li>
+                <li><a href="https://www.instagram.com/newbrandsfr/"><AiFillInstagram color="#343A40" size="1.2rem" /></a></li>
+                <li><a href="https://www.linkedin.com/company/newbrandsfr/"><FaLinkedinIn color="#343A40" size="1.2rem" /></a></li>
             </ul>
         </footer>
     );

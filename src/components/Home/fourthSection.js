@@ -88,7 +88,7 @@ function FourthSection() {
                   <span>{t("home.fourthSection.dedicatedProduction")}</span>
                 </div>
               </div>
-              <button className={`${classes.btn} ${classes.disabledBtn}`}>
+              <button className={`${classes.btn}`}>
                 {t("home.secondSection.soonAvailable")}
               </button>
             </div>
@@ -104,7 +104,7 @@ function FourthSection() {
               <div className={classes.listColumn}>
                 <span>{t("home.fourthSection.incubatedText")}</span>
               </div>
-              <button className={classes.btn}>
+              <button className={`${classes.btn} ${classes.disabledBtn}`}>
                 {t("home.fourthSection.verifyEligibility")}
               </button>
             </div>

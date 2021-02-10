@@ -51,6 +51,7 @@
 
 .content {
     max-width: 60vw;
+    margin-bottom: 4rem;
     margin-left: auto;
     button {
         border: none;
@@ -90,6 +91,8 @@
 
 .footer {
     font-size: 0.7rem;
+    position: fixed;
+    bottom: 1rem;
 }
 
 @media screen and (max-width: 420px) {

@@ -1,11 +1,9 @@
 import { useTranslation } from "react-i18next";
 import classes from '../assets/legals.module.css';
-import SideMenu from './sideMenuLegals';
 
 function Use() {
     const { t } = useTranslation('common');
     return (
-        <div className={classes.container}>
             <div className={classes.content}>
                 <span>Dernière mise à jour le 9 juillet 2020 /</span><button>Archived versions</button>
                 <h1>Terms of use</h1>
@@ -37,7 +35,6 @@ function Use() {
                 </ul>
                 <span>If you have questions, you can contact NewBrands and our data protection office. And you can contact your local data protection authority if you have concerns regarding your rights under local law.</span>
             </div>
-        </div>
     );
 }
 
