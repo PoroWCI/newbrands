@@ -89,7 +89,7 @@ function FourthSection() {
                 </div>
               </div>
               <button className={`${classes.btn}`}>
-                {t("home.secondSection.soonAvailable")}
+                {t("home.fourthSection.select")}
               </button>
             </div>
           </div>
@@ -105,7 +105,7 @@ function FourthSection() {
                 <span>{t("home.fourthSection.incubatedText")}</span>
               </div>
               <button className={`${classes.btn} ${classes.disabledBtn}`}>
-                {t("home.fourthSection.verifyEligibility")}
+                {t("home.secondSection.soonAvailable")}
               </button>
             </div>
           </div>
