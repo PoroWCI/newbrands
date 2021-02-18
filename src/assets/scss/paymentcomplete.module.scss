@@ -1,0 +1,152 @@
+.container {
+    height: 60h;
+    width: 85%;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 7rem;
+}
+
+.contentDiv {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+
+.dottedDiv {
+    width: 45rem;
+    border: 1px dashed #000;
+    margin-right: auto;
+    padding: 1rem;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .lengthSpan {
+        font-family: 'Gelion Light';
+        position: absolute;
+        bottom: -1.75rem;
+    }
+}
+
+.MainDiv {
+    width: 90%;
+    height: 20rem;
+    background: linear-gradient(180deg, #00798C 0%, #016B7B 100%);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 3rem;
+        color: #FFF;
+        text-align: left;
+        max-width: 450px;
+        position: relative;
+    }
+    img {
+        position: absolute;
+        left: -4rem;
+        top: .5rem;
+    }
+}
+
+.whiteBtn {
+    border-radius: 4px;
+    outline: none;
+    height: 50px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00798C;
+    font-family: 'Gelion SemiBold';
+    &:hover {
+        background: transparent;
+        border: 1px solid #FFF;
+        color: #FFF;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+}
+
+.imgDiv {
+    position: absolute;
+    right: 0;
+    .img {
+        width: 35rem;
+        max-width: 650px;
+    }
+}
+
+.tagline {
+    text-align: center;
+    max-width: 80%;
+    font-family: 'Gelion Light';
+    margin-top: 3rem;
+    color: #5C5C5C;
+}
+
+.btnDiv {
+    display: flex;
+    margin-top: 2rem;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.outlineBtn {
+    cursor: pointer;
+    border-radius: 4px;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gelion SemiBold';
+    background-color: transparent;
+    color: #00798C;
+    outline: none;
+    border: 1px solid #00798C;
+    &:hover {
+        background: #00798C;
+        color: #FFF;
+    }
+}
+
+.endBtn {
+    cursor: pointer;
+    color: #00798C;
+    font-family: 'Gelion SemiBold';
+    border: none;
+    outline: none;
+    display: flex;
+    &:hover {
+        opacity: 0.5;
+    }
+}
+
+@media (min-width: 1281px) {
+    .imgDiv .img {
+        min-width: 45rem;
+        max-width: 800px;
+    }
+    .dottedDiv {
+        width: 55rem;
+    }
+    .MainDiv {
+        height: 25rem;
+    }
+}

@@ -1,9 +1,11 @@
 import classes from "../../assets/fourthSection.module.css";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { Route } from "react-router-dom";
 
 function FourthSection() {
   const { t } = useTranslation("common");
+  const test = "99e"
   return (
     <section className={classes.container}>
       <div className={classes.cardContainer}>
@@ -47,9 +49,13 @@ function FourthSection() {
                   <span>{t("home.fourthSection.dedicatedProduction")}</span>
                 </div>
               </div>
-              <button className={classes.btn}>
-                {t("home.fourthSection.select")}
-              </button>
+              <Route
+                render={({ history }) => (
+                  <button className={classes.btn} onClick={() => history.push("/instant-quote/register")}>
+                    {t("home.fourthSection.select")}
+                  </button>
+                )}
+              />
             </div>
           </div>
         </div>
@@ -88,9 +94,13 @@ function FourthSection() {
                   <span>{t("home.fourthSection.dedicatedProduction")}</span>
                 </div>
               </div>
-              <button className={`${classes.btn}`}>
-                {t("home.fourthSection.select")}
-              </button>
+              <Route
+                render={({ history }) => (
+                  <button className={classes.btn} onClick={() => history.push("/committees/register")}>
+                    {t("home.fourthSection.select")}
+                  </button>
+                )}
+              />
             </div>
           </div>
         </div>
@@ -104,7 +114,7 @@ function FourthSection() {
               <div className={classes.listColumn}>
                 <span>{t("home.fourthSection.incubatedText")}</span>
               </div>
-              <button className={`${classes.btn} ${classes.disabledBtn}`}>
+              <button className={`${classes.btn} ${classes.disabledBtn}`} >
                 {t("home.secondSection.soonAvailable")}
               </button>
             </div>

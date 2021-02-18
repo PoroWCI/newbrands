@@ -1,0 +1,222 @@
+.container {
+  height: 60h;
+  width: 85%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 7rem;
+}
+
+.contentDiv {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}
+
+.dottedDiv {
+  width: 45rem;
+  border: 1px dashed #000;
+  margin-right: auto;
+  padding: 1rem;
+  border-radius: 4px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dottedDiv .lengthSpan {
+  font-family: 'Gelion Light';
+  position: absolute;
+  bottom: -1.75rem;
+}
+
+.MainDiv {
+  width: 90%;
+  height: 20rem;
+  background: -webkit-gradient(linear, left top, left bottom, from(#00798C), to(#016B7B));
+  background: linear-gradient(180deg, #00798C 0%, #016B7B 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  padding: 2rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.MainDiv h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 3rem;
+  color: #FFF;
+  text-align: left;
+  max-width: 450px;
+  position: relative;
+}
+
+.MainDiv img {
+  position: absolute;
+  left: -4rem;
+  top: .5rem;
+}
+
+.whiteBtn {
+  border-radius: 4px;
+  outline: none;
+  height: 50px;
+  width: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #00798C;
+  font-family: 'Gelion SemiBold';
+}
+
+.whiteBtn:hover {
+  background: transparent;
+  border: 1px solid #FFF;
+  color: #FFF;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+}
+
+.imgDiv {
+  position: absolute;
+  right: 0;
+}
+
+.imgDiv .img {
+  width: 35rem;
+  max-width: 650px;
+}
+
+.tagline {
+  text-align: center;
+  max-width: 80%;
+  font-family: 'Gelion Light';
+  margin-top: 3rem;
+  color: #5C5C5C;
+}
+
+.btnDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2rem;
+  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.outlineBtn {
+  cursor: pointer;
+  border-radius: 4px;
+  width: 200px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'Gelion SemiBold';
+  background-color: transparent;
+  color: #00798C;
+  outline: none;
+  border: 1px solid #00798C;
+}
+
+.outlineBtn:hover {
+  background: #00798C;
+  color: #FFF;
+}
+
+.endBtn {
+  cursor: pointer;
+  color: #00798C;
+  font-family: 'Gelion SemiBold';
+  border: none;
+  outline: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.endBtn:hover {
+  opacity: 0.5;
+}
+
+@media (min-width: 1281px) {
+  .imgDiv .img {
+    min-width: 45rem;
+    max-width: 800px;
+  }
+  .dottedDiv {
+    width: 55rem;
+  }
+  .MainDiv {
+    height: 25rem;
+  }
+}
