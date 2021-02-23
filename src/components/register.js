@@ -14,7 +14,7 @@ function OnBoardingRegister(price) {
                 Durant cet OnBoarding, plusieurs questions vont vous êtres posées afin de comprendre au mieux votre activité afin d’établir une offre correspondant à vos besoins adapté à votre projet.
             </p>
             <Form />
-            <Navigation link="billing" />
+            <Navigation link={price.price === 'instant-quote' ? 'billing' : 'registration-completed'} />
         </div>
     );
 }

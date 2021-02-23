@@ -3,7 +3,7 @@ import Checkmark from '../assets/img/checkmarkround.svg'
 import classes from '../assets/paymentcomplete.module.css'
 import { Route } from "react-router-dom"
 
-function PaymentComplet() {
+function RegisterCompleted() {
     return (
         <div className={classes.container}>
             <div className={classes.contentDiv}>
@@ -12,7 +12,7 @@ function PaymentComplet() {
                         <div className={classes.mainDivContent}>
                             <h1>
                                 <img src={Checkmark} />
-                                Paiement validé, merci !
+                                Inscription prise en compte, merci !
                             </h1>
                             <button className={classes.whiteBtn}>Mon compte</button>
                         </div>
@@ -48,4 +48,4 @@ function PaymentComplet() {
     )
 }
 
-export default PaymentComplet;
+export default RegisterCompleted;

@@ -1,19 +1,18 @@
 import Header from '../components/header'
-import Footer from '../components/footer'
 import Content from '../components/register'
-import Billing from '../components/billing'
-import PaymentSuccess from '../components/PaymentComplete'
+import RegistrationCompleted from '../components/registrationCompleted'
 import CommandConfirmed from '../components/commandConfirmed'
+import Footer from '../components/footer'
 
 function InstantQuote(props) {
+    console.log(props.step)
     return (
         <div>
             <Header />
             {!props.step ? <Content price={props.price} /> 
-            : props.step == Billing ? <Billing /> 
-            : props.step === PaymentSuccess ? <PaymentSuccess />
-            : props.step === CommandConfirmed ? <CommandConfirmed />
-            : null} 
+            : props.step === RegistrationCompleted ? <RegistrationCompleted /> 
+            : props.step === CommandConfirmed ? <CommandConfirmed /> 
+            : null}
             <Footer />
         </div>
     );

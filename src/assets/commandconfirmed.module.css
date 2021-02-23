@@ -12,8 +12,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-top: 4rem;
-  margin-bottom: 1.5rem;
+  margin-top: 3rem;
 }
 
 .contentDiv {
@@ -37,14 +36,12 @@
 }
 
 .dottedDiv {
-  width: 45rem;
   background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, black), color-stop(0%, rgba(255, 255, 255, 0))), -webkit-gradient(linear, left top, left bottom, color-stop(50%, black), color-stop(0%, rgba(255, 255, 255, 0))), -webkit-gradient(linear, right top, left top, color-stop(50%, black), color-stop(0%, rgba(255, 255, 255, 0))), -webkit-gradient(linear, left top, left bottom, color-stop(50%, black), color-stop(0%, rgba(255, 255, 255, 0)));
   background-image: linear-gradient(to right, black 50%, rgba(255, 255, 255, 0) 0%), linear-gradient(to bottom, black 50%, rgba(255, 255, 255, 0) 0%), linear-gradient(to left, black 50%, rgba(255, 255, 255, 0) 0%), linear-gradient(to bottom, black 50%, rgba(255, 255, 255, 0) 0%);
   background-size: 1rem 1px, 1px 1rem;
   background-position: top left, right top, bottom right, left top;
   background-repeat: repeat-x, repeat-y;
-  margin-right: auto;
-  padding: 1rem 1.5rem;
+  padding: 1rem;
   border-radius: 4px;
   position: relative;
   display: -webkit-box;
@@ -66,10 +63,7 @@
 }
 
 .MainDiv {
-  width: 90%;
-  height: 20rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(#00798c), to(#016b7b));
-  background: linear-gradient(180deg, #00798c 0%, #016b7b 100%);
+  background: #efefef;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -78,7 +72,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   position: relative;
-  padding: 2rem;
+  padding: 5rem 5rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -87,58 +81,87 @@
           align-items: center;
 }
 
-.MainDiv h1 {
+.MainDiv .mainDivContent {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-left: 5rem;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 3rem;
-  color: #fff;
+  color: #000;
   text-align: left;
-  max-width: 450px;
+  max-width: 300px;
   position: relative;
 }
 
-.MainDiv img {
-  position: absolute;
-  left: -4rem;
-  top: 0.5rem;
+.MainDiv .mainDivContent h1 {
+  display: block;
+  font-size: 2rem;
+  line-height: 0.8;
 }
 
-.whiteBtn {
-  border-radius: 4px;
-  outline: none;
-  height: 50px;
-  width: 200px;
+.MainDiv .mainDivContent h2 {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  vertical-align: bottom;
+}
+
+.MainDiv .mainDivContent .country {
+  vertical-align: baseline;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  font-family: "Gelion Light";
+  color: #4f4f4f;
+}
+
+.inputDiv {
+  position: relative;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  color: #00798c;
-  font-family: "Gelion SemiBold";
-  font-size: 1.2rem;
-  margin-left: 5rem;
+  height: 85px;
 }
 
-.whiteBtn:hover {
-  background: transparent;
-  border: 1px solid #fff;
-  color: #fff;
+.inputDiv label {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #333333;
+  font-size: 0.8rem;
+  position: absolute;
+  left: 1.25rem;
+  top: 1.25rem;
+  z-index: 2;
+}
+
+.inputDiv input {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  font-family: "Gelion SemiBold";
+  font-size: 1rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  cursor: pointer;
+  text-indent: 0.5rem;
+  border: 1px solid #e1e6e2;
+  margin: 10px 0;
+  padding-top: 1.5rem;
+  width: 100%;
+  max-height: 60px;
+  background: #fff;
+}
+
+.inputDiv input:focus {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border: 1px solid #333333;
+  outline: none;
 }
 
 .imgDiv {
@@ -147,40 +170,16 @@
 }
 
 .imgDiv .img {
-  width: 35rem;
+  width: auto;
+  height: auto;
   max-width: 650px;
+  max-height: 65vh;
 }
 
-.tagline {
-  text-align: center;
-  max-width: 80%;
-  font-family: "Gelion Light";
-  margin-top: 3rem;
-  color: #5c5c5c;
-}
-
-.btnDiv {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 2rem;
-  width: 100%;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.outlineBtn {
+.filledBtn {
   cursor: pointer;
   border-radius: 4px;
-  width: 200px;
+  width: 100%;
   height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -192,40 +191,21 @@
       -ms-flex-align: center;
           align-items: center;
   font-family: "Gelion SemiBold";
-  background-color: transparent;
-  color: #00798c;
+  font-size: 1.2rem;
+  background-color: #00798c;
+  color: #fff;
   outline: none;
   border: 1px solid #00798c;
 }
 
-.outlineBtn:hover {
-  background: #00798c;
-  color: #fff;
-}
-
-.endBtn {
-  cursor: pointer;
+.filledBtn:hover {
+  background: transparent;
   color: #00798c;
-  font-family: "Gelion SemiBold";
-  border: none;
-  outline: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  background: none;
-}
-
-.endBtn:hover {
-  opacity: 0.5;
 }
 
 @media (min-width: 1281px) {
   .imgDiv .img {
-    min-width: 45rem;
     max-width: 800px;
-  }
-  .dottedDiv {
-    width: 55rem;
   }
   .MainDiv {
     height: 25rem;
