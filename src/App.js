@@ -25,18 +25,6 @@ function App() {
         <Route exact path="/use">
           <MentionsLegales page={Use} />
         </Route>
-        <Route exact path="/instant-quote/register">
-          <Register price={"instant-quote"} />
-        </Route>
-        <Route exact path="/committees/register">
-          <Register price={"committees"} />
-        </Route>
-        <Route exact path="/committees/billing">
-          <Register step={Billing} />
-        </Route>
-        <Route exact path="/committees/payment-success">
-          <Register step={PaymentSuccess} />
-        </Route>
       </Switch>
     </BrowserRouter>
   )

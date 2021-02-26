@@ -51,7 +51,7 @@ function FourthSection() {
               </div>
               <Route
                 render={({ history }) => (
-                  <button className={classes.btn} onClick={() => history.push("/instant-quote/register")}>
+                  <button className={classes.btn} }>
                     {t("home.fourthSection.select")}
                   </button>
                 )}
@@ -96,7 +96,7 @@ function FourthSection() {
               </div>
               <Route
                 render={({ history }) => (
-                  <button className={classes.btn} onClick={() => history.push("/committees/register")}>
+                  <button className={classes.btn}}>
                     {t("home.fourthSection.select")}
                   </button>
                 )}
