@@ -4,6 +4,7 @@ import MentionsLegales from './containers/MentionsLegales'
 import GuestDashboard from './containers/GuestDashboard'
 import RegisterInstantQuote from './containers/InstantQuote'
 import RegisterCommittees from './containers/Committees'
+import ProjectPage from './containers/ProjectPage'
 import './assets/style.css'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Legals from './components/Legal/legals'
@@ -62,6 +63,9 @@ function App() {
         {/*  */}
         <Route exact path="/my-commands">
           <GuestDashboard panel={MyCommands} />
+        </Route>
+        <Route exact path="/project">
+          <ProjectPage />
         </Route>
       </Switch>
     </BrowserRouter>

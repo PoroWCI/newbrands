@@ -1,0 +1,42 @@
+.container {
+    min-height: 50vh;
+    width: 85%;
+    margin: auto;
+    padding-top: 2rem;
+    p{
+        padding-bottom: 3rem;
+        max-width: 55%;
+    }
+}
+
+.productTable {
+    border-collapse: separate; 
+    border-spacing:0 15px;
+}
+
+.tableContainer th, .product td {
+    text-align: left;
+    border-radius: 10px;
+}
+
+.tableContainer th:first-child, .product td:first-child{
+    text-align: center;
+}
+
+.product {
+    border-radius: 10px;
+    box-shadow: 0 0 2px 0 #DEDEDE;
+    background: #FFF;
+    color: #333;
+    td:first-child {
+        padding: 1rem 1rem;
+    }
+    td:not(:first-child) {
+        font-family: "Gelion";
+        padding: 1rem 0;
+        padding-right: 3rem;
+    }
+    .indexProduct, .productName {
+        font-family: 'Gelion SemiBold'!important;
+    }
+}
