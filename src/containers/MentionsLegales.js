@@ -1,5 +1,5 @@
-import Header from '../components/header'
-import Content from '../components/legalsContainer'
+import Header from '../components/Header/header'
+import Content from '../components/Legal/legalsContainer'
 
 function MentionsLegales(props) {
   return (

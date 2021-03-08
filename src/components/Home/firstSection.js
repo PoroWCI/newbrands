@@ -1,6 +1,6 @@
 import working from "../../assets/img/working.svg";
 import { useTranslation } from "react-i18next";
-import classes from "../../assets/firstSection.module.css";
+import classes from "./firstSection.module.css";
 import { useState } from "react";
 import axios from "axios";
 

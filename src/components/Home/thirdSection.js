@@ -1,6 +1,6 @@
 import projectSample from "../../assets/img/project-sample.png";
 import projectCreation from "../../assets/img/project-creation.png";
-import classes from "../../assets/thirdSection.module.css";
+import classes from "./thirdSection.module.css";
 import { useTranslation } from "react-i18next";
 
 function ThirdSection() {

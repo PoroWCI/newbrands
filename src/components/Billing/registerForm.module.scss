@@ -1,0 +1,39 @@
+.container {
+    margin: auto;
+    align-items: center;
+    text-align: justify;
+    text-align-last: center;
+    max-width: 85%;
+    height: 80vh;
+    padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    h2 {
+        font-weight: 400;
+        font-size: 1rem;
+        font-family: "Gelion Light";
+        padding: 0;
+        margin: 0;
+    }
+    h1 {
+        font-size: 2rem;
+        padding: 0;
+        margin: 0;
+    }
+    p {
+        max-width: 50%;
+        margin: auto;
+        margin-top: 1rem;
+        font-family: "Gelion Light";
+        color: #5C5C5C;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .container {
+        margin-bottom: 45rem;
+        p {
+            max-width: 100%;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import classes from "../../assets/seventhSection.module.css";
+import classes from "./seventhSection.module.css";
 import frenchTech from "../../assets/img/french-tech-logo-png-1.png";
 import frenchImpact from "../../assets/img/Logo_FrenchImpact_RVB_Web.webp";
 import techForGood from "../../assets/img/tech-for-good.png";

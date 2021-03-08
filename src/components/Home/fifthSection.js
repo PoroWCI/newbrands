@@ -1,4 +1,4 @@
-import classes from "../../assets/fifthSection.module.css";
+import classes from "./fifthSection.module.css";
 import {
   Accordion,
   AccordionItem,

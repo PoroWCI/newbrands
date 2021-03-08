@@ -1,9 +1,9 @@
-import Header from '../components/header'
-import Footer from '../components/footer'
-import Content from '../components/register'
-import Billing from '../components/billing'
-import PaymentSuccess from '../components/PaymentComplete'
-import CommandConfirmed from '../components/commandConfirmed'
+import Header from '../components/Header/header'
+import Footer from '../components/Footer/footer'
+import Content from '../components/Billing/register'
+import Billing from '../components/Billing/billing'
+import PaymentSuccess from '../components/Billing/PaymentComplete'
+import CommandConfirmed from '../components/Billing/commandConfirmed'
 
 function InstantQuote(props) {
     return (

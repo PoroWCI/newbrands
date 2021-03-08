@@ -1,8 +1,8 @@
-import Header from '../components/header'
-import Content from '../components/register'
-import RegistrationCompleted from '../components/registrationCompleted'
-import CommandConfirmed from '../components/commandConfirmed'
-import Footer from '../components/footer'
+import Header from '../components/Header/header'
+import Content from '../components/Billing/register'
+import RegistrationCompleted from '../components/Billing/registrationCompleted'
+import CommandConfirmed from '../components/Billing/commandConfirmed'
+import Footer from '../components/Footer/footer'
 
 function InstantQuote(props) {
     console.log(props.step)

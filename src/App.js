@@ -1,16 +1,18 @@
 import Home from './containers/Home'
 import Contact from './containers/Contact'
 import MentionsLegales from './containers/MentionsLegales'
-import './assets/style.css'
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Legals from './components/legals'
-import Use from './components/useContainer'
+import GuestDashboard from './containers/GuestDashboard'
 import RegisterInstantQuote from './containers/InstantQuote'
 import RegisterCommittees from './containers/Committees'
-import Billing from './components/billing'
-import PaymentSuccess from './components/PaymentComplete'
-import RegistrationCompleted from './components/registrationCompleted'
-import CommandConfirmed from './components/commandConfirmed'
+import './assets/style.css'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Legals from './components/Legal/legals'
+import Use from './components/Legal/useContainer'
+import Billing from './components/Billing/billing'
+import PaymentSuccess from './components/Billing/PaymentComplete'
+import RegistrationCompleted from './components/Billing/registrationCompleted'
+import CommandConfirmed from './components/Billing/commandConfirmed'
+import MyCommands from './components/Dashboard/dashboard'
 
 function App() {
   return (
@@ -58,6 +60,9 @@ function App() {
           <RegisterCommittees step={CommandConfirmed} />
         </Route>
         {/*  */}
+        <Route exact path="/my-commands">
+          <GuestDashboard panel={MyCommands} />
+        </Route>
       </Switch>
     </BrowserRouter>
   )

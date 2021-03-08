@@ -1,4 +1,4 @@
-import classes from "../../assets/sixthSection.module.css";
+import classes from "./sixthSection.module.css";
 import { useTranslation } from "react-i18next";
 
 function SixthSection() {

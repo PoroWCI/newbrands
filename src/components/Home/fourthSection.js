@@ -1,4 +1,4 @@
-import classes from "../../assets/fourthSection.module.css";
+import classes from "./fourthSection.module.css";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { Route } from "react-router-dom";

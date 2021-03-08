@@ -4,7 +4,7 @@ import developpment from "../../assets/img/developpement.svg";
 import production from "../../assets/img/production.svg";
 import transports from "../../assets/img/transports.svg";
 import recycling from "../../assets/img/recycling.svg";
-import classes from "../../assets/secondSection.module.css";
+import classes from "./secondSection.module.css";
 import { useTranslation } from "react-i18next";
 
 function SecondSection() {

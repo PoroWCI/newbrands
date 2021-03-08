@@ -1,6 +1,6 @@
-import Header from '../components/header'
-import Content from '../components/contactContainer'
-import Footer from '../components/footer'
+import Header from '../components/Header/header'
+import Content from '../components/Contact/contactContainer'
+import Footer from '../components/Footer/footer'
 
 function Contact() {
   const isHome = "contact";
