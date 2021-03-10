@@ -1,10 +1,12 @@
 import { useTranslation } from "react-i18next";
 import classes from './billing.module.css'
 import SidePricing from './sidePricing';
+import { useState } from 'react'
 import { Route } from 'react-router-dom'
 
 function Billing() {
   const { t } = useTranslation('common');
+  const [disabled, setDisabled] = useState(true);
   return (
     <div className={classes.container}>
       <div className={classes.contentContainer}>
@@ -44,14 +46,18 @@ function Billing() {
             </div>
           </form>
           <h1>Signature du contrat</h1>
-          <span>Pour accepter notre proposition commercial, vous devez signer le contrat via notre partenaire sécurisé <bold>DocuSign</bold></span>
-          <button className={classes.signContract}>Signer mon contrat</button>
+          <span>Pour accepter notre proposition commercial, vous devez signer le contrat via notre partenaire sécurisé <span className={classes.bold}>DocuSign</span></span>
+          <button className={classes.signContract} onClick={() => setDisabled(false)}>Signer mon contrat</button>
         </div>
         <div className={classes.sideContainer}>
           <SidePricing />
           <Route  render={({ history }) => (
-            <button className={classes.btnPayment} onClick={() => history.push('payment-success')}>Paiement</button>
+            <button className={`${classes.btnPayment} ${disabled === true ? classes.locked : ""}`} onClick={() => history.push('payment-success')}>Paiement</button>
           )} />
+          {disabled === true ? <>
+          <span className={classes.mustSign}>Vous devez d'abord signer le contrat.</span>
+          </>
+          : null }
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ function Home() {
       <Faq />
       <Maker />
       <LogoList />
-      <Footer />
+      <Footer footer="full" />
     </div>
   );
 }

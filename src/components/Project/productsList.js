@@ -8,18 +8,27 @@ function productsList() {
         ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
         ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
         ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
     ]
 
     let products = []
     for (const [index, value] of productsAPI.entries()) {
         products.push(
             <tr className={classes.product} key={index}>
-                <td className={classes.indexProduct}>#{index}</td>
-                <td className={classes.productName}>{value[0]}</td>
-                <td className={classes.productType}>{value[1]}</td>
-                <td className={classes.productQuantity}>{value[2]}</td>
-                <td className={classes.productSize}>{value[3]}</td>
-                <td className={classes.productStep}>{value[4]}</td>
+                <td title={index} className={classes.indexProduct}>#{index}</td>
+                <td title={value[0]} className={classes.productName}>{value[0]}</td>
+                <td title={value[1]} className={classes.productType}>{value[1]}</td>
+                <td title={value[2]} className={classes.productQuantity}>{value[2]}</td>
+                <td title={value[3]} className={classes.productSize}>{value[3]}</td>
+                <td title={value[4]} className={classes.productStep}>{value[4]}</td>
             </tr>
         )
     }
@@ -35,12 +44,12 @@ function productsList() {
                 <table className={classes.productTable}>
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Produit</th>
-                            <th>Catégorie</th>
-                            <th>Quantité</th>
-                            <th>Taille</th>
-                            <th>Étape</th>
+                            <th title="index">#</th>
+                            <th title="produit">Produit</th>
+                            <th title="catégorie">Catégorie</th>
+                            <th title="quantité">Quantité</th>
+                            <th title="size">Taille</th>
+                            <th title="étape">Étape</th>
                         </tr>
                     </thead>
                     <tbody>

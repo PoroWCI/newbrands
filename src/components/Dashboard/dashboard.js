@@ -1,5 +1,6 @@
 import classes from "./dashboard.module.css";
 import { BsArrowRight } from "react-icons/bs"
+import { Route } from "react-router-dom"
 
 function Dashboard(props) {
     return (
@@ -58,7 +59,9 @@ function Dashboard(props) {
                             <div className={classes.rightCol}>
                                 <h1>Total H.T 22 413€</h1>
                                 <span>Statut: En stylisme</span>
-                                <button className={classes.whiteBtn}>Voir ma commande</button>
+                                <Route render={({ history }) => (
+                                <button className={classes.whiteBtn} onClick={() => history.push('/project')}>Voir ma commande</button>
+                            )} />
                             </div>
                         </li>
                     </ul>

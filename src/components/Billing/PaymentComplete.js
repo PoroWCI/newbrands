@@ -14,7 +14,13 @@ function PaymentComplet() {
                                 <img src={Checkmark} />
                                 Paiement validé, merci !
                             </h1>
-                            <button className={classes.whiteBtn}>Mon compte</button>
+                            <Route
+                                render={({ history }) => (
+                                    <button className={classes.whiteBtn} onClick={() => history.push('command-success')}>
+                                        Mon compte
+                                    </button>
+                                )}
+                            />
                         </div>
                     </div>
                     <span className={classes.lengthSpan}>46</span>
@@ -36,13 +42,9 @@ function PaymentComplet() {
                         </button>
                     )}
                 />
-                <Route
-                    render={({ history }) => (
-                        <button className={classes.endBtn} onClick={() => history.push('command-success')}>
-                            Terminer !
-                        </button>
-                    )}
-                />
+                        <span className={classes.endSpan}>
+                            Terminé !
+                        </span>
             </div>
         </div>
     )

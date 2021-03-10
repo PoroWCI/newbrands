@@ -51,7 +51,7 @@ function RegisterForm() {
                 <label>Société</label>
             </div>
             <div className={classes.inputDiv}>
-                <select>
+                <select className={classes.selectInput}>
                     <option></option>
                     <option>Designer</option>
                     <option>Chef de projet</option>
@@ -64,7 +64,7 @@ function RegisterForm() {
                 <label>SIRET / DUNS</label>
             </div>
             <div className={classes.inputDiv}>
-                <select>
+                <select className={classes.selectInput}>
                     <option></option>
                     <optgroup label="North America">
                         <option value="US">United States</option>

@@ -15,11 +15,12 @@
     flex-wrap: wrap;    
     list-style: none;
     padding: 0;
-    width: 65%;
+    width: 60%;
 }
 
 .file {
-    max-width: 28%;
+    transition: 0.3s;
+    max-width: 27%;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -31,6 +32,10 @@
     box-shadow: 0 0 2px 0 #dedede;
     background: #fff;
     color: #333;
+    &:hover {
+        transition: 0.2s;
+        box-shadow: 0 0 5px #333;
+    }
     img {
         max-height: 50px;
     }

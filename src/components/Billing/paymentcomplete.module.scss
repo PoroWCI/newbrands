@@ -1,11 +1,11 @@
 .container {
-    min-height: 75vh;
+    min-height: 90vh;
     width: 80%;
     display: flex;
     margin: auto;
     align-items: center;
     flex-direction: column;
-    margin-top: 4rem;
+    padding-top: 2.5rem;
     margin-bottom: 2.5rem;
 }
 
@@ -30,7 +30,7 @@
     background-position: top left, right top, bottom right, left top;
     background-repeat: repeat-x, repeat-y;
     margin-right: auto;
-    padding: 1rem 1.5rem;
+    padding: 1rem;
     border-radius: 4px;
     position: relative;
     display: flex;
@@ -44,13 +44,11 @@
 }
 
 .MainDiv {
-    width: 90%;
-    height: 18rem;
     background: linear-gradient(180deg, #00798c 0%, #016b7b 100%);
     display: flex;
     flex-direction: column;
     position: relative;
-    padding: 2rem;
+    padding: 5rem 2rem;
     justify-content: center;
     align-items: center;
     h1 {
@@ -125,6 +123,7 @@
     width: 200px;
     height: 50px;
     display: flex;
+    font-size: 1rem;
     justify-content: center;
     align-items: center;
     font-family: "Gelion SemiBold";
@@ -138,28 +137,21 @@
     }
 }
 
-.endBtn {
-    cursor: pointer;
+.endSpan {
     color: #00798c;
     font-family: "Gelion SemiBold";
     border: none;
     outline: none;
     display: flex;
     background: none;
-    &:hover {
-        opacity: 0.5;
-    }
 }
 
 @media (min-width: 1281px) {
     .imgDiv .img {
-        min-width: 45rem;
+        min-width: 45vw;
         max-width: 800px;
     }
     .dottedDiv {
         width: 55rem;
-    }
-    .MainDiv {
-        height: 25rem;
     }
 }

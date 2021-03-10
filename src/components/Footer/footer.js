@@ -4,14 +4,20 @@ import { AiFillInstagram } from 'react-icons/ai'
 import classes from './footer.module.css'
 import { useTranslation } from "react-i18next";
 
-function Footer() {
+function Footer(props) {
     const { t } = useTranslation("common");
     return (
         <footer>
-            <div className={classes.contactVersion}>
-            <span>© Copyright 2017-2021, NewBrands, SAS et ses partenaires / Siège Social: NEWBRANDS, 10 Place Vendôme, 75001 Paris. 
+            <div className={props.footer === "full" ? classes.fullVersion : ""}>
+            <span>© Copyright 2017-2021, NewBrands, SAS et ses partenaires
+            {props.footer === "full" ? <>
+            <span> / Siège Social: NEWBRANDS, 10 Place Vendôme, 75001 Paris. 
                 / № SIRET: 829 419 100 000 21 / № APE: 6201 Z / R.C.S: PARIS / № TVA: FR 23 829419100</span>
+                
             <a href="/legals"> {t("footer.legals")}</a>
+            </>
+            : null}
+            </span>
             </div>
             <ul>
                 <li><a href="https://www.facebook.com/newbrandsfr-109483937526114"><FaFacebookF color="#343A40" size="1rem" /></a></li>
