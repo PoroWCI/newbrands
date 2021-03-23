@@ -1,6 +1,8 @@
 import classes from './progressbar.module.css'
 import Checkmark from '../../assets/img/checkmarkround.svg'
 import { IoIosCheckmark } from 'react-icons/io'
+import { BsChevronBarLeft } from 'react-icons/bs'
+import { Route } from 'react-router-dom'
 
 
 function ProgressBar() {
@@ -26,6 +28,9 @@ function ProgressBar() {
     }
     return (
         <div className={classes.container}>
+                      <Route  render={({ history }) => (
+            <span className={classes.backBtn} onClick={()=> history.goBack()}><BsChevronBarLeft />Mes projets</span>
+                      )} />
             <h1>
                 Nom_du_projet <span className={classes.reference}>#reference</span>
             </h1>

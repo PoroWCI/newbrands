@@ -17,7 +17,7 @@
     "eslint-plugin-testing-library": "^3.10.1",
     "i18next": "*",
     "npm": "*",
-    "react": "^16.14.0",
+    "react": "^17.0.1",
     "react-animated-burgers": "^1.2.8",
     "react-dom": "^16.14.0",
     "react-file-dropzone": "^0.4.1",

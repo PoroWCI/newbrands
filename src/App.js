@@ -5,6 +5,7 @@ import GuestDashboard from './containers/GuestDashboard'
 import RegisterInstantQuote from './containers/InstantQuote'
 import RegisterCommittees from './containers/Committees'
 import ProjectPage from './containers/ProjectPage'
+import ValidatingAccount from './containers/ValidatingAccount'
 import './assets/style.css'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Legals from './components/Legal/legals'
@@ -62,10 +63,15 @@ function App() {
         </Route>
         {/*  */}
         <Route exact path="/my-commands">
-          <GuestDashboard panel={MyCommands} />
+          <GuestDashboard panel={MyCommands} activated={false} />
+        </Route>
+        <Route path="/my-commands/token">
+          <GuestDashboard panel={MyCommands} activated={true} />
         </Route>
         <Route exact path="/project">
           <ProjectPage />
+        </Route>
+        <Route exact path="/validation-account" children={<ValidatingAccount />}>
         </Route>
       </Switch>
     </BrowserRouter>

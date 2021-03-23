@@ -2,25 +2,23 @@ import classes from './productslist.module.css'
 
 function productsList() {
     let productsAPI = [
-        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
-        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
-        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
-        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
-        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
-        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
-        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
-        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
-        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
-        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
-        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
-        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
-        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
-        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
-        ["La petite robe noire", "Robe courte", 3000, "L", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "waiting", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "current", "En cours"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "stopped", "Arrêté"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "late", "En retard"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "waiting", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "waiting", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "finished", "Terminé"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "waiting", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "waiting", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "waiting", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "waiting", "En attente"],
+        ["La petite robe noire", "Robe courte", 3000, "L", "waiting", "En attente"],
     ]
 
     let products = []
     for (const [index, value] of productsAPI.entries()) {
+        let status = 
         products.push(
             <tr className={classes.product} key={index}>
                 <td title={index} className={classes.indexProduct}>#{index}</td>
@@ -28,7 +26,7 @@ function productsList() {
                 <td title={value[1]} className={classes.productType}>{value[1]}</td>
                 <td title={value[2]} className={classes.productQuantity}>{value[2]}</td>
                 <td title={value[3]} className={classes.productSize}>{value[3]}</td>
-                <td title={value[4]} className={classes.productStep}>{value[4]}</td>
+                <td title={value[5]} className={classes.productStep}><div className={`${classes.status} ${classes[value[4]]}`}></div>{value[5]}</td>
             </tr>
         )
     }

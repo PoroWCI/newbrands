@@ -27,7 +27,6 @@ function RegisterForm() {
             setSiret(e.target.value)
         }
     }
-    console.log(siret)
     return (
         <form className={classes.container}>
             <div className={classes.inputDiv}>

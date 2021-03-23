@@ -1,12 +1,12 @@
 import Header from '../components/Header/header'
-import Dashboard from '../components/Dashboard/dashboard'
+import Form from '../components/ValidatingInformations/hqAddress'
 import Footer from '../components/Footer/footer'
 
 function GuestDashboard(props) {
     return (
         <div>
             <Header />
-                <Dashboard panel={props.panel} accountActivated={props.activated} />
+            <Form />
             <Footer />
         </div>
     );
