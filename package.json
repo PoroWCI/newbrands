@@ -16,6 +16,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-testing-library": "^3.10.1",
     "i18next": "*",
+    "moment": "^2.29.1",
     "npm": "*",
     "react": "^17.0.1",
     "react-animated-burgers": "^1.2.8",

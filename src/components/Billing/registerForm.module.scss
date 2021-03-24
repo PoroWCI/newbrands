@@ -4,9 +4,11 @@
     text-align: justify;
     text-align-last: center;
     max-width: 85%;
+    min-height: 75vh;
     padding-top: 5rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     h2 {
         font-weight: 400;
         font-size: 1rem;
@@ -21,7 +23,7 @@
     }
     p {
         max-width: 50%;
-        margin: auto;
+        margin: 2rem auto;
         margin-top: 1rem;
         font-family: "Gelion Light";
         color: #5C5C5C;

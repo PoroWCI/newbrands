@@ -1,7 +1,7 @@
 import Home from './containers/Home'
 import Contact from './containers/Contact'
 import MentionsLegales from './containers/MentionsLegales'
-import GuestDashboard from './containers/GuestDashboard'
+import Dashboard from './containers/Dashboard'
 import RegisterInstantQuote from './containers/InstantQuote'
 import RegisterCommittees from './containers/Committees'
 import ProjectPage from './containers/ProjectPage'
@@ -14,7 +14,6 @@ import Billing from './components/Billing/billing'
 import PaymentSuccess from './components/Billing/PaymentComplete'
 import RegistrationCompleted from './components/Billing/registrationCompleted'
 import CommandConfirmed from './components/Billing/commandConfirmed'
-import MyCommands from './components/Dashboard/dashboard'
 
 function App() {
   return (
@@ -62,11 +61,8 @@ function App() {
           <RegisterCommittees step={CommandConfirmed} />
         </Route>
         {/*  */}
-        <Route exact path="/my-commands">
-          <GuestDashboard panel={MyCommands} activated={false} />
-        </Route>
-        <Route path="/my-commands/token">
-          <GuestDashboard panel={MyCommands} activated={true} />
+        <Route path="/dashboard">
+          <Dashboard />
         </Route>
         <Route exact path="/project">
           <ProjectPage />

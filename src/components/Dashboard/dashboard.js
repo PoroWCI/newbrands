@@ -1,17 +1,56 @@
 import classes from "./dashboard.module.css";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs"
+import moment from 'moment';
 
 function Dashboard(props) {
+    const projectsAPI = [
+        ["12/11/2020", "stylism", 10, 22413, "stylism", 1],
+        ["12/13/2020", "stylism", 10, 22413, "stylism", 1],
+        ["06/11/2020", "stylism", 10, 22413, "stylism", 1],
+        ["12/11/2020", "stylism", 10, 22413, "stylism", 1],
+    ]
+    let projectList = []
+    for (const [index, value] of projectsAPI.entries()) {
+        projectList.push(
+            <li className={classes.projectCard} key={index}>
+                <div className={classes.leftCol}>
+                    <h2>Projet créé le {moment(value[0]).format('D MMM YYYY').toLowerCase()}</h2>
+                    <ul className={classes.tags}>
+                        <li className={`${classes.tag} ${classes.selectedTag}`}>
+                            <span>Stylisme</span>
+                        </li>
+                        <li className={classes.tag}>
+                            <span>Modélisme</span>
+                        </li>
+                        <li className={classes.tag}>
+                            <span>Confection</span>
+                        </li>
+                        <li className={classes.tag}>
+                            <span>Sourcing</span>
+                        </li>
+                    </ul>
+                    <h3>{value[2]} produits</h3>
+                </div>
+                <div className={classes.rightCol}>
+                    <h1>Total H.T {value[3]}</h1>
+                    <span>Statut: {value[4]}</span>
+                    <Route render={({ history }) => (
+                        <button className={classes.whiteBtn} onClick={() => history.push('/project?id='+value[5])}>Voir ma commande</button>
+                    )} />
+                </div>
+            </li>
+        )
+    }
     return (
         <div className={classes.container}>
             <button className={classes.blueBtn}>Créer un nouveau projet</button>
             <ul className={classes.panelTitleContainer}>
-                <li className={`${classes.panelTitle} ${classes.active} `}>Commandes en cours</li>
-                <li className={classes.panelTitle}>Projets à l’étude</li>
-                <li className={classes.panelTitle}>Commandes passées</li>
+                <Link to="commands"><li className={`${classes.panelTitle} ${props.panel === "commands" ? classes.active : ""}`}>Commandes en cours</li></Link>
+                <Link to="projects"><li className={`${classes.panelTitle} ${props.panel === "projects" ? classes.active : ""}`}>Projets à l’étude</li></Link>
+                <Link to="completed-commands"><li className={`${classes.panelTitle} ${props.panel === "completed-commands" ? classes.active : ""}`}>Commandes passées</li></Link>
             </ul>
-            {props.accountActivated !== true ? <>
+            {props.activated !== true && props.panel === "commands" ? <>
                 <div className={classes.blueDiv}>
                     <span>Afin d’activer votre compte, nous avons besoin de quelques informations vous concernant ainsi que votre société.</span>
                     <Route
@@ -41,33 +80,7 @@ function Dashboard(props) {
                 <span className={classes.example}>Visuel d'exemple</span>
             </> : <>
                 <ul className={classes.projectCardsContainer}>
-                    <li className={classes.projectCard}>
-                        <div className={classes.leftCol}>
-                            <h2>Projet créé le 12 nov 2020</h2>
-                            <ul className={classes.tags}>
-                                <li className={`${classes.tag} ${classes.selectedTag}`}>
-                                    <span>Stylisme</span>
-                                </li>
-                                <li className={classes.tag}>
-                                    <span>Modélisme</span>
-                                </li>
-                                <li className={classes.tag}>
-                                    <span>Confection</span>
-                                </li>
-                                <li className={classes.tag}>
-                                    <span>Sourcing</span>
-                                </li>
-                            </ul>
-                            <h3>10 produits</h3>
-                        </div>
-                        <div className={classes.rightCol}>
-                            <h1>Total H.T 22 413€</h1>
-                            <span>Statut: En stylisme</span>
-                            <Route render={({ history }) => (
-                                <button className={classes.whiteBtn} onClick={() => history.push('/project')}>Voir ma commande</button>
-                            )} />
-                        </div>
-                    </li>
+                    {projectList}
                 </ul>
             </>}
         </div>

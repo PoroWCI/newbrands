@@ -41,7 +41,7 @@ function HqForm() {
                         <li>Pièce d'identité<div className={confirmed.id === true ? classes.confirmed : classes.unconfirmed}></div></li>
                     </ul>
                 </div>
-                <Link to="/my-commands/token" className={confirmed.kbis === false || confirmed.id === false ? classes.disabled : ""}>
+                <Link to="/dashboard/my-commands/token" className={confirmed.kbis === false || confirmed.id === false ? classes.disabled : ""}>
                     <button className={classes.blueBtn}>Signer mon contrat</button>
                 </Link>
             </div>

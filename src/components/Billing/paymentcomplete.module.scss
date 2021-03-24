@@ -21,7 +21,6 @@
 }
 
 .dottedDiv {
-    width: 45rem;
     background-image: linear-gradient(to right, black 50%, rgba(255, 255, 255, 0) 0%),
         linear-gradient(to bottom, black 50%, rgba(255, 255, 255, 0) 0%),
         linear-gradient(to left, black 50%, rgba(255, 255, 255, 0) 0%),
@@ -29,7 +28,7 @@
     background-size: 1rem 1px, 1px 1rem;
     background-position: top left, right top, bottom right, left top;
     background-repeat: repeat-x, repeat-y;
-    margin-right: auto;
+    margin-right: 1rem;
     padding: 1rem;
     border-radius: 4px;
     position: relative;
@@ -150,8 +149,5 @@
     .imgDiv .img {
         min-width: 45vw;
         max-width: 800px;
-    }
-    .dottedDiv {
-        width: 55rem;
     }
 }

@@ -18,7 +18,7 @@ function CommandConfirmed() {
                                 <label htmlFor="password">Mot de passe</label>
                             </div>
                             <Route render={({ history }) => (
-                                <button className={classes.filledBtn} onClick={() => history.push('/my-commands')}>Valider le mot de passe</button>
+                                <button className={classes.filledBtn} onClick={() => history.push('/dashboard/my-commands')}>Valider le mot de passe</button>
                             )} />
                         </div>
                     </div>
