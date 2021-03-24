@@ -11,7 +11,7 @@ function PaymentComplet() {
                     <div className={classes.MainDiv}>
                         <div className={classes.mainDivContent}>
                             <h1>
-                                <img src={Checkmark} />
+                                <img src={Checkmark} alt="checkmark" />
                                 Paiement validé, merci !
                             </h1>
                             <Route
@@ -26,7 +26,7 @@ function PaymentComplet() {
                     <span className={classes.lengthSpan}>46</span>
                 </div>
                 <div className={classes.imgDiv}>
-                    <img className={classes.img} src={payementSuccessImg} />
+                    <img className={classes.img} src={payementSuccessImg} alt="success" />
                 </div>
             </div>
             <p className={classes.tagline}>

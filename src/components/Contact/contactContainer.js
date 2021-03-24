@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import attachment from "../../assets/img/attachment.svg";
+// import attachment from "../../assets/img/attachment.svg";
 import classes from "./contact.module.css";
 import { useState } from "react";
 import axios from "axios";
@@ -79,7 +79,7 @@ function ContactContainer() {
             </button>
             <label>
               {t("contact.policy")}
-              <a href="#">{t("contact.policyLink")}</a>
+              <a href="#policy">{t("contact.policyLink")}</a>
             </label>
           </div>
         </form>

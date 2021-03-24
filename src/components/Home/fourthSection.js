@@ -5,7 +5,6 @@ import { Route } from "react-router-dom";
 
 function FourthSection() {
   const { t } = useTranslation("common");
-  const test = "99e"
   return (
     <section className={classes.container}>
       <div className={classes.cardContainer}>

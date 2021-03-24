@@ -1,18 +1,18 @@
 import classes from './hqaddress.module.css'
 import { useState } from 'react'
-import { Route, Link } from 'react-router-dom'
+import {  Link } from 'react-router-dom'
 
 function HqForm() {
     const [siret, setSiret] = useState('')
     const [hqAddress, setHqAddress] = useState({social: null, siret: null, address1: null, address2: null, zip: null, city: null});
-    const [billingAddress, setBillingAddress] = useState({social: null, siret: null, address1: null, address2: null, zip: null, city: null});
+    // const [billingAddress, setBillingAddress] = useState({social: null, siret: null, address1: null, address2: null, zip: null, city: null});
     const siretHandle = (e) => {
         var val = e.target.value;
         const valArray = val.split(' ').join('').split('');
         var valSpace = val.split("")
 
         // to work with backspace
-        if (valSpace[valSpace.length - 1] == ' ') {
+        if (valSpace[valSpace.length - 1] === ' ') {
             var valSpaceN = valSpace.slice(0, -2)
             val = valSpaceN.join("")
             setSiret(val);

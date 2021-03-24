@@ -1,5 +1,4 @@
 import classes from './progressbar.module.css'
-import Checkmark from '../../assets/img/checkmarkround.svg'
 import { IoIosCheckmark } from 'react-icons/io'
 import { BsChevronBarLeft } from 'react-icons/bs'
 import { Route } from 'react-router-dom'

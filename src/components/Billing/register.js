@@ -1,11 +1,10 @@
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 import classes from './registerForm.module.css'
 import Form from './registerForm';
 import Navigation from './navigationBtns'
 
 function OnBoardingRegister(price) {
-    const { t } = useTranslation('common');
-    console.log(price)
+    // const { t } = useTranslation('common');
     return (
         <div className={classes.container}>
             <h2>#ONBOARDING</h2>

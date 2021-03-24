@@ -18,7 +18,6 @@ function productsList() {
 
     let products = []
     for (const [index, value] of productsAPI.entries()) {
-        let status = 
         products.push(
             <tr className={classes.product} key={index}>
                 <td title={index} className={classes.indexProduct}>#{index}</td>

@@ -2,7 +2,6 @@ import Header from '../components/Header/header'
 import DashboardComponent from '../components/Dashboard/dashboard'
 import Footer from '../components/Footer/footer'
 import { Route, Switch, Redirect } from "react-router-dom"
-import MyCommands from '../components/Dashboard/dashboard'
 
 function Dashboard() {
     return (

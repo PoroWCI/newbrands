@@ -33,7 +33,7 @@
 
 .background {
     position: relative;
-    z-index: -1;
+    z-index: 0;
     background-image: linear-gradient(to right, #00798c 50%, rgba(255, 255, 255, 0) 0%);
     background-size: 2rem 4px;
     background-position: top left;

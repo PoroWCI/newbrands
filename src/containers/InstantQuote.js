@@ -10,7 +10,7 @@ function InstantQuote(props) {
         <div>
             <Header />
             {!props.step ? <Content price={props.price} /> 
-            : props.step == Billing ? <Billing /> 
+            : props.step === Billing ? <Billing /> 
             : props.step === PaymentSuccess ? <PaymentSuccess />
             : props.step === CommandConfirmed ? <CommandConfirmed />
             : null} 

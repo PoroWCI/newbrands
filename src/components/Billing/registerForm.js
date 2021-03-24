@@ -9,7 +9,7 @@ function RegisterForm() {
         var valSpace = val.split("")
 
         // to work with backspace
-        if (valSpace[valSpace.length - 1] == ' ') {
+        if (valSpace[valSpace.length - 1] === ' ') {
             var valSpaceN = valSpace.slice(0, -2)
             val = valSpaceN.join("")
             setSiret(val);

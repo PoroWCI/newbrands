@@ -1,4 +1,4 @@
-import payementSuccessImg from '../../assets/img/paymentsuccess.png'
+import paymentSuccessImg from '../../assets/img/paymentsuccess.png'
 import Checkmark from '../../assets/img/checkmarkround.svg'
 import classes from './paymentcomplete.module.css'
 import { Route } from "react-router-dom"
@@ -11,7 +11,7 @@ function RegisterCompleted() {
                     <div className={classes.MainDiv}>
                         <div className={classes.mainDivContent}>
                             <h1>
-                                <img src={Checkmark} />
+                                <img src={Checkmark} alt="checkmark" />
                                 Inscription prise en compte, merci !
                             </h1>
                             <button className={classes.whiteBtn}>Mon compte</button>
@@ -20,7 +20,7 @@ function RegisterCompleted() {
                     <span className={classes.lengthSpan}>46</span>
                 </div>
                 <div className={classes.imgDiv}>
-                    <img className={classes.img} src={payementSuccessImg} />
+                    <img className={classes.img} src={paymentSuccessImg} alt="success" />
                 </div>
             </div>
             <p className={classes.tagline}>

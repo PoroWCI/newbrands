@@ -1,8 +1,6 @@
-import { useTranslation } from "react-i18next";
 import classes from './legals.module.css';
 
 function Use() {
-    const { t } = useTranslation('common');
     return (
             <div className={classes.content}>
                 <span>Dernière mise à jour le 9 juillet 2020 /</span><button>Archived versions</button>

@@ -1,11 +1,11 @@
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 import classes from './billing.module.css'
 import SidePricing from './sidePricing';
 import { useState } from 'react'
 import { Route } from 'react-router-dom'
 
 function Billing() {
-  const { t } = useTranslation('common');
+  // const { t } = useTranslation('common');
   const [disabled, setDisabled] = useState(true);
   return (
     <div className={classes.container}>

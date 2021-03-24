@@ -67,7 +67,7 @@ function Header(props) {
           {loggedIn === true ? 
           <div className={classes.profileMenuContainer} onClick={() => setOpenMenuProfile(!openMenuProfile)} tabIndex="0" onBlur={(e) =>handleBlur(e)}>
             <div className={classes.profileDiv} >
-              <img className={classes.profilePicture} src={Picture} />
+              <img className={classes.profilePicture} src={Picture} alt="profile" />
               <span>John Dupont</span>
               <span><AiFillCaretDown className={classes.dropDown} size=".5rem" /></span>
             </div>
@@ -75,10 +75,10 @@ function Header(props) {
               {openMenuProfile ? <ul className={classes.profileMenu}>
               <Route
             render={({ history }) => (
-                <li onClick={() => history.push("/my-account")}><img src={User} />Mon compte</li>)}/>
-                <li><img src={Bell} />Notification</li>
-                <li><img src={Chart} />Abonnement</li>
-                <li><img src={Lock} />Déconnexion</li>
+                <li onClick={() => history.push("/my-account")}><img src={User} alt="my account"/>Mon compte</li>)}/>
+                <li><img src={Bell} alt="notification" />Notification</li>
+                <li><img src={Chart} alt="billing" />Abonnement</li>
+                <li><img src={Lock} alt="Sign out" />Déconnexion</li>
               </ul> : (null)}
             </div>
           </div> : null }

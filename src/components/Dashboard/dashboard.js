@@ -1,7 +1,7 @@
 import classes from "./dashboard.module.css";
 import { Route, Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs"
-import moment from 'moment';
+// import moment from 'moment';
 
 function Dashboard(props) {
     const projectsAPI = [
@@ -15,7 +15,7 @@ function Dashboard(props) {
         projectList.push(
             <li className={classes.projectCard} key={index}>
                 <div className={classes.leftCol}>
-                    <h2>Projet créé le {moment(value[0]).format('D MMM YYYY').toLowerCase()}</h2>
+                    {/* <h2>Projet créé le {moment(value[0]).format('D MMM YYYY').toLowerCase()}</h2> */}
                     <ul className={classes.tags}>
                         <li className={`${classes.tag} ${classes.selectedTag}`}>
                             <span>Stylisme</span>
@@ -44,7 +44,7 @@ function Dashboard(props) {
     }
     return (
         <div className={classes.container}>
-            <button className={classes.blueBtn}>Créer un nouveau projet</button>
+            <Link to="/createProject"><button className={classes.blueBtn}>Créer un nouveau projet</button></Link>
             <ul className={classes.panelTitleContainer}>
                 <Link to="commands"><li className={`${classes.panelTitle} ${props.panel === "commands" ? classes.active : ""}`}>Commandes en cours</li></Link>
                 <Link to="projects"><li className={`${classes.panelTitle} ${props.panel === "projects" ? classes.active : ""}`}>Projets à l’étude</li></Link>

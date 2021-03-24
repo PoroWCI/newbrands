@@ -10,7 +10,7 @@ function CommandConfirmed() {
                     <div className={classes.MainDiv}>
                         <div className={classes.mainDivContent}>
                             <h1>
-                                John Dupont <h2>Zara</h2><span className={classes.country}>France</span>
+                                John Dupont <span className={classes.companyName}>Zara</span><span className={classes.country}>France</span>
                             </h1>
                             <p>Merci d’ajouter un mot de passe pour créer votre compte afin d’accéder à NewBrands !</p>
                             <div className={classes.inputDiv}>
@@ -25,7 +25,7 @@ function CommandConfirmed() {
                     <span className={classes.lengthSpan}>46</span>
                 </div>
                 <div className={classes.imgDiv}>
-                    <img className={classes.img} src={commandConfirmedImg} />
+                    <img className={classes.img} src={commandConfirmedImg} alt="confirmed" />
                 </div>
             </div>
         </div>
