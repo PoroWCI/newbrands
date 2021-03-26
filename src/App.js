@@ -1,3 +1,4 @@
+import ScrollToTop from './components/ScrollTop/resetTop'
 import Home from './containers/Home'
 import Contact from './containers/Contact'
 import MentionsLegales from './containers/MentionsLegales'
@@ -20,8 +21,8 @@ import AccountSettings from "./containers/AccountSettings"
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Switch>
-
         {/* General pages */}
         <Route exact path="/">
           <Home />

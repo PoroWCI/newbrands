@@ -10,6 +10,8 @@
 
 .contentDiv {
     margin: auto;
+    max-width: 80vw;
+    flex-wrap: wrap;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -145,6 +147,6 @@
 
 @media (min-width: 1281px) {
     .imgDiv .img {
-        max-width: 800px;
+        max-width: 400px;
     }
 }
