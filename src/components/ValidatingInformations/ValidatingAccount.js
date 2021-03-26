@@ -1,4 +1,4 @@
-import classes from './hqaddress.module.css'
+import classes from './ValidatingAccount.module.css'
 import { useState } from 'react'
 import {  Link } from 'react-router-dom'
 

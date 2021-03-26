@@ -39,7 +39,7 @@ function Header(props) {
           />
         </div>
         <ul className={`${isActive === true ? classes.openMobile : null}
-        ${ loggedIn === true ? classes.bigMenu : null}`}>
+        ${loggedIn === true ? classes.bigMenu : null}`}>
           <Route
             render={({ history }) => (
               <li
@@ -64,24 +64,31 @@ function Header(props) {
               </li>
             )}
           />
-          {loggedIn === true ? 
-          <div className={classes.profileMenuContainer} onClick={() => setOpenMenuProfile(!openMenuProfile)} tabIndex="0" onBlur={(e) =>handleBlur(e)}>
-            <div className={classes.profileDiv} >
-              <img className={classes.profilePicture} src={Picture} alt="profile" />
-              <span>John Dupont</span>
-              <span><AiFillCaretDown className={classes.dropDown} size=".5rem" /></span>
-            </div>
-            <div className={classes.pMenuContainer}>
-              {openMenuProfile ? <ul className={classes.profileMenu}>
-              <Route
-            render={({ history }) => (
-                <li onClick={() => history.push("/my-account")}><img src={User} alt="my account"/>Mon compte</li>)}/>
-                <li><img src={Bell} alt="notification" />Notification</li>
-                <li><img src={Chart} alt="billing" />Abonnement</li>
-                <li><img src={Lock} alt="Sign out" />Déconnexion</li>
-              </ul> : (null)}
-            </div>
-          </div> : null }
+          {loggedIn === true ?
+            <div className={classes.profileMenuContainer} onClick={() => setOpenMenuProfile(!openMenuProfile)} tabIndex="0" onBlur={(e) => handleBlur(e)}>
+              <div className={classes.profileDiv} >
+                <img className={classes.profilePicture} src={Picture} alt="profile" />
+                <span>John Dupont</span>
+                <span><AiFillCaretDown className={classes.dropDown} size=".5rem" /></span>
+              </div>
+              <div className={classes.pMenuContainer}>
+                {openMenuProfile ? <ul className={classes.profileMenu}>
+                  <Route
+                    render={({ history }) => (
+                      <li onClick={() => history.push("/account/informations")}><img src={User} alt="my account" />Mon compte</li>)}
+                  />
+                  <Route
+                    render={({ history }) => (
+                      <li onClick={() => history.push("/account/notifications")}><img src={Bell} alt="notification" />Notification</li>)}
+                  />
+                  <Route
+                    render={({ history }) => (
+                      <li onClick={() => history.push("/account/subscription")}><img src={Chart} alt="subscription" />Abonnement</li>)}
+                  />
+                  <li><img src={Lock} alt="Sign out" />Déconnexion</li>
+                </ul> : (null)}
+              </div>
+            </div> : null}
         </ul>
       </div>
     </header>

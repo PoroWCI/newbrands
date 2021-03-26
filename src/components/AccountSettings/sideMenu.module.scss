@@ -1,0 +1,51 @@
+.container {
+    position: relative;
+    padding: 8rem 0 0 0;
+    width: 85%;
+    margin: auto;
+}
+
+
+.sideMenu {
+    max-width: 15vw;
+    z-index: 1;
+    position: fixed;
+    margin-right: 5rem;
+    h2 {
+        font-size: 1.6rem;
+        margin-top: 0;
+    }
+    ul {
+        padding: 0;
+        margin: 50px 0;
+    }
+    .active,
+    li:hover {
+        transition: 0.2s;
+        color: #000;
+        border-left: 3px solid #00798c;
+        font-weight: bolder;
+        padding-left: 1.5rem;
+        cursor: pointer;
+    }
+    li {
+        transition: 0.2s;
+        border-left: 3px solid transparent;
+        padding: 10px 0;
+        margin: 10px 0;
+        font-size: 0.85rem;
+        color: grey;
+        list-style: none;
+    }
+}
+
+.footer {
+    max-width: 10rem;
+    color: #333;
+    font-size: 0.8rem;
+    &::before {
+        content: "";
+        display: block;
+        height: 2rem;
+    }
+}

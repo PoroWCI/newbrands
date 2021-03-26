@@ -1,5 +1,5 @@
 
-footer {
+.footer {
     display: flex;
     margin: auto;
     width: 85%;
@@ -10,17 +10,17 @@ footer {
     margin-bottom: 1rem;
 }
 
-footer ul {
+.footer ul {
     list-style: none;
     margin-left: auto;
 }
 
-footer ul li {
+.footer ul li {
     float: left;
     margin: 0 0.9rem;
 }
 
-footer div {
+.footer div {
     max-width: 50vw;
     display: flex;
     flex-direction: column;
@@ -32,7 +32,7 @@ footer div {
     min-height: 3.5rem;
 }
 
-footer a {
+.footer a {
     transition: 0.2s;
     display: block;
     font-family: "Gelion Medium";
@@ -42,14 +42,14 @@ footer a {
     text-decoration: underline;
 }
 
-footer span {
+.footer span {
     color: #343a40;
     font-family: "Gelion Light";
     font-size: 0.8rem;
     line-height: 120%;
 }
 
-footer ul li a {
+.footer ul li a {
     &:hover {
         cursor: pointer;
         transition: 0.2s;
@@ -71,25 +71,25 @@ footer ul li a {
 /*** RESPONSIVE ***/
 
 @media screen and (max-width: 420px) {
-    footer {
+    .footer {
         flex-direction: column-reverse !important;
         margin-bottom: 5rem;
     }
-    footer ul {
+    .footer ul {
         margin: 20px auto;
         padding: 0;
     }
-    footer div {
+    .footer div {
         max-width: 98%;
         text-align: center;
         margin: auto;
         height: auto;
         margin-bottom: 20px;
     }
-    footer div a {
+    .footer div a {
         margin-top: 1rem;
     }
-    footer ul li:first-of-type {
+    .footer ul li:first-of-type {
         margin: 0;
         margin-right: 0.9rem;
     }

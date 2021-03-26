@@ -15,6 +15,7 @@ import PaymentSuccess from './components/Billing/PaymentComplete'
 import RegistrationCompleted from './components/Billing/registrationCompleted'
 import CommandConfirmed from './components/Billing/commandConfirmed'
 import CreateProject from "./views/createProject/CreateProject"
+import AccountSettings from "./containers/AccountSettings"
 
 function App() {
   return (
@@ -69,8 +70,11 @@ function App() {
           <ProjectPage />
         </Route>
         <Route path="/createProject">
-              <CreateProject />
-            </Route>
+          <CreateProject />
+        </Route>
+        <Route path="/account">
+          <AccountSettings />
+        </Route>
         <Route exact path="/validation-account" children={<ValidatingAccount />}>
         </Route>
       </Switch>

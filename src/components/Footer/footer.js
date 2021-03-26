@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 function Footer(props) {
     const { t } = useTranslation("common");
     return (
-        <footer className={props.footer !== "full" ? classes.fixed : ""}>
+        <footer className={`${classes.footer} ${props.footer !== "full" ? classes.fixed : ""}`}>
             <div className={props.footer === "full" ? classes.fullVersion : ""}>
             <span>© Copyright 2017-2021, NewBrands, SAS et ses partenaires
             {props.footer === "full" ? <>
