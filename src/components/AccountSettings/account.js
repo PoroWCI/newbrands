@@ -85,7 +85,11 @@ function Dashboard(props) {
                     <div className={classes.uploadLogoDiv}>
                         <h3>Pensez à télécharger votre logo</h3>
                         <span>Taille minimum 400 x 400 pixels et de 2 Mo maximum au format JPG ou PNG</span>
-                        <div className={classes.uploadFile}></div>
+                        <div className={classes.uploadFile}>
+                            <h5>Add file</h5>
+                            <span>or drop files here</span>
+                            <input type="file" />
+                        </div>
                     </div>
                     <h2>Adresse de facturation</h2>
                     <span>À renseigner uniquement si différente du siège social</span>
