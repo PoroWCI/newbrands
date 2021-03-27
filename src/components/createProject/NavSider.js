@@ -90,7 +90,7 @@ class NavSider extends Component {
                 <span
                   style={{
                     color: "black",
-                    fontSize: "16px",
+                    fontSize: "1rem",
                     fontWeight: "bold",
                   }}
                 >

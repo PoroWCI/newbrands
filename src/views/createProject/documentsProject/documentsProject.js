@@ -69,7 +69,7 @@ class DocumentsProject extends Component {
                 </p>
                 <p
                   className="ant-upload-text"
-                  style={{ fontFamily: "Gelion Regular" }}
+                  style={{ fontFamily: "Gelion" }}
                 >
                   Faites glisser-déposer vos documents ou parcourez vos fichiers
                 </p>

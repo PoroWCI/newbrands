@@ -33,7 +33,7 @@ class NavFooter extends Component {
           </Col>
           <Col>
             {this.props.isFinished ? (
-              <a href="/successMessage">
+              <a href="/dashboard">
                 <ButtonFooter>Continuer</ButtonFooter>
               </a>
             ) : (

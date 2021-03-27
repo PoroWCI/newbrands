@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Layout, Row, Col } from "antd";
-import { Route } from "react-router-dom";
 
 const { Header } = Layout;
 
@@ -17,7 +16,7 @@ class NavHeader extends Component {
           <Col>
             <span
               style={{
-                fontFamily: "Gelion Regular",
+                fontFamily: "Gelion",
                 fontSize: "16px",
                 color: "black",
               }}
@@ -26,9 +25,7 @@ class NavHeader extends Component {
             </span>
           </Col>
           <Col>
-          <Route
-          render={({ history }) => (
-           <button onClick={() => history.goBack()} style={{
+           <a href="/dashboard" style={{
             textDecoration: "underline",
             fontFamily: "Gelion Bold",
             fontSize: "16px",
@@ -37,9 +34,7 @@ class NavHeader extends Component {
             border: "none",
             background: "none",
             cursor: "pointer"
-          }}>Quitter</button>
-          )}
-        />
+          }}>Quitter</a>
             {/* <Link
               to="/dashboard"
               style={{

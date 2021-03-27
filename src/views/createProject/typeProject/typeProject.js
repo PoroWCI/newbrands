@@ -104,7 +104,7 @@ class TypeProject extends Component {
                   </h3>
                   <BoxDesc
                     style={{
-                      fontFamily: isStylism ? "Gelion Regular" : "Gelion Light",
+                      fontFamily: isStylism ? "Gelion" : "Gelion Light",
                     }}
                   >
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -127,7 +127,7 @@ class TypeProject extends Component {
                   <BoxDesc
                     style={{
                       fontFamily: isModelism
-                        ? "Gelion Regular"
+                        ? "Gelion"
                         : "Gelion Light",
                     }}
                   >
@@ -151,7 +151,7 @@ class TypeProject extends Component {
                   <BoxDesc
                     style={{
                       fontFamily: isConfection
-                        ? "Gelion Regular"
+                        ? "Gelion"
                         : "Gelion Light",
                     }}
                   >
@@ -175,7 +175,7 @@ class TypeProject extends Component {
                   <BoxDesc
                     style={{
                       fontFamily: isSourcing
-                        ? "Gelion Regular"
+                        ? "Gelion"
                         : "Gelion Light",
                     }}
                   >
@@ -203,7 +203,7 @@ const BoxIcon = styled.i`
 
 const BoxDesc = styled.p`
   font-size: 16px;
-  font-family: Gelion Regular;
+  font-family: Gelion;
   color: black;
 `;
 
