@@ -1,5 +1,6 @@
 import ScrollToTop from './components/ScrollTop/resetTop'
 import Home from './containers/Home'
+import About from './containers/About'
 import Contact from './containers/Contact'
 import MentionsLegales from './containers/MentionsLegales'
 import Dashboard from './containers/Dashboard'
@@ -17,6 +18,7 @@ import RegistrationCompleted from './components/Billing/registrationCompleted'
 import CommandConfirmed from './components/Billing/commandConfirmed'
 import CreateProject from "./views/createProject/CreateProject"
 import AccountSettings from "./containers/AccountSettings"
+import Error from './containers/Error'
 
 function App() {
   return (
@@ -26,6 +28,9 @@ function App() {
         {/* General pages */}
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/about">
+          <About />
         </Route>
         <Route exact path="/contact">
           <Contact />
@@ -77,6 +82,9 @@ function App() {
           <AccountSettings />
         </Route>
         <Route exact path="/validation-account" children={<ValidatingAccount />}>
+        </Route>
+        <Route>
+          <Error />
         </Route>
       </Switch>
     </BrowserRouter>

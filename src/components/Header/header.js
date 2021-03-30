@@ -11,7 +11,7 @@ import { HamburgerSqueeze } from 'react-animated-burgers';
 import Picture from '../../assets/img/profilePicture.jpg'
 import { AiFillCaretDown } from 'react-icons/ai'
 
-const loggedIn = true;
+const loggedIn = false;
 
 function Header(props) {
   const { t } = useTranslation("common");
@@ -39,7 +39,7 @@ function Header(props) {
           />
         </div>
         <ul className={`${isActive === true ? classes.openMobile : null}
-        ${loggedIn === true ? classes.bigMenu : null}`}>
+        ${classes.bigMenu}`}>
           <Route
             render={({ history }) => (
               <li
@@ -48,6 +48,18 @@ function Header(props) {
               >
                 <button className={classes.link}>
                   {t("header.home")}
+                </button>
+              </li>
+            )}
+          />
+          <Route
+            render={({ history }) => (
+              <li
+                className={`${classes.menuElement} ${props.page === "About" ? classes.active : ''}`}
+                onClick={() => history.push("/about")}
+              >
+                <button className={classes.link}>
+                  {t("header.about")}
                 </button>
               </li>
             )}
@@ -64,6 +76,7 @@ function Header(props) {
               </li>
             )}
           />
+
           {loggedIn === true ?
             <div className={classes.profileMenuContainer} onClick={() => setOpenMenuProfile(!openMenuProfile)} tabIndex="0" onBlur={(e) => handleBlur(e)}>
               <div className={classes.profileDiv} >
@@ -88,7 +101,32 @@ function Header(props) {
                   <li><img src={Lock} alt="Sign out" />Déconnexion</li>
                 </ul> : (null)}
               </div>
-            </div> : null}
+            </div> : <>
+              <div className={classes.unloggedMenu}>
+                <Route
+                  render={({ history }) => (
+                    <li
+                      onClick={() => history.push("/login")}
+                    >
+                      <button className={classes.noBtn}>
+                        {t("header.connect")}
+                      </button>
+                    </li>
+                  )}
+                />
+                <Route
+                  render={({ history }) => (
+                    <li
+                      onClick={() => history.push("/createProject")}
+                    >
+                      <button className={classes.blueBtn}>
+                        {t("header.createProject")}
+                      </button>
+                    </li>
+                  )}
+                />
+              </div>
+            </>}
         </ul>
       </div>
     </header>

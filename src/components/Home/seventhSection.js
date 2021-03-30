@@ -12,11 +12,11 @@ function SeventhSection() {
         <div>
             <ul className={classes.logoList}>
                 <li><h4 className={classes.text}>{t("home.seventhSection.withTheHelp")}</h4></li>
-                <li><img src={frenchTech} alt="frenchTech" /></li>
-                <li><img src={frenchImpact} alt="frenchImpact" /></li>
-                <li><img src={techForGood} alt="techForGood" /></li>
-                <li><img src={capDigital} alt="capDigital" /></li>
-                <li><img src={bpiFrance} alt="bpiFrance" /></li>
+                <li><img src={frenchTech} alt="frenchTech" loading="lazy" /></li>
+                <li><img src={frenchImpact} alt="frenchImpact" loading="lazy" /></li>
+                <li><img src={techForGood} alt="techForGood" loading="lazy" /></li>
+                <li><img src={capDigital} alt="capDigital" loading="lazy" /></li>
+                <li><img src={bpiFrance} alt="bpiFrance" loading="lazy" /></li>
             </ul>
         </div>
     )

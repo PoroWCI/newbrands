@@ -1,0 +1,53 @@
+.sliderContainer {
+  max-width: 100vw;
+  height: 40rem;
+  margin-bottom: 5rem;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+$finalHeight: 40vw;
+$finalWidth: 3 * $finalHeight;
+$scrollBarHeight: 0px;
+
+::-webkit-scrollbar {
+  width: $scrollBarHeight;
+  height: $scrollBarHeight;
+}
+
+::-webkit-scrollbar-button {
+  width: $scrollBarHeight;
+  height: $scrollBarHeight;
+}
+
+img {
+  box-sizing: border-box;
+}
+
+.horizontalScrollWrapper {
+  display: block;
+  top: 20rem;
+  margin-left: -2px;
+  width: calc(#{$finalHeight} + #{$scrollBarHeight});
+  max-height: 101.5vw;
+  padding-top: $scrollBarHeight;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: -101.5vw;
+  transform: rotate(-90deg) translateY(-$finalHeight);
+  transform-origin: right top;
+  & > img {
+    display: block;
+    transform: rotate(90deg);
+    transform-origin: right top;
+  }
+}
+
+.squares {
+  padding: $finalHeight 0 0 0;
+  & > img {
+    width: $finalHeight;
+    height: $finalHeight;
+    margin: 3px 0;
+  }
+}

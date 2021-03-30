@@ -5,10 +5,10 @@ import { BsArrowRight } from "react-icons/bs"
 
 function Dashboard(props) {
     const projectsAPI = [
-        ["12/11/2020", "stylism", 10, 22413, "stylism", 1],
-        ["12/13/2020", "stylism", 10, 22413, "stylism", 1],
-        ["06/11/2020", "stylism", 10, 22413, "stylism", 1],
-        ["12/11/2020", "stylism", 10, 22413, "stylism", 1],
+        ["12/11/2020", "stylisme", 10, 22413, "stylisme", 1],
+        ["12/13/2020", "stylisme", 10, 22413, "stylisme", 1],
+        ["06/11/2020", "stylisme", 10, 22413, "stylisme", 1],
+        ["12/11/2020", "stylisme", 10, 22413, "stylisme", 1],
     ]
     let projectList = []
     for (const [index, value] of projectsAPI.entries()) {

@@ -59,6 +59,52 @@ header ul {
     margin-top: 5px;
 }
 
+.unloggedMenu {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.noBtn {
+    font-size: .85rem;
+    font-family: 'Gelion Medium';
+    color: #00798c;
+    border: none;
+    outline: none;
+    background: none;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.5;
+        transition: 0.2s;
+    }
+}
+
+.blueBtn {
+    font-weight: 400;
+    transition: 0.2s;
+    outline: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    height: 2rem;
+    color: #fff;
+    border: none;
+    box-shadow: none;
+    background: #00798c;
+    border-radius: 10px;
+    margin-left: 1rem;
+    font-size: .85rem;
+    font-family: 'Gelion';
+    transition: 0.2s;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.5;
+        transition: 0.2s;
+    }
+}
+
 .link {
     border: none;
     outline: none;

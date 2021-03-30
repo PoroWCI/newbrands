@@ -1,7 +1,10 @@
 {
     "header": {
         "home": "Accueil",
-        "contact": "Contact"
+        "about": "À propos",
+        "contact": "Contact",
+        "connect": "Connexion",
+        "createProject": "Créer un projet"
     },
     "home":{
         "firstSection": {

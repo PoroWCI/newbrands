@@ -14,7 +14,7 @@ function FilesList(props) {
     for (const [index, value] of fileListAPI.entries()) {
         fileList.push(
             <li key={index} className={classes.file}>
-                <img src={value[0]} alt="Télécharger" />
+                <img src={value[0]} alt="Télécharger" loading="lazy" />
                 <div>
                     <span>{value[1]}{index}</span>
                     <a href={value[2]}>Télécharger</a>

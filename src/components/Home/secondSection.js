@@ -23,7 +23,7 @@ function SecondSection() {
         <div className={classes.row}>
           <div className={classes.tile}>
             <div>
-              <img src={stylism} alt="Stylisme" />
+              <img src={stylism} alt="Stylisme" loading="lazy" />
               <h5>#{t("home.secondSection.stylismTitle")}</h5>
               <p className={classes.lightText}>
                 {t("home.secondSection.stylism1")}
@@ -34,7 +34,7 @@ function SecondSection() {
           </div>
           <div className={classes.tile}>
             <div>
-              <img src={ecology} alt="Éthique" />
+              <img src={ecology} alt="Éthique" loading="lazy" />
               <h5>#{t("home.secondSection.ethicalTitle")}</h5>
               <p className={classes.lightText}>
                 {t("home.secondSection.ethical1")}
@@ -44,7 +44,7 @@ function SecondSection() {
           </div>
           <div className={classes.tile}>
             <div>
-              <img src={developpment} alt="Développement" />
+              <img src={developpment} alt="Développement" loading="lazy" />
               <h5>#{t("home.secondSection.developmentTitle")}</h5>
               <p className={classes.lightText}>
                 {t("home.secondSection.development1")}
@@ -57,7 +57,7 @@ function SecondSection() {
         <div className={classes.row}>
           <div className={classes.tile}>
             <div>
-              <img src={production} alt="Production" />
+              <img src={production} alt="Production" loading="lazy" />
               <h5>#{t("home.secondSection.productionTitle")}</h5>
               <p className={classes.lightText}>
                 {t("home.secondSection.production1")}
@@ -68,7 +68,7 @@ function SecondSection() {
           </div>
           <div className={classes.tile}>
             <div>
-              <img src={transports} alt="Transports" />
+              <img src={transports} alt="Transports" loading="lazy" />
               <h5>#{t("home.secondSection.optimisationTitle")}</h5>
               <p className={classes.lightText}>
                 {t("home.secondSection.optimisation1")}
@@ -79,7 +79,7 @@ function SecondSection() {
           <div className={classes.tile}>
             <div className={classes.soon}>
               <span className={classes.soonText}>
-                <img src={recycling} alt="Recyclage" />
+                <img src={recycling} alt="Recyclage" loading="lazy" />
                 {t("home.secondSection.soonAvailable")}
               </span>
               <h5>#{t("home.secondSection.recyclingTitle")}</h5>

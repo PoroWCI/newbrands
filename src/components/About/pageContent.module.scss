@@ -1,0 +1,107 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 85%;
+    margin: auto;
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+.blueTxt {
+    color: #00798C;
+}
+
+.textRight {
+    margin: 0 0 8rem 0;
+    display: flex;
+    h2 {
+        padding: 0 5rem 0 0;
+    }
+    p {
+        text-align: justify;
+        text-align-last: left;
+        font-family: 'Gelion Light';
+    }
+    h2, p {
+        margin: 0;
+        flex: 50%;
+    }
+}
+
+.textCenter {
+    margin-top: 10rem;
+    align-items: center;
+    height: 30rem;
+    justify-content: space-between;
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 80%;
+    }
+    div, img {
+        max-width: 45%;
+    }
+    h3 {
+        font-size: 2rem;
+    }
+    a {
+        color: #00798C;
+        display: flex;
+        font-family: "Gelion SemiBold";
+        align-items: center;
+        .arrowRight {
+            margin-left: .5rem;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.objectivesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 50%;
+}
+
+.sideInfo {
+    margin: 1rem;
+    display: flex;
+    flex: 40%;
+    img {
+        margin-right: 1rem;
+    }
+    h5 {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+    span {
+        font-size: .9rem;
+    }
+}
+
+.leftAlign {
+    ul {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        padding: 0;
+        li {
+            flex: 20%;
+            max-width: 23.5%;
+            p {
+                margin: .5rem 0;
+            }
+        }
+        img {
+            width: 100%;
+        }
+    }
+    width: 100%;
+    h2 {
+        max-width: 50%;
+    }
+}

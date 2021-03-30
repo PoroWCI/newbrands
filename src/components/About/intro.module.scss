@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45vh;
+    padding-top: 5rem;
+    width: 85%;
+    margin: auto;
+}
+
+.imgOnRight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        margin-right: auto;
+        width: 20rem;
+    }
+}
+
+.textDiv {
+    p {
+        font-family: 'Gelion Light';
+    }
+    max-width: 40%;
+    margin-right: auto;
+}

@@ -18,9 +18,10 @@ function ThirdSection() {
               <span>{">"}</span>
             </a>
           </div>
-          <img className={classes.rightImg} src={projectSample} alt="Project" />
+          <img className={classes.rightImg} src={projectSample} alt="Project" loading="lazy" />
           <div className={classes.secondContainer}>
             <img
+              loading="lazy"
               className={classes.rightImg}
               src={projectCreation}
               alt="Project creation"
