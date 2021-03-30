@@ -207,12 +207,6 @@ header ul {
     }
 }
 
-.openMobile {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.3s, visibility 0.3s;
-}
-
 @media screen and (max-width: 420px) {
     .profileMenuContainer{
         display: none;
@@ -227,23 +221,33 @@ header ul {
         margin-right: 0 !important;
     }
     header ul {
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 0.3s, visibility 0.3s;
         position: absolute;
-        z-index: 0;
-        top: 20px;
-    }
-    .openMobile {
-        visibility: visible !important;
-        opacity: 1;
-        transition: opacity 0.3s, visibility 0.3s;
+        height: 0;
+        overflow: hidden;
+        transition: 0.2s;
         width: 100vw;
         left: 0;
+        top: 1rem;
         background: #fff;
         z-index: -1;
         padding: 0;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: start;
+        padding-top: 3rem;
+    }
+    .blueBtn {
+        margin-left: 0;
+    }
+    .openMobile {
+        height: 40vh;
+        opacity: 1;
+        visibility: visible;
+    }
+    .unloggedMenu {
+        margin-left: initial;
+        flex-direction: column;
+        height: 7rem;
+        justify-content: space-around;
     }
 }
