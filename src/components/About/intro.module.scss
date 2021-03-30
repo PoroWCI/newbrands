@@ -25,3 +25,17 @@
     max-width: 40%;
     margin-right: auto;
 }
+
+@media screen and (max-width: 420px) {
+    .container {
+        padding-top: 8rem;
+        padding-bottom: 5rem;
+    }
+    .imgOnRight {
+        flex-direction: column;
+        .textDiv {
+            max-width: 80%;
+            margin: auto;
+        }
+    }
+}

@@ -11,7 +11,7 @@
 }
 
 .blueTxt {
-    color: #00798C;
+    color: #00798c;
 }
 
 .textRight {
@@ -23,9 +23,10 @@
     p {
         text-align: justify;
         text-align-last: left;
-        font-family: 'Gelion Light';
+        font-family: "Gelion Light";
     }
-    h2, p {
+    h2,
+    p {
         margin: 0;
         flex: 50%;
     }
@@ -42,19 +43,20 @@
         justify-content: space-between;
         height: 80%;
     }
-    div, img {
+    div,
+    img {
         max-width: 45%;
     }
     h3 {
         font-size: 2rem;
     }
     a {
-        color: #00798C;
+        color: #00798c;
         display: flex;
         font-family: "Gelion SemiBold";
         align-items: center;
         .arrowRight {
-            margin-left: .5rem;
+            margin-left: 0.5rem;
             font-size: 1.2rem;
         }
     }
@@ -78,7 +80,7 @@
         font-size: 1.2rem;
     }
     span {
-        font-size: .9rem;
+        font-size: 0.9rem;
     }
 }
 
@@ -93,7 +95,7 @@
             flex: 20%;
             max-width: 23.5%;
             p {
-                margin: .5rem 0;
+                margin: 0.5rem 0;
             }
         }
         img {
@@ -103,5 +105,40 @@
     width: 100%;
     h2 {
         max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .textRight {
+        flex-direction: column;
+        h2 {
+            flex: 100%;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+    }
+    .objectivesContainer {
+        max-width: 100%;
+    }
+    .leftAlign {
+        ul {
+            flex-wrap: wrap;
+            li {
+                flex: 50%;
+                max-width: 45%;
+            }
+        }
+        h2 {
+            max-width: 100%;
+        }
+    }
+    .textCenter {
+        margin-bottom: 12rem;
+        div, img {
+            max-width: 100%;
+        }
+        a {
+            margin-top: 3rem;
+        }
     }
 }
