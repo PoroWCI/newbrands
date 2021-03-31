@@ -19,6 +19,7 @@ import CommandConfirmed from './components/Billing/commandConfirmed'
 import CreateProject from "./views/createProject/CreateProject"
 import AccountSettings from "./containers/AccountSettings"
 import Error from './containers/Error'
+import SignIn from './containers/SignIn'
 
 function App() {
   return (
@@ -41,6 +42,10 @@ function App() {
         <Route exact path="/use">
           <MentionsLegales page={Use} />
         </Route>
+        <Route exact path="/sign-in">
+          <SignIn />
+        </Route>
+
         {/*  */}
 
         {/* Instant quote (99e per month) */}

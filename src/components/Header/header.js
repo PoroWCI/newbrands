@@ -106,7 +106,7 @@ function Header(props) {
                 <Route
                   render={({ history }) => (
                     <li
-                      onClick={() => history.push("/login")}
+                      onClick={() => history.push("/sign-in")}
                     >
                       <button className={classes.noBtn}>
                         {t("header.connect")}
