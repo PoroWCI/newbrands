@@ -1,32 +1,53 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classes from "./form.module.css";
+import { AiOutlineLoading } from 'react-icons/ai'
+import axios from 'axios'
 
 function RegisterForm() {
+    const [companyName, setCompanyName] = useState('')
     const [siret, setSiret] = useState('')
-    const siretHandle = (e) => {
-        var val = e.target.value;
-        const valArray = val.split(' ').join('').split('');
-        var valSpace = val.split("")
+    const [loading, setLoading] = useState('');
+    const [autocomplete, setAutoComplete] = useState(true)
+    const [result, setResult] = useState([]);
 
-        // to work with backspace
-        if (valSpace[valSpace.length - 1] === ' ') {
-            var valSpaceN = valSpace.slice(0, -2)
-            val = valSpaceN.join("")
-            setSiret(val);
-            return;
-        }
-
-        if (isNaN(valArray.join('')))
-            return;
-        if (valArray.length === 12)
-            return
-        if (valArray.length % 3 === 0 && valArray.length <= 12) {
-            setSiret(e.target.value + "  ");
-        } else {
-
-            setSiret(e.target.value)
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            getData(companyName)
         }
     }
+
+    useEffect(() => {
+        if (companyName.length > 0) {
+            const timeOutId = setTimeout(() => {
+                getData(companyName);
+                setLoading('');
+            }, 1500);
+            return () => { clearTimeout(timeOutId) };
+        }
+    }, [companyName]);
+
+    const handleOnChange = (e) => {
+        console.log(companyName, e.target.value)
+        if (companyName !== e.target.value) {
+            setAutoComplete(false)
+            setLoading('Recherche...')
+            setCompanyName(e.target.value);
+        }
+    }
+
+    const getData = async (query) => {
+        const results = await axios(
+            `https://suggestions.pappers.fr/v2?q=${query}`,
+        )
+        setResult(results.data.resultats_nom_entreprise)
+    }
+
+    const autoComplete = async (query) => {
+        setCompanyName(query.denomination)
+        setSiret(query.siege.siret_formate)
+        setAutoComplete(true)
+    }
+
     return (
         <form className={classes.container}>
             <div className={classes.inputDiv}>
@@ -46,8 +67,31 @@ function RegisterForm() {
                 <label>Numéro de téléphone</label>
             </div>
             <div className={classes.inputDiv}>
-                <input type="text" />
+                <input type="text" value={companyName} onChange={handleOnChange} onKeyDown={(e) => handleKeyDown(e)} />
                 <label>Société</label>
+                {autocomplete === false && <>
+                    <div className={classes.autoCompleteDiv}>
+                        <ul>
+                            {loading.length > 0 && <>
+                                <AiOutlineLoading className={classes.loading} />
+                            </>}
+                            {result.length > 0 && result.map((item, index) => {
+                                return (
+                                    <li key={index} onClick={() => { autoComplete(item); setResult([]);}}>
+                                        <div className={classes.flexDiv}>
+                                            <h4>{item.nom_entreprise}</h4>
+                                        </div>
+                                        <div>
+                                            {item.siege.code_postal ? <>
+                                                <span>({item.siege.code_postal})</span>
+                                            </> : null}
+                                            <span className={classes.libelle}>{item.libelle_code_naf}</span>
+                                        </div>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div></>}
             </div>
             <div className={classes.inputDiv}>
                 <select className={classes.selectInput}>
@@ -59,7 +103,7 @@ function RegisterForm() {
                 <label>Fonction</label>
             </div>
             <div className={classes.inputDiv}>
-                <input type="text" value={siret} onChange={siretHandle} maxLength={13} />
+                <input type="text" defaultValue={siret} maxLength={13} />
                 <label>SIRET / DUNS</label>
             </div>
             <div className={classes.inputDiv}>

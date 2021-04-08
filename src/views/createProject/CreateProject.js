@@ -15,6 +15,10 @@ import DocumentsProject from "./documentsProject/documentsProject";
 import DescriptionProject from "./descriptionProject/descriptionProject";
 import BudgetProject from "./budgetProject/budgetProject";
 import UserInfo from "./userInfo/userInfo";
+import ProductTexture from "./productDetail/productTexture/productTexture";
+import ProductWeight from "./productDetail/productWeight/productWeight";
+import ProductType from "./productDetail/productType/productType";
+import ProductCategory from "./productDetail/productCategory/productCategory";
 
 class App extends Component {
   constructor(props) {
@@ -118,11 +122,56 @@ class App extends Component {
                   render={() => (
                     <>
                       {this.setCurrentPage(3)}
-                      <ProductDetail />
+                      <ProductTexture />
                       <NavFooter
                         percent={20}
-                        next="/createProject/productDelay"
                         prev="/createProject/numberProduct"
+                        next="/createProject/productWeight"
+                        goNext={this.goNext}
+                      />
+                    </>
+                  )}
+                />
+                <Route
+                  path="/createProject/productWeight"
+                  render={() => (
+                    <>
+                      {this.setCurrentPage(4)}
+                      <ProductWeight />
+                      <NavFooter
+                        percent={30}
+                        prev="/createProject/productDetail"
+                        next="/createProject/productType"
+                        goNext={this.goNext}
+                      />
+                    </>
+                  )}
+                />
+                <Route
+                  path="/createProject/productType"
+                  render={() => (
+                    <>
+                      {this.setCurrentPage(5)}
+                      <ProductType />
+                      <NavFooter
+                        percent={40}
+                        prev="/createProject/productWeight"
+                        next="/createProject/productCategory"
+                        goNext={this.goNext}
+                      />
+                    </>
+                  )}
+                />
+                <Route
+                  path="/createProject/productCategory"
+                  render={() => (
+                    <>
+                      {this.setCurrentPage(6)}
+                      <ProductCategory />
+                      <NavFooter
+                        percent={50}
+                        prev="/createProject/productType"
+                        next="/createProject/productDelay"
                         goNext={this.goNext}
                       />
                     </>
@@ -132,11 +181,11 @@ class App extends Component {
                   path="/createProject/productDelay"
                   render={() => (
                     <>
-                      {this.setCurrentPage(4)}
+                      {this.setCurrentPage(7)}
                       <ProductDelay />
                       <NavFooter
                         percent={60}
-                        prev="/createProject/productDetail"
+                        prev="/createProject/productCategory"
                         next="/createProject/placeOfShip"
                         goNext={this.goNext}
                       />
@@ -147,7 +196,7 @@ class App extends Component {
                   path="/createProject/placeOfShip"
                   render={() => (
                     <>
-                      {this.setCurrentPage(5)}
+                      {this.setCurrentPage(8)}
                       <PlaceOfShip />
                       <NavFooter
                         percent={70}
@@ -162,7 +211,7 @@ class App extends Component {
                   path="/createProject/documentsProject"
                   render={() => (
                     <>
-                      {this.setCurrentPage(6)}
+                      {this.setCurrentPage(9)}
                       <DocumentsProject />
                       <NavFooter
                         percent={80}
@@ -177,7 +226,7 @@ class App extends Component {
                   path="/createProject/descriptionProject"
                   render={() => (
                     <>
-                      {this.setCurrentPage(7)}
+                      {this.setCurrentPage(10)}
                       <DescriptionProject />
                       <NavFooter
                         percent={95}
@@ -192,7 +241,7 @@ class App extends Component {
                   path="/createProject/budgetProject"
                   render={() => (
                     <>
-                      {this.setCurrentPage(8)}
+                      {this.setCurrentPage(11)}
                       <BudgetProject />
                       <NavFooter
                         percent={97}
@@ -207,7 +256,7 @@ class App extends Component {
                   path="/createProject/userInfo"
                   render={() => (
                     <>
-                      {this.setCurrentPage(9)}
+                      {this.setCurrentPage(12)}
                       <UserInfo />
                       <NavFooter
                         percent={100}

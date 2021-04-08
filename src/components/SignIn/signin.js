@@ -1,8 +1,27 @@
 import commandConfirmedImg from '../../assets/img/commandconfirmed.png'
 import classes from './signin.module.css'
-import { Route } from "react-router-dom"
+import { useState } from 'react'
+import {API} from '../../config'
+import axios from 'axios'
 
 function Login() {
+    const [login, setLogin] = useState("Connexion")
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
+
+    const handleSignIn = async (e) => {
+        e && e.preventDefault()
+        console.log(API)
+        console.log(await axios.post(`${API}/login`, username, password))  
+        setLogin("Loading")
+        setTimeout(() => setLogin("Redirecting..."), 1500)
+        setTimeout(() => 
+        {
+            setLogin("Connexion")
+            setError("Votre mot de passe est incorrect.")
+        }, 2500)
+    }
     return (
         <div className={classes.container}>
             <div className={classes.contentDiv}>
@@ -12,20 +31,20 @@ function Login() {
                             <h1>Connexion</h1>
                             <div className={classes.subtitleDiv}>
                                 <h2>Ravis de vous revoir</h2>
-                                <a href="signup">Pas de compte ?</a>
                             </div>
                             <p>Entrez vos identifiants de connexion afin d'accéder à votre compte NewBrands !</p>
-                            <div className={classes.inputDiv}>
-                                <input type="mail" id="mail" />
-                                <label htmlFor="mail">Adresse e-mail</label>
-                            </div>
-                            <div className={classes.inputDiv}>
-                                <input type="password" id="password" />
-                                <label htmlFor="password">Mot de passe</label>
-                            </div>
-                            <Route render={({ history }) => (
-                                <button className={classes.filledBtn} onClick={() => history.push('/dashboard/my-commands')}>Connexion</button>
-                            )} />
+                            <form onSubmit={(e) => handleSignIn(e)}>
+                                <div className={classes.inputDiv}>
+                                    <input type="mail" id="mail" required />
+                                    <label htmlFor="mail">Adresse e-mail</label>
+                                </div>
+                                <div className={classes.inputDiv}>
+                                    <input type="password" id="password" required />
+                                    <label htmlFor="password">Mot de passe</label>
+                                </div>
+                            <button className={classes.filledBtn} onClick={() => handleSignIn()}>{login}</button>
+                            {error}
+                            </form>
                         </div>
                     </div>
                     <span className={classes.lengthSpan}>46</span>

@@ -12,6 +12,7 @@ class NavFooter extends Component {
         style={{
           backgroundColor: "white",
           height: "120px",
+          zIndex: "3",
           position: "fixed",
           bottom: "0",
           width: "calc(100% - 300px)",

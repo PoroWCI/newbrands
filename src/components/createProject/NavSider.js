@@ -98,15 +98,17 @@ class NavSider extends Component {
                 </span>
               }
             >
-              <Menu.ItemGroup key="g1" title="Produit 1">
-                <CustomItem key="g1">Gamme</CustomItem>
-                <CustomItem key="m1">Matières</CustomItem>
-                <CustomItem key="c1">Catégorie</CustomItem>
+              <Menu.ItemGroup key="m1" title="Produit 1">
+                <CustomItem key="m1"><LinkButton to="/createProject/productDetail">Matières</LinkButton></CustomItem>
+                <CustomItem key="w1"><LinkButton to="/createProject/productWeight">Grammage</LinkButton></CustomItem>
+                <CustomItem key="c1"><LinkButton to="/createProject/productCategory">Catégorie</LinkButton></CustomItem>
+                <CustomItem key="g1"><LinkButton to="/createProject/productType">Gamme</LinkButton></CustomItem>
               </Menu.ItemGroup>
-              <Menu.ItemGroup key="g2" title="Produit 2">
-                <CustomItem key="g2">Gamme</CustomItem>
-                <CustomItem key="m2">Matières</CustomItem>
-                <CustomItem key="c2">Catégorie</CustomItem>
+              <Menu.ItemGroup key="m2" title="Produit 2">
+                <CustomItem key="m2"><LinkButton to="/createProject/productDetail">Matières</LinkButton></CustomItem>
+                <CustomItem key="w2"><LinkButton to="/createProject/productWeight">Grammage</LinkButton></CustomItem>
+                <CustomItem key="c2"><LinkButton to="/createProject/productCategory">Catégorie</LinkButton></CustomItem>
+                <CustomItem key="g2"><LinkButton to="/createProject/productType">Gamme</LinkButton></CustomItem>
               </Menu.ItemGroup>
             </SubMenu>
           )}

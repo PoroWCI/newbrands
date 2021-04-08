@@ -14,14 +14,13 @@ class CustomRadio extends Component {
           color: isSelected ? "#00798C" : "#000",
         }}
       >
-        <Row type="flex" align="middle" gutter={24}>
+        <Row type="flex" style={{marginLeft: "0!important", marginRight: "0!important"}} gutter={24}>
           <Col>
             <CheckCircleFilled
               style={{
                 color: isSelected ? "#00798C" : "transparent",
-                fontSize: "29px",
+                fontSize: "1.5rem",
                 border: isSelected ? "1px solid #fff" : "1px solid #dddddd",
-                marginTop: "7px",
                 borderRadius: "500px",
               }}
             />
@@ -37,9 +36,16 @@ export default CustomRadio;
 
 const CustomRadioBtn = styled.button`
   margin: 5px 0;
-  font-size: 24px;
+  font-size: 1.2rem;
   text-align: left;
-  padding: 0px 50px;
+  div {
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-items: flex-start;
+  }
   height: 80px;
   width: 100%;
   background-color: white;

@@ -35,7 +35,8 @@ class CustomTextField extends Component {
           rows={this.props.rows}
           type={this.props.type}
           pattern={this.props.pattern}
-          required
+          required={this.props.required}
+          disabled={this.props.disabled}
         />
       </ThemeProvider>
     );

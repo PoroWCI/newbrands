@@ -22,15 +22,13 @@
 }
 
 .subtitleDiv {
+    display: block;
     h2 {
         font-weight: normal;
         font-family: 'Gelion';
     }
     *{
         display: inline;
-    }
-    a {
-        margin-left: 1rem;
     }
     align-items: center;
 }
@@ -64,11 +62,14 @@
     padding: 3rem 4rem;
     justify-content: center;
     align-items: center;
+    form {
+        width: 100%;
+    }
     .mainDivContent {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
-        align-items: center;
+        align-items: flex-start;
         color: #000;
         text-align: left;
         max-width: 400px;

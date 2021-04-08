@@ -3,12 +3,15 @@ import { Layout, Row, Col } from "antd";
 import { ContentTitle, ContentSubTitle } from "../../../components/global";
 import NavHeader from "../../../components/createProject/NavHeader";
 import styled from "styled-components";
+import axios from 'axios';
+import {API} from '../../../config'
 import "../../../assets/icons/typeIcons/css/typeicons.css";
 
 const { Content } = Layout;
 
 class TypeProject extends Component {
   constructor(props) {
+    console.log(axios.get(API+"/project_types"))
     super(props);
     this.state = {
       isStylism: false,
