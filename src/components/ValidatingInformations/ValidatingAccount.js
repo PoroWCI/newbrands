@@ -1,36 +1,91 @@
 import classes from './ValidatingAccount.module.css'
-import { useState } from 'react'
-import {  Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import AutoComplete from './AutoComplete'
+import axios from 'axios'
+import { AiOutlineLoading } from 'react-icons/ai'
 
 function HqForm() {
-    const [siret, setSiret] = useState('')
-    const [hqAddress, setHqAddress] = useState({social: null, siret: null, address1: null, address2: null, zip: null, city: null});
-    // const [billingAddress, setBillingAddress] = useState({social: null, siret: null, address1: null, address2: null, zip: null, city: null});
-    const siretHandle = (e) => {
-        var val = e.target.value;
-        const valArray = val.split(' ').join('').split('');
-        var valSpace = val.split("")
-
-        // to work with backspace
-        if (valSpace[valSpace.length - 1] === ' ') {
-            var valSpaceN = valSpace.slice(0, -2)
-            val = valSpaceN.join("")
-            setSiret(val);
-            return;
-        }
-
-        if (isNaN(valArray.join('')))
-            return;
-        if (valArray.length === 10)
-            return
-        if (valArray.length % 3 === 0 && valArray.length < 8 && valArray.length > 0) {
-            setSiret(e.target.value + " ");
-        } else {
-
-            setSiret(e.target.value)
+    const [hqAddress, setHqAddress] = useState({ social: null, siret: null, address1: null, address2: null, zip: null, city: null });
+    const [confirmed, setConfirmed] = useState({ kbis: false, id: false });
+    const [kbis, setKbis] = useState('');
+    const [data, setData] = useState('');
+    const [autocomplete, setAutoComplete] = useState(false)
+    const [inputs, setInputs] = useState({ siege: { adresse_ligne_1: '', code_postal: '', siret_formate: '', adresse_ligne_2: '', ville: '' } });
+    const [disabledInputs, setDisabledInputs] = useState(false);
+    const [inputsPlaceholder, setInputsPlaceholder] = useState({ siege: '' });
+    const [result, setResult] = useState([]);
+    const [loading, setLoading] = useState('');
+    const [address, setAddress] = useState({
+        city: '',
+        zip: ''
+    })
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            getData(data)
         }
     }
-    const [confirmed, setConfirmed] = useState({ kbis: false, id: false });
+
+    useEffect(() => {
+        if (data.length > 0) {
+            const timeOutId = setTimeout(() => {
+                getData(data);
+                setLoading('');
+            }, 1500);
+            return () => { clearTimeout(timeOutId) };
+        }
+    }, [data]);
+
+    const handleOnChange = (e) => {
+        if (e.target.value === '') {
+            setInputs({ siege: { adresse_ligne_1: ' ', code_postal: '', siret_formate: ' ', adresse_ligne_2: ' ', ville: ' ' } })
+            setDisabledInputs(false)
+        }
+        if (data !== e.target.value) {
+            setAutoComplete(false)
+            setDisabledInputs(false)
+            setLoading('Recherche...')
+            setData(e.target.value);
+        }
+        else if (inputs.length > 0 && inputs.siren.length > 0) {
+            setAutoComplete(false)
+        }
+    }
+
+    const getData = async (query) => {
+        const results = await axios(
+            `https://suggestions.pappers.fr/v2?q=${query}`,
+        )
+        setResult(results.data.resultats_nom_entreprise)
+    }
+
+    const getKbis = async (token) => {
+        setKbis(await axios(
+            `https://api.pappers.fr/v2/document/telechargement?api_token=4903a4d9aad033da2d7057e8c961859b2053fd859d86494b&token=${token}`
+        ))
+        console.log(kbis)
+    }
+
+    const getDataFromSiret = async (query, isSiret) => {
+        let resultsSiret = []
+        if (isSiret) {
+            if (query.length === 14)
+                resultsSiret = await axios(
+                    `https://api.pappers.fr/v2/entreprise?api_token=4903a4d9aad033da2d7057e8c961859b2053fd859d86494b&siret=${query}`,
+                )
+            else return false
+        }
+        else
+            resultsSiret = await axios(
+                `https://api.pappers.fr/v2/entreprise?api_token=4903a4d9aad033da2d7057e8c961859b2053fd859d86494b&siret=${query.siege.siret}`,
+            )
+        getKbis(resultsSiret.data.extrait_immatriculation.token)
+        setDisabledInputs(true)
+        setData(resultsSiret.data.nom_entreprise)
+        setInputs(resultsSiret.data)
+        setInputsPlaceholder({ siege: { adresse_ligne_1: ' ', code_postal: '', siret_formate: ' ', adresse_ligne_2: ' ', ville: ' ' } })
+        setAutoComplete(true)
+    }
     return (
         <div className={classes.container}>
             <div className={classes.rightCol}>
@@ -52,37 +107,66 @@ function HqForm() {
                     <div className={classes.formLeft}>
                         <div className={classes.firstRow}>
                             <div className={classes.inputDiv}>
-                                <input type="text" onChange={(e) => setHqAddress({...hqAddress, social: e.target.value})} />
+                                <input type="text" value={data} onChange={handleOnChange} onKeyDown={(e) => handleKeyDown(e)} />
                                 <label>Raison sociale</label>
+                                {data.length > 0 && autocomplete === false && <>
+                                    <div className={classes.autoCompleteDiv}>
+                                        <ul>
+                                            {loading.length > 0 && <>
+                                                <AiOutlineLoading className={classes.loading} />
+                                            </>}
+                                            {result.length > 0 && result.map((item, index) => {
+                                                return (
+                                                    <li key={index} onMouseOver={() => setInputsPlaceholder(item)} onClick={() => { getDataFromSiret(item, false); setResult([]); setAutoComplete(false) }}>
+                                                        <div className={classes.flexDiv}>
+                                                            <h4>{item.nom_entreprise}</h4>
+                                                        </div>
+                                                        <div>
+                                                            {item.siege.code_postal ? <>
+                                                                <span>({item.siege.code_postal})</span>
+                                                            </> : null}
+                                                            <span className={classes.libelle}>{item.libelle_code_naf}</span>
+                                                        </div>
+                                                    </li>
+                                                )
+                                            })}
+                                        </ul>
+                                    </div></>}
                             </div>
                             <div className={classes.inputDiv}>
-                                <input type="text" value={siret} onChange={siretHandle} maxLength={13} />
+                                <input type="text"
+                                    name="siret"
+                                    placeholder={inputsPlaceholder.siege.siret_formate}
+                                    disabled={disabledInputs}
+                                    defaultValue={inputs.siege.siret_formate}
+                                    onChange={(e) => getDataFromSiret(e.target.value, true)}
+                                />
                                 <label>SIRET</label>
                             </div>
                         </div>
                         <div className={classes.inputDiv}>
-                            <input type="text" onChange={(e) => setHqAddress({...hqAddress, address1: e.target.value})} />
+                            <AutoComplete value={address} handleChange={setAddress} />
                             <label>Adresse</label>
                         </div>
                         <div className={classes.inputDiv}>
-                            <input type="number" onChange={(e) => setHqAddress({...hqAddress, zip: e.target.value})} />
+                            <input type="text" value={address[1]} onChange={(e) => setHqAddress({ ...hqAddress, zip: e.target.value })} />
                             <label>Code postal</label>
                         </div>
                     </div>
                     <div className={classes.formRight}>
                         <div className={classes.inputDiv}>
-                            <input type="text" onChange={(e) => setHqAddress({...hqAddress, address2: e.target.value})} />
+                            <input type="text" onChange={(e) => setHqAddress({ ...hqAddress, address2: e.target.value })} />
                             <label>Complément</label>
                         </div>
                         <div className={classes.inputDiv}>
-                            <input type="text" onChange={(e) => setHqAddress({...hqAddress, city: e.target.value})} />
+                            <input type="text" value={address[2]} onChange={(e) => setHqAddress({ ...hqAddress, city: e.target.value })} />
                             <label>Ville</label>
                         </div>
                     </div>
                 </form>
                 <h3>K-BIS</h3>
                 <span>Joindre un certificat d’immatriculation de moins de 3 moins</span>
-                <button className={classes.whiteBtn} onClick={() => setConfirmed({...confirmed, kbis: true })}>Joindre</button>
+                <button className={classes.whiteBtn} onClick={() => setConfirmed({ ...confirmed, kbis: true })}>Joindre</button>
                 <h2>Adresse de facturation</h2>
                 <span>À renseigner uniquement si différente du siège social</span>
                 <form>
@@ -93,7 +177,7 @@ function HqForm() {
                                 <label>Raison sociale</label>
                             </div>
                             <div className={classes.inputDiv}>
-                                <input type="text" value={siret} onChange={siretHandle} maxLength={13} />
+                                <input type="text" />
                                 <label>SIRET</label>
                             </div>
                         </div>
@@ -127,7 +211,7 @@ function HqForm() {
                                 <label>Nom</label>
                             </div>
                             <div className={classes.inputDiv}>
-                                <input type="text" value={siret} onChange={siretHandle} maxLength={13} />
+                                <input type="text" />
                                 <label>Prénom</label>
                             </div>
                         </div>
@@ -164,7 +248,7 @@ function HqForm() {
                 </form>
                 <h3>Document d'identité</h3>
                 <span>Carte d’identité, Passport, Permit de conduire, Carte de séjour...</span>
-                <button className={classes.whiteBtn} onClick={() => setConfirmed({...confirmed, id: true })}>Joindre</button>
+                <button className={classes.whiteBtn} onClick={() => setConfirmed({ ...confirmed, id: true })}>Joindre</button>
                 <span className={classes.footer}>
                     Conformément au Règlement Général sur la Protection des Données (RGPD), les documents transmis seront supprimés après validation de votre inscription. Pour en savoir plus, rendez-vous dans nos Conditions Particulières et Conditions Générales de Services ainsi que notre Politique de
                     Confidentialité

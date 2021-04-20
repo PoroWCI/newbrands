@@ -11,7 +11,7 @@ import { HamburgerSqueeze } from 'react-animated-burgers';
 import Picture from '../../assets/img/profilePicture.jpg'
 import { AiFillCaretDown } from 'react-icons/ai'
 
-const loggedIn = false;
+const loggedIn = true;
 
 function Header(props) {
   const { t } = useTranslation("common");

@@ -14,7 +14,7 @@ function pageContent() {
     return (
         <div className={classes.container}>
             <div className={classes.textRight}>
-                <h2>Remettre de l’efficience <br /><span className={classes.blueTxt}>économique</span>, <span className={classes.blueTxt}>sociale</span> et <span className={classes.blueTxt}>environnementale</span> dans l’industrie de la mode</h2>
+                <h2 className={classes.title}>Remettre de l’efficience <br /><span className={classes.blueTxt}>économique</span>, <span className={classes.blueTxt}>sociale</span> et <span className={classes.blueTxt}>environnementale</span> dans l’industrie de la mode</h2>
 
                 <p>Only, there's some peculiarities to digital products. Things can get really complex, really quickly, and a pragmatic, synthetic and clear vision is essential to be able to create something that, after all, is meant to be used. Emotions also have a big role to play and developing clear and beautiful aesthetics is of the utmost importance to create a pleasant environment in which the user actually enjoys the time spent in it. In the end, we're all suckers for beautiful things that just work™
                     <br />
@@ -56,22 +56,22 @@ function pageContent() {
             </div>
             <div className={classes.leftAlign}>
                 <h2>Experience is the key to customer lifetime value.</h2>
-                <ul>
+                <ul className={classes.experiences}>
                     <li>
-                        <a href="#"><a href="#"></a>
+                        <a href="# ">
                         <img src={Experience1} alt='' />
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </a>
                     </li>
-                    <li><a href="#">
+                    <li><a href="# ">
                         <img src={Experience2} alt='' />
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </a></li>
-                    <li><a href="#">
+                    <li><a href="# ">
                         <img src={Experience3} alt='' />
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </a></li>
-                    <li><a href="#">
+                    <li><a href="# ">
                         <img src={Experience4} alt='' />
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </a></li>
@@ -82,7 +82,7 @@ function pageContent() {
                 <div>
                     <h3>-20% d’emission de gaz à effet de serre en moyenne</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum diam orci pretium a pharetra, feugiat cursus. Dictumst risus, sem egestas odio cras adipiscing vulputate. Nisi, risus in suscipit non. Non commodo volutpat, pharetra, vel.</p>
-                    <a>Obtenir le rapport <BsArrowRight className={classes.arrowRight} /></a>
+                    <a href="# ">Obtenir le rapport <BsArrowRight className={classes.arrowRight} /></a>
                 </div>
             </div>
         </div>

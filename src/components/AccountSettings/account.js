@@ -5,7 +5,10 @@ import { AiOutlineLoading } from 'react-icons/ai'
 import Picture from '../../assets/img/profilePicture.jpg'
 import axios from 'axios'
 
+import AutoComplete from '../ValidatingInformations/AutoComplete'
+
 function Dashboard() {
+    const [kbis, setKbis] = useState('');
     const [data, setData] = useState('');
     const [autocomplete, setAutoComplete] = useState(false)
     const [inputs, setInputs] = useState({ siege: { adresse_ligne_1: '', code_postal: '', siret_formate: '', adresse_ligne_2: '', ville: '' } });
@@ -13,7 +16,14 @@ function Dashboard() {
     const [inputsPlaceholder, setInputsPlaceholder] = useState({ siege: '' });
     const [result, setResult] = useState([]);
     const [loading, setLoading] = useState('');
-
+    const [billingAddress, setBillingAddress] = useState({
+        city: '',
+        zip: ''
+    })
+    const [address, setAddress] = useState({
+        city: '',
+        zip: ''
+    })
     /* Handling API */
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
@@ -54,21 +64,27 @@ function Dashboard() {
         setResult(results.data.resultats_nom_entreprise)
     }
 
+    const getKbis = async (token) => {
+        setKbis(await axios(
+            `https://api.pappers.fr/v2/document/telechargement?api_token=4903a4d9aad033da2d7057e8c961859b2053fd859d86494b&token=${token}`
+        ))
+        console.log(kbis)
+    }
+
     const getDataFromSiret = async (query, isSiret) => {
         let resultsSiret = []
-        if (isSiret)
-        {
-            if(query.length === 14)
-            resultsSiret = await axios(
-                `https://api.pappers.fr/v2/entreprise?api_token=4903a4d9aad033da2d7057e8c961859b2053fd859d86494b&siret=${query}`,
-            )
+        if (isSiret) {
+            if (query.length === 14)
+                resultsSiret = await axios(
+                    `https://api.pappers.fr/v2/entreprise?api_token=4903a4d9aad033da2d7057e8c961859b2053fd859d86494b&siret=${query}`,
+                )
             else return false
         }
         else
             resultsSiret = await axios(
                 `https://api.pappers.fr/v2/entreprise?api_token=4903a4d9aad033da2d7057e8c961859b2053fd859d86494b&siret=${query.siege.siret}`,
             )
-
+        getKbis(resultsSiret.data.extrait_immatriculation.token)
         setDisabledInputs(true)
         setData(resultsSiret.data.nom_entreprise)
         setInputs(resultsSiret.data)
@@ -174,8 +190,14 @@ function Dashboard() {
                         </div>
                     </form>
                     <div className={classes.inline}>
-                        <div className={classes.confirmed}></div> <h3>K-BIS</h3>
+                        <div className={kbis.headers && kbis.headers['content-type'] === 'application/pdf' ? classes.confirmed : classes.unconfirmed}></div> <h3>K-BIS</h3>
                     </div>
+                    {!kbis.headers && <>
+                        <div className={classes.uploadFile}>
+                            <h5>Add file</h5>
+                            <span>or drop files here</span>
+                            <input type="file" />
+                        </div> </>}
                     <div className={classes.uploadLogoDiv}>
                         <h3>Pensez à télécharger votre logo</h3>
                         <span>Taille minimum 400 x 400 pixels et de 2 Mo maximum au format JPG ou PNG</span>
@@ -200,81 +222,81 @@ function Dashboard() {
                                 </div>
                             </div>
                             <div className={classes.inputDiv}>
-                                <input type="text" placeholder={inputs.siege.adresse_ligne_1} />
+                                <AutoComplete value={billingAddress} handleChange={setBillingAddress} placeholder={inputs.siege.adresse_ligne_1} id="billing" />
                                 <label>Adresse</label>
                             </div>
                             <div className={classes.inputDiv}>
-                                <input type="number" placeholder={inputs.siege.code_postal} />
+                                <input type="text" value={billingAddress[1]} onChange={(e) => setBillingAddress({ ...billingAddress.city, zip: e.target.value })} placeholder={inputs.siege.code_postal} />
                                 <label>Code postal</label>
                             </div>
-                        </div>
-                        <div className={classes.formRight}>
-                            <div className={classes.inputDiv}>
-                                <input type="text" placeholder={inputs.siege.adresse_ligne_2} />
-                                <label>Complément</label>
                             </div>
-                            <div className={classes.inputDiv}>
-                                <input type="text" placeholder={inputs.siege.ville} />
-                                <label>Ville</label>
-                            </div>
-                        </div>
-                    </form>
-                    <h2>Informations personnelles</h2>
-                    <span>Merci de confirmer vos coordonnées servant à la facturation de votre commande</span>
-                    <form>
-                        <div className={classes.formLeft}>
-                            <div className={classes.firstRow}>
+                            <div className={classes.formRight}>
                                 <div className={classes.inputDiv}>
-                                    <input type="text" />
-                                    <label>Nom</label>
+                                    <input type="text" placeholder={inputs.siege.adresse_ligne_2} />
+                                    <label>Complément</label>
+                                </div>
+                                <div className={classes.inputDiv}>
+                                    <input type="text" value={billingAddress[2]} onChange={(e) => setBillingAddress({ ...billingAddress.zip, city: e.target.value })} placeholder={inputs.siege.ville} />
+                                    <label>Ville</label>
+                                </div>
+                            </div>
+                    </form>
+                        <h2>Informations personnelles</h2>
+                        <span>Merci de confirmer vos coordonnées servant à la facturation de votre commande</span>
+                        <form>
+                            <div className={classes.formLeft}>
+                                <div className={classes.firstRow}>
+                                    <div className={classes.inputDiv}>
+                                        <input type="text" />
+                                        <label>Nom</label>
+                                    </div>
+                                    <div className={classes.inputDiv}>
+                                        <input type="text" />
+                                        <label>Prénom</label>
+                                    </div>
+                                </div>
+                                <div className={classes.inputDiv}>
+                                    <AutoComplete value={address} handleChange={setAddress} placeholder="" id="personnal" />
+                                    <label>Adresse</label>
+                                </div>
+                                <div className={classes.inputDiv}>
+                                    <input type="text" value={address[1]} onChange={(e) => setAddress({ ...address.city, zip: e.target.value })} />
+                                    <label>Code postal</label>
+                                </div>
+                                <div className={classes.inputDiv}>
+                                    <input type="mail" />
+                                    <label>Adresse e-mail</label>
+                                </div>
+                            </div>
+                            <div className={classes.formRight}>
+                                <div className={classes.inputDiv}>
+                                    <select className={classes.selectInput}>
+                                        <option></option>
+                                        <option>Fondateur</option>
+                                    </select>
+                                    <label>Role</label>
+                                </div>
+                                <div className={classes.inputDiv}>
+                                    <input type="text" value={address[2]} onChange={(e) => setAddress({ ...address.zip, city: e.target.value })} />
+                                    <label>Ville</label>
                                 </div>
                                 <div className={classes.inputDiv}>
                                     <input type="text" />
-                                    <label>Prénom</label>
+                                    <label>Numéro de téléphone</label>
                                 </div>
                             </div>
-                            <div className={classes.inputDiv}>
-                                <input type="text" />
-                                <label>Adresse</label>
-                            </div>
-                            <div className={classes.inputDiv}>
-                                <input type="number" />
-                                <label>Code postal</label>
-                            </div>
-                            <div className={classes.inputDiv}>
-                                <input type="mail" />
-                                <label>Adresse e-mail</label>
-                            </div>
+                        </form>
+                        <div className={classes.inline}>
+                            <div className={classes.confirmed}></div><h3>Document d'identité</h3>
                         </div>
-                        <div className={classes.formRight}>
-                            <div className={classes.inputDiv}>
-                                <select className={classes.selectInput}>
-                                    <option></option>
-                                    <option>Fondateur</option>
-                                </select>
-                                <label>Role</label>
-                            </div>
-                            <div className={classes.inputDiv}>
-                                <input type="text" />
-                                <label>Ville</label>
-                            </div>
-                            <div className={classes.inputDiv}>
-                                <input type="text" />
-                                <label>Numéro de téléphone</label>
-                            </div>
-                        </div>
-                    </form>
-                    <div className={classes.inline}>
-                        <div className={classes.confirmed}></div><h3>Document d'identité</h3>
-                    </div>
 
-                    <span className={classes.footer}>
-                        Conformément au Règlement Général sur la Protection des Données (RGPD), les documents transmis seront supprimés après validation de votre inscription. Pour en savoir plus, rendez-vous dans nos Conditions Particulières et Conditions Générales de Services ainsi que notre Politique de
-                        Confidentialité
+                        <span className={classes.footer}>
+                            Conformément au Règlement Général sur la Protection des Données (RGPD), les documents transmis seront supprimés après validation de votre inscription. Pour en savoir plus, rendez-vous dans nos Conditions Particulières et Conditions Générales de Services ainsi que notre Politique de
+                            Confidentialité
                     </span>
                 </div>
+                </div>
             </div>
-        </div>
     )
 }
 

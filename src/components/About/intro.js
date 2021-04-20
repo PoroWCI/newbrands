@@ -1,4 +1,4 @@
-import Image from '../../assets/img/french-green-tech.png'
+import Image from '../../assets/img/About/french-green-tech.svg'
 import classes from './intro.module.css'
 
 function IntroAbout() {

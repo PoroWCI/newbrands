@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { Layout, Row, Col } from "antd";
 import { ContentTitle, ContentSubTitle } from "../../../../components/global";
 import NavHeader from "../../../../components/createProject/NavHeader";
-
-import CustomRadio from "../../../../components/createProject/customRadio";
-import CustomRadioInput from "../../../../components/createProject/customRadioInput";
 import CustomTextField from "../../../../components/createProject/customTextField";
 
 const { Content } = Layout;

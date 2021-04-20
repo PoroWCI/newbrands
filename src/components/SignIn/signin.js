@@ -6,14 +6,14 @@ import axios from 'axios'
 
 function Login() {
     const [login, setLogin] = useState("Connexion")
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+    // const [username, setUsername] = useState("")
+    // const [password, setPassword] = useState("")
     const [error, setError] = useState("")
 
     const handleSignIn = async (e) => {
         e && e.preventDefault()
         console.log(API)
-        console.log(await axios.post(`${API}/login`, username, password))  
+        console.log(await axios.post(`${API}/login`))  
         setLogin("Loading")
         setTimeout(() => setLogin("Redirecting..."), 1500)
         setTimeout(() => 

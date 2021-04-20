@@ -58,6 +58,9 @@
     position: relative;
     display: flex;
     margin: 0.5rem;
+    div {
+        width: 100%;
+    }
     margin-left: 0;
     label {
         font-family: Georgia, "Times New Roman", Times, serif;
@@ -80,6 +83,7 @@
         border: 1px solid #e1e6e2;
         padding-top: 1.5rem;
         background: #fff;
+
         &:focus {
             transition: 0.3s;
             border: 1px solid #333333;

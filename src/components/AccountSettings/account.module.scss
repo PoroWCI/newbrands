@@ -168,6 +168,9 @@
     display: flex;
     margin: 0.5rem;
     margin-left: 0;
+    div {
+        width: 100%;
+    }
     label {
         font-family: Georgia, "Times New Roman", Times, serif;
         color: #333333;

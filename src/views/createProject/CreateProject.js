@@ -8,7 +8,6 @@ import NavSider from "../../components/createProject/NavSider";
 
 import TypeProject from "./typeProject/typeProject";
 import NumberProduct from "./numberProduct/numberProduct";
-import ProductDetail from "./productDetail/productDetail";
 import ProductDelay from "./productDelay/productDelay";
 import PlaceOfShip from "./placeOfShip/placeOfShip";
 import DocumentsProject from "./documentsProject/documentsProject";
