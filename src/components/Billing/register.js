@@ -2,9 +2,11 @@
 import classes from './registerForm.module.css'
 import Form from './registerForm';
 import Navigation from './navigationBtns'
+import { useState } from 'react';
 
 function OnBoardingRegister(price) {
     // const { t } = useTranslation('common');
+    const [isDisabled, setIsDisabled] = useState(true)
     return (
         <div className={classes.container}>
             <h2>#ONBOARDING</h2>
@@ -12,8 +14,8 @@ function OnBoardingRegister(price) {
             <p>
                 Durant cet OnBoarding, plusieurs questions vont vous êtres posées afin de comprendre au mieux votre activité afin d’établir une offre correspondant à vos besoins adapté à votre projet.
             </p>
-            <Form />
-            <Navigation link={price.price === 'instant-quote' ? 'billing' : 'registration-completed'} />
+            <Form handleBtn={setIsDisabled} />
+            <Navigation link={price.price === 'instant-quote' ? 'billing' : 'registration-completed'} next={isDisabled} />
         </div>
     );
 }

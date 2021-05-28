@@ -1,68 +1,118 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Layout, Menu } from "antd";
 import { Link } from "react-router-dom";
 import { LogoBrand, SiderTitle } from "../global";
 import Logo from "../../assets/img/logo-newbrands.svg";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
+import axios from "axios";
+import { API } from "../../config";
 
 const { Sider } = Layout;
 const { Item, SubMenu } = Menu;
 
-class NavSider extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      page: this.props.maxPage,
-    };
-  }
-
-  componentDidUpdate(prevProps) {
-    var maxPage = this.props.maxPage;
-    if (maxPage !== prevProps.maxPage) {
-      this.setState({ page: maxPage });
+function NavSider(props) {
+  const [page, setPage] = useState(0)
+  const [products, setProducts] = useState([])
+  const { t } = useTranslation("common");
+  console.log(localStorage)
+  useEffect(() => {
+    async function fetchData() {
+      if (localStorage.getItem("projectId") === null) {
+        await axios.post(API + "/api/project").then((result) => {
+          localStorage.setItem("projectId", result.data.idProject)
+          // localStorage.setItem("projectId", "4b7bf1f9-bd22-11eb-9a36-0050b6027878")
+        })
+        await axios.get(`${API}/api/project/${localStorage.getItem("projectId")}`).then((result) => {
+          setProducts(result.data.project[0].product)
+        })
+        setPage(1)
+      }
     }
-  }
+    fetchData()
+  }, [localStorage])
 
-  isMenuItemActive(key) {
-    if (key <= this.state.page) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  render() {
-    return (
-      <Sider
-        trigger={null}
-        style={{
-          overflow: "auto",
-          height: "100vh",
-          position: "fixed",
-          left: 0,
-        }}
-      >
-        <Link to="/createProject/">
-          <LogoBrand src={Logo} alt="NewBrands" />
-          {/* <button onClick={this.props.debug}>Debug</button>
+  console.log(products)
+  return (
+    <Sider
+      trigger={null}
+      style={{
+        overflow: "auto",
+        height: "100vh",
+        position: "fixed",
+        left: 0,
+      }}
+    >
+      <Link to="/createProject/">
+        <LogoBrand src={Logo} alt="NewBrands" />
+        {/* <button onClick={this.props.debug}>Debug</button>
           <button onClick={() => localStorage.clear()}>Clear</button> */}
-        </Link>
-        <SiderTitle>Parlez nous de votre projet</SiderTitle>
-        <Menu
-          mode="inline"
-          defaultSelectedKeys={[`${this.props.maxPage}`]}
-          selectedKeys={[`${this.props.currentPage}`]}
-          style={{ backgroundColor: "#F8F5F5" }}
+      </Link>
+      <SiderTitle>Parlez nous de votre projet</SiderTitle>
+      <Menu
+        mode="inline"
+        defaultSelectedKeys={[`${props.maxPage}`]}
+        selectedKeys={[`${props.currentPage}`]}
+        style={{ backgroundColor: "#F8F5F5" }}
+      >
+        <CustomItem
+          key={1}
+          className="customclass"
         >
-          <CustomItem
-            key="1"
-            className="customclass"
-            disabled={this.isMenuItemActive(1)}
-          >
-            <LinkButton to="/createProject">Type</LinkButton>
-          </CustomItem>
-          <CustomItem
+          <LinkButton to="/createProject">Type</LinkButton>
+        </CustomItem>
+        {JSON.parse(localStorage.getItem("workflow"))?.map((menu, index) => {
+          if (menu.typeStep !== "product" && menu.nameStep !== "content")
+            return (
+              <CustomItem
+                key={index}
+                className="customclass"
+              >
+                <LinkButton to={`/createProject/${menu.nameStep}`}>{t(`createProject.menu.${menu.nameStep}`)}</LinkButton>
+              </CustomItem>
+            )
+          else if (menu.nameStep === "content") {
+            return (
+              <SubMenu
+                className="customArrow"
+                key={index}
+                title={
+                  <span
+                    style={{
+                      color: "black",
+                      fontSize: "1rem"
+                    }}
+                  >
+                    Produits
+                </span>
+                }
+              >
+                {products.map((product, index) => {
+                  return (<Menu.ItemGroup key={index} title={product.name}>
+                    {JSON.parse(localStorage.getItem("workflow")).map((menu, index) => {
+                      if (menu.typeStep === "product") {
+                        return (
+                          <CustomItem key={index} >
+                            <LinkButton to={`/createProject/${menu.nameStep}`}>{t(`createProject.submenu.${menu.nameStep}`)}</LinkButton>
+                          </CustomItem>
+                        )
+                      }
+                      return null
+                    })}
+                  </Menu.ItemGroup>)
+                })}
+              </SubMenu>
+            )
+          }
+        })}
+        <CustomItem
+          key="12"
+          className="customclass"
+        >
+          <LinkButton to="/createProject/userInfo">Coordonnées</LinkButton>
+        </CustomItem>
+        {/* <CustomItem
             key="2"
             className="customclass"
             disabled={this.isMenuItemActive(2)}
@@ -164,12 +214,12 @@ class NavSider extends Component {
             disabled={this.isMenuItemActive(9)}
           >
             <LinkButton to="/createProject/userInfo">Coordonnées</LinkButton>
-          </CustomItem>
-        </Menu>
-      </Sider>
-    );
-  }
+          </CustomItem> */}
+      </Menu>
+    </Sider>
+  );
 }
+
 
 export default NavSider;
 

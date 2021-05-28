@@ -20,6 +20,7 @@ import CreateProject from "./views/createProject/CreateProject"
 import AccountSettings from "./containers/AccountSettings"
 import Error from './containers/Error'
 import SignIn from './containers/SignIn'
+import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 
 function App() {
   return (
@@ -74,17 +75,11 @@ function App() {
           <RegisterCommittees step={CommandConfirmed} />
         </Route>
         {/*  */}
-        <Route path="/dashboard">
-          <Dashboard />
-        </Route>
-        <Route exact path="/project">
-          <ProjectPage />
-        </Route>
+        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/project" component={ProjectPage} />
+        <PrivateRoute path="/account" component={AccountSettings} />
         <Route path="/createProject">
           <CreateProject />
-        </Route>
-        <Route path="/account">
-          <AccountSettings />
         </Route>
         <Route exact path="/validation-account" children={<ValidatingAccount />}>
         </Route>

@@ -4,66 +4,82 @@ import { ContentTitle, ContentSubTitle } from "../../../components/global";
 import NavHeader from "../../../components/createProject/NavHeader";
 import styled from "styled-components";
 import axios from 'axios';
-import {API} from '../../../config'
+import { API } from '../../../config'
 import "../../../assets/icons/typeIcons/css/typeicons.css";
 
 const { Content } = Layout;
 
+// types : {id: blabla, id: blablou}
+// types : {blabla: true, blablou: false}
+
+let typesSelection = {}
+axios.defaults.headers.common['Authorization'] = localStorage.getItem("session")
+
 class TypeProject extends Component {
-  constructor(props) {
-    console.log(axios.get(API+"/project_types"))
-    super(props);
-    this.state = {
-      isStylism: false,
-      isConfection: false,
-      isModelism: false,
-      isSourcing: false,
-    };
-
-    this.checkStylism = this.checkStylism.bind(this);
-    this.checkSourcing = this.checkSourcing.bind(this);
-    this.checkModelism = this.checkModelism.bind(this);
-    this.checkConfection = this.checkConfection.bind(this);
+  state = {
+    types: [],
+    typesSelection: []
+  }
+  handleSubmit = async (e) => {
+    e.preventDefault()
+    await axios.post(API + '/api/project').then((result) => {
+      console.log("posted!:", result)
+    });
   }
 
-  checkStylism() {
-    this.setState({ isStylism: !this.state.isStylism });
-  }
-
-  checkConfection() {
-    this.setState({ isConfection: !this.state.isConfection });
-  }
-
-  checkModelism() {
-    this.setState({ isModelism: !this.state.isModelism });
-  }
-
-  checkSourcing() {
-    this.setState({ isSourcing: !this.state.isSourcing });
-  }
-
-  componentDidUpdate() {
-    localStorage.setItem("isStylism", this.state.isStylism);
-    localStorage.setItem("isConfection", this.state.isConfection);
-    localStorage.setItem("isModelism", this.state.isModelism);
-    localStorage.setItem("isSourcing", this.state.isSourcing);
-  }
-
-  componentDidMount() {
-    localStorage.getItem("isStylism") &&
-      localStorage.getItem("isModelism") &&
-      localStorage.getItem("isConfection") &&
-      localStorage.getItem("isSourcing") &&
-      this.setState({
-        isStylism: JSON.parse(localStorage.getItem("isStylism")),
-        isConfection: JSON.parse(localStorage.getItem("isConfection")),
-        isSourcing: JSON.parse(localStorage.getItem("isSourcing")),
-        isModelism: JSON.parse(localStorage.getItem("isModelism")),
+  async componentDidMount() {
+    // console.log(localStorage.getItem("session"))
+    if (!localStorage.getItem("projectId")) {
+      await axios.post(API + '/api/project').then((result) => {
+        localStorage.setItem("projectId", result.data.idProject)
+        // console.log("posted!:", result)
       });
+    }
+    await axios.get(API + '/api/type')
+      .then(res => {
+        const types = res.data
+        this.setState({ types })
+      })
+    // localStorage.setItem("projectId", "4b7bf1f9-bd22-11eb-9a36-0050b6027878")
+  }
+
+  async componentWillUnmount() {
+    await axios.post(`${API}/api/project/${localStorage.getItem("projectId")}/type`, this.state).then((result) => {
+      console.log("types:", this.state)
+      return result
+    })
+    await axios.get(`${API}/api/workflowtype/${localStorage.getItem("projectId")}`).then((result) => {
+      localStorage.setItem("workflow", JSON.stringify(result.data.workflow))
+      this.setState({worflow: JSON.stringify(result.data.workflow)})
+      console.log(localStorage)
+      return result
+      // await axios.get(`${API}/api/workflowtype/4b7bf1f9-bd22-11eb-9a36-0050b6027878`).then((result) => {
+      //   console.log(localStorage)
+      //   return result
+    })
+  }
+
+
+  handleCheckboxes(e, index) {
+    if (e.target.checked === true) {
+      if (this.state.typesSelection.length > 0)
+        this.setState({ typesSelection: this.state.typesSelection.concat({ id: e.target.value }) })
+      else
+        this.setState({ typesSelection: [{ id: e.target.value }] })
+    }
+    else {
+      typesSelection = this.state.typesSelection.filter(type => {
+        //  console.log(type.id, e.target.value)
+        return type.id !== e.target.value
+      }
+      )
+      this.setState({ typesSelection: typesSelection })
+    }
   }
 
   render() {
-    const { isStylism, isConfection, isModelism, isSourcing } = this.state;
+    console.log(this.state)
+    // console.log(typesSelection)
     return (
       <Layout>
         <NavHeader title="Produits" />
@@ -92,102 +108,22 @@ class TypeProject extends Component {
               fontSize: "24px",
             }}
           >
-            <Row>
-              <Col span={6}>
-                <BoxType
-                  onClick={this.checkStylism}
-                  style={{ borderColor: isStylism ? "#00798C" : "#DDDDDD" }}
-                >
-                  <BoxIcon
-                    className="icon-stylism-icon"
-                    style={{ color: isStylism ? "#00798C" : "black" }}
-                  />
-                  <h3 style={{ color: isStylism ? "#00798C" : "black" }}>
-                    Stylisme
-                  </h3>
-                  <BoxDesc
-                    style={{
-                      fontFamily: isStylism ? "Gelion" : "Gelion Light",
-                    }}
-                  >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor
-                  </BoxDesc>
-                </BoxType>
-              </Col>
-              <Col span={6}>
-                <BoxType
-                  onClick={this.checkModelism}
-                  style={{ borderColor: isModelism ? "#00798C" : "#DDDDDD" }}
-                >
-                  <BoxIcon
-                    className="icon-modelism-icon"
-                    style={{ color: isModelism ? "#00798C" : "black" }}
-                  />
-                  <h3 style={{ color: isModelism ? "#00798C" : "black" }}>
-                    Modelisme
-                  </h3>
-                  <BoxDesc
-                    style={{
-                      fontFamily: isModelism
-                        ? "Gelion"
-                        : "Gelion Light",
-                    }}
-                  >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor
-                  </BoxDesc>
-                </BoxType>
-              </Col>
-              <Col span={6}>
-                <BoxType
-                  onClick={this.checkConfection}
-                  style={{ borderColor: isConfection ? "#00798C" : "#DDDDDD" }}
-                >
-                  <BoxIcon
-                    className="icon-confection-icon"
-                    style={{ color: isConfection ? "#00798C" : "black" }}
-                  />
-                  <h3 style={{ color: isConfection ? "#00798C" : "black" }}>
-                    Confection
-                  </h3>
-                  <BoxDesc
-                    style={{
-                      fontFamily: isConfection
-                        ? "Gelion"
-                        : "Gelion Light",
-                    }}
-                  >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor
-                  </BoxDesc>
-                </BoxType>
-              </Col>
-              <Col span={6}>
-                <BoxType
-                  onClick={this.checkSourcing}
-                  style={{ borderColor: isSourcing ? "#00798C" : "#DDDDDD" }}
-                >
-                  <BoxIcon
-                    className="icon-sourcing-icon"
-                    style={{ color: isSourcing ? "#00798C" : "black" }}
-                  />
-                  <h3 style={{ color: isSourcing ? "#00798C" : "black" }}>
-                    Sourcing
-                  </h3>
-                  <BoxDesc
-                    style={{
-                      fontFamily: isSourcing
-                        ? "Gelion"
-                        : "Gelion Light",
-                    }}
-                  >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor
-                  </BoxDesc>
-                </BoxType>
-              </Col>
-            </Row>
+            <form onSubmit={(e) => this.handleSubmit(e)}>
+              <Row>
+                {this.state.types.map((value, index) =>
+                  <Col span={6} key={index} className="card-checkbox-col">
+                    <input type="checkbox" className="card-checkbox" value={value.id} onChange={(e) => this.handleCheckboxes(e, index)} />
+                    <BoxType style={{ borderColor: this.state[value.name] ? "#00798C" : "black" }}>
+                      <BoxIcon className={`icon-${value.name.toLowerCase()}-icon`} style={{ color: this.state[value.name] ? "#00798C" : "black" }} />
+                      <h3 style={{ color: this.state[value.name] ? "#00798C" : "black" }}>{value.name}</h3>
+                      <BoxDesc style={{ fontFamily: this.state[value.name] ? "Gelion" : "Gelion Light" }}>
+                        {value.content}
+                      </BoxDesc>
+                    </BoxType>
+                  </Col>
+                )}
+              </Row>
+            </form>
           </center>
         </Content>
       </Layout>

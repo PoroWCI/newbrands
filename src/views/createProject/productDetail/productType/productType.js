@@ -41,9 +41,10 @@ class ProductType extends Component {
   }
 
   componentDidMount() {
-    axios.get(API + '/project_ranges')
+    axios.get(`${API}/api/gamme?id=${localStorage.getItem("projectId")}`)
       .then(res => {
-        this.setState({ ...this.state, displayCategories: res.data })
+        console.log(res)
+        // this.setState({ ...this.state, displayCategories: res.data })
       })
   }
 

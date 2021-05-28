@@ -132,6 +132,32 @@
     }
 }
 
+.paymentMethods {
+    display: flex;
+    align-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.method {
+    display: flex;
+    padding: .5rem;
+    border: 1px solid #D9D9D9;
+    font-size: 3rem;
+    a {
+        display: flex;
+    }
+}
+
+.visa {
+    color: #172B85;
+}
+
+.mastercard {
+    margin-left: .5rem;
+    width: 40px;
+}
+
 .locked {
     pointer-events: none;
     outline: none;

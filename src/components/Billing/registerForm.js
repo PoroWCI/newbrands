@@ -2,14 +2,66 @@ import { useState, useEffect } from "react";
 import classes from "./form.module.css";
 import { AiOutlineLoading } from 'react-icons/ai'
 import axios from 'axios'
+import { API } from "../../config";
 
-function RegisterForm() {
+function RegisterForm(props) {
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [mail, setMail] = useState("")
+    const [mailError, setMailError] = useState("")
+    const [phone, setPhone] = useState("")
+    const [fonction, setFonction] = useState("")
+    const [country, setCountry] = useState("")
+    const [companySiret, setCompanySiret] = useState("")
     const [companyName, setCompanyName] = useState('')
-    const [siret, setSiret] = useState('')
     const [loading, setLoading] = useState('');
     const [autocomplete, setAutoComplete] = useState(true)
     const [result, setResult] = useState([]);
+    const [req, setReq] = useState()
 
+    /* Check email validity & if in use */
+    const checkMail = async () => {
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail))
+            return false
+        const req = {
+            email: mail
+        }
+        await axios.post(`${API}/api/user/checkemail`, req).then((res) => {
+            props.handleBtn(true)
+            console.log(res)
+        }).catch((error) => {
+            if (error.response.data.message === "email déjà existant")
+                setMailError(`Il semblerait que vous ayez déjà un compte.`)
+        })
+    }
+    /*******/
+
+    /* Activate submit BTN */
+    useEffect(() => {
+        props.handleBtn(false)
+        if (mail.length > 0 && firstName.length > 0 && lastName.length > 0 && phone > 0
+            && companyName.length > 0 && fonction.length > 0 && companySiret.length > 0 && country.length > 0) {
+            setReq({
+                email: mail,
+                firstName: firstName,
+                lastName: lastName,
+                phone: phone,
+                siret: companySiret,
+                pays: country,
+                fonction: fonction,
+                company: companyName
+            })
+            console.log("QWEPQWDOWQD", req)
+            localStorage.setItem('request', JSON.stringify(req))
+        }
+    }, [mail, firstName, lastName, phone, companyName, fonction, companySiret, country])
+
+    const handleForm = (value, setValue) => {
+        setValue(value)
+    }
+    /******/
+
+    /** Pappers API **/
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             getData(companyName)
@@ -44,26 +96,39 @@ function RegisterForm() {
 
     const autoComplete = async (query) => {
         setCompanyName(query.denomination)
-        setSiret(query.siege.siret_formate)
+        setCompanySiret(query.siege.siret_formate)
         setAutoComplete(true)
     }
+    /********/
+
+    /** Submit **/
+    useEffect(() => {
+        return () => {
+            axios.post(`${API}/register`, JSON.parse(localStorage.request)).then((res) => {
+                localStorage.removeItem("request")
+            }).catch((error) => {
+                localStorage.removeItem("request")
+            })
+        }
+    }, [])
+    /****/
 
     return (
         <form className={classes.container}>
             <div className={classes.inputDiv}>
-                <input type="text" />
+                <input type="text" value={firstName} onChange={(e) => handleForm(e.target.value, setFirstName)} />
                 <label>Prénom</label>
             </div>
             <div className={classes.inputDiv}>
-                <input type="text" />
+                <input type="text" value={lastName} onChange={(e) => handleForm(e.target.value, setLastName)} />
                 <label>Nom</label>
             </div>
-            <div className={classes.inputDiv}>
-                <input type="mail" />
+            <div className={`${classes.inputDiv} ${mailError.length > 0 && classes.inputError}`}>
+                <input type="mail" value={mail} onChange={(e) => handleForm(e.target.value, setMail)} onBlur={() => checkMail()} />
                 <label>Email professionnel</label>
             </div>
             <div className={classes.inputDiv}>
-                <input type="phone" />
+                <input type="phone" value={phone} onChange={(e) => handleForm(e.target.value, setPhone)} />
                 <label>Numéro de téléphone</label>
             </div>
             <div className={classes.inputDiv}>
@@ -77,7 +142,7 @@ function RegisterForm() {
                             </>}
                             {result.length > 0 && result.map((item, index) => {
                                 return (
-                                    <li key={index} onClick={() => { autoComplete(item); setResult([]);}}>
+                                    <li key={index} onClick={() => { autoComplete(item); setResult([]); }}>
                                         <div className={classes.flexDiv}>
                                             <h4>{item.nom_entreprise}</h4>
                                         </div>
@@ -94,7 +159,7 @@ function RegisterForm() {
                     </div></>}
             </div>
             <div className={classes.inputDiv}>
-                <select className={classes.selectInput}>
+                <select className={classes.selectInput} value={fonction} onChange={(e) => handleForm(e.target.value, setFonction)}>
                     <option></option>
                     <option>Designer</option>
                     <option>Chef de projet</option>
@@ -103,11 +168,11 @@ function RegisterForm() {
                 <label>Fonction</label>
             </div>
             <div className={classes.inputDiv}>
-                <input type="text" defaultValue={siret} maxLength={13} />
+                <input type="text" maxLength={13} value={companySiret} onChange={(e) => handleForm(e.target.value, setCompanySiret)} />
                 <label>SIRET / DUNS</label>
             </div>
             <div className={classes.inputDiv}>
-                <select className={classes.selectInput}>
+                <select className={classes.selectInput} value={country} onChange={(e) => handleForm(e.target.value, setCountry)}>
                     <option></option>
                     <optgroup label="North America">
                         <option value="US">United States</option>
@@ -357,6 +422,7 @@ function RegisterForm() {
                 </select>
                 <label>Pays</label>
             </div>
+            {mailError.length > 0 && <><div className={classes.mailError}>{mailError}<a href="/sign-in">Se connecter</a></div> </>}
         </form>
     )
 }

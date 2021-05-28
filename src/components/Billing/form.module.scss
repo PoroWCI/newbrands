@@ -27,7 +27,8 @@
             z-index: 2;
             margin: -10px;
         }
-        input, select {
+        input,
+        select {
             transition: 0.3s;
             font-family: "Gelion SemiBold";
             font-size: 1rem;
@@ -54,19 +55,41 @@
     }
 }
 
+.mailError {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
 
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+.inputError input {
+        border-color: red!important;
+}
 
-.loading{
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.loading {
     fill: #00798c;
     align-self: center;
     margin: 10px;
-    -webkit-animation:spin 2s linear infinite;
-    -moz-animation:spin 2s linear infinite;
-    animation:spin 2s linear infinite;
-    }
+    -webkit-animation: spin 2s linear infinite;
+    -moz-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
 
 .autoCompleteDiv {
     position: absolute;
@@ -80,14 +103,14 @@
     border: 1px solid #333;
     &::-webkit-scrollbar {
         display: none;
-      }
+    }
     ul {
         box-sizing: border-box;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #FFF;
-        font-size: .95rem;
+        background: #fff;
+        font-size: 0.95rem;
         height: auto;
         width: 100%;
         list-style: none;
@@ -96,7 +119,8 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        h4, span {
+        h4,
+        span {
             margin: 0;
             padding: 0;
             line-height: 1.2;
@@ -108,18 +132,18 @@
         div {
             width: 100%;
             span:not(:first-child) {
-                margin: 0 .5rem;
+                margin: 0 0.5rem;
             }
         }
         li {
             transition: 0.2s;
             width: 100%;
             padding: 1rem;
-            margin: .2rem auto;
+            margin: 0.2rem auto;
             &:hover {
                 transition: 0.2s;
                 cursor: pointer;
-                color: #FFF;
+                color: #fff;
                 background: #00798c;
             }
         }

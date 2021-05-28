@@ -23,6 +23,7 @@
     "npm": "^7.9.0",
     "react": "^17.0.1",
     "react-animated-burgers": "^1.2.8",
+    "react-auto-tab": "^1.0.1",
     "react-dom": "^16.14.0",
     "react-file-dropzone": "^0.4.1",
     "react-i18next": "*",

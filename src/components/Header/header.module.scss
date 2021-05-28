@@ -125,6 +125,7 @@ header ul {
 .dropDown {
     transition: 0.15s;
     color: #333333;
+    margin-left: .25rem;
 }
 
 .profileMenuContainer:focus {
@@ -144,7 +145,7 @@ header ul {
 
 .profileDiv {
     transition: 0.15s;
-    width: 165px;
+    min-width: 165px;
     min-height: 40px;
     display: flex;
     border: 1px solid #333333;
@@ -152,6 +153,7 @@ header ul {
     align-items: center;
     justify-content: space-evenly;
     .profilePicture {
+        margin-right: .25rem;
         width: 25px;
         height: 25px;
         border-radius: 50%;

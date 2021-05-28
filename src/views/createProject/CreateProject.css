@@ -1,4 +1,107 @@
 /* REBUILDING PARTS OF GLOBAL ANTD TO AVOID GLOBAL RESET */
+
+.antd-count {
+  position: fixed;
+  z-index: 50;
+  bottom: 2.5rem;
+  right: 20rem;
+}
+
+.antd-no-result {
+  margin-top: 2rem;
+}
+
+.antd-no-result textarea {
+  outline: none;
+  background: #FFF;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  resize: vertical;
+  width: 80%;
+  height: 10rem;
+  margin: auto;
+}
+   
+.ant-search-link {
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: center;
+  line-height: 2;
+  width: 50%;
+  margin: auto;
+  text-align: right;
+  font-style: italic;
+}
+
+.ant-search-link:hover {
+  transition: 0.2s;
+  opacity: 0.5;
+}
+
+.ant-text-input {
+  outline: none;
+  background: #FFF;
+  text-indent: 4rem;
+  border-radius: 4px;
+  border: 1px solid #DDD;
+  padding: 1rem;
+  width: 50%;
+  margin: auto;
+  font-size: 1.3rem;
+}
+
+.ant-text-input:focus {
+  transition: 0.2s;
+  border-color: #00798C;
+}
+
+.ant-searchBarContainer {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 2rem;
+  position: relative;
+}
+
+.ant-searchBar {
+  position: absolute;
+  left: 25%;
+  margin-left: 1rem;
+  top: 25%;
+  transform: translateY(-25%);
+  font-size: 2rem;
+  color: #00798c;
+}
+
+.ant-col button {
+  outline: none;
+} 
+
+/**Checkboxes **/
+.card-checkbox-col:hover i, .card-checkbox-col:hover h3, .card-checkbox-col:hover div{
+  transition: 0.2s;
+  border-color: #00798c!important;
+  color: #00798c!important;
+}
+
+.card-checkbox
+{
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  right: auto;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.card-checkbox:checked ~ div{
+  transition: 0.2s;
+  background: #00798c22!important;
+}
+
 .ant-layout {
   --scroll-bar: 0;
 }

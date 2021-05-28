@@ -48,13 +48,11 @@ function FourthSection() {
                   <span>{t("home.fourthSection.dedicatedProduction")}</span>
                 </div>
               </div>
-              <Route
-                render={({ history }) => (
-                  <button className={classes.btn} onClick={() => history.push("/instant-quote/register")}>
+              <a href="https://calendly.com/newbrands/informations">
+                  <button className={classes.btn}>
                     {t("home.fourthSection.select")}
                   </button>
-                )}
-              />
+              </a>
             </div>
           </div>
         </div>
@@ -93,13 +91,11 @@ function FourthSection() {
                   <span>{t("home.fourthSection.dedicatedProduction")}</span>
                 </div>
               </div>
-              <Route
-                render={({ history }) => (
-                  <button className={classes.btn} onClick={() => history.push("/committees/register")}>
+              <a href="https://calendly.com/newbrands/informations">
+                  <button className={classes.btn}>
                     {t("home.fourthSection.select")}
                   </button>
-                )}
-              />
+              </a>
             </div>
           </div>
         </div>

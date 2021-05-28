@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Row, Col } from "antd";
 import styled from "styled-components";
 import { CheckCircleFilled } from "@ant-design/icons";
+import { HiOutlineInformationCircle } from 'react-icons/hi'
 
 class CustomRadio extends Component {
   render() {
@@ -14,7 +15,7 @@ class CustomRadio extends Component {
           color: isSelected ? "#00798C" : "#000",
         }}
       >
-        <Row type="flex" style={{marginLeft: "0!important", marginRight: "0!important"}} gutter={24}>
+        <Row type="flex" style={{ marginLeft: "0!important", marginRight: "0!important" }} gutter={24}>
           <Col>
             <CheckCircleFilled
               style={{
@@ -26,6 +27,21 @@ class CustomRadio extends Component {
             />
           </Col>
           <Col>{this.props.title}</Col>
+          {this.props.info && <>
+            <Col style={{
+              marginLeft: "auto",
+              marginRight: "0",
+            }}>
+              <HiOutlineInformationCircle style={{
+                position: "relative",
+                zIndex: "2",
+                cursor: "default",
+                color: "#ddd",
+                fontSize: "1.5rem",
+                borderRadius: "500px",
+              }}
+              /></Col>
+          </>}
         </Row>
       </CustomRadioBtn>
     );

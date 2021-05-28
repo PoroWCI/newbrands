@@ -13,7 +13,7 @@ function NavigationBtn(props) {
         />
         <Route
             render={({ history }) => (
-                <button className={classes.btn} onClick={() => history.push(props.link)}>
+                <button className={`${classes.btn} ${props.next && classes.disabled}`} onClick={() => history.push(props.link)}>
                     Continuer
                 </button>
             )}

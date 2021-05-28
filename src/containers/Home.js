@@ -7,12 +7,14 @@ import Faq from '../components/Home/fifthSection'
 import Maker from '../components/Home/sixthSection'
 import LogoList from '../components/Home/seventhSection'
 import Footer from '../components/Footer/footer'
+import Partners from '../components/Home/Partners/partners'
 
 function Home() {
   return (
     <div>
       <Header page={"Home"} />
       <Optimize />
+      <Partners />
       <Services />
       <Simplify />
       <Prices />

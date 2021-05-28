@@ -38,25 +38,14 @@ function FirstSection() {
         <div>
           <div>
             <div className={classes.dottedHr}></div>
-            <form onSubmit={handleSubmit}>
-              <div className={classes.inputDiv}>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder={t("home.firstSection.mailInput")}
-                  required
-                  className={classes.mailInput}
-                  id="mail"
-                  onChange={handleChange}
-                  value={data.mail}
-                />
                 <div className={classes.btnDiv}>
-                  <button type="submit" name="submit" className={classes.btn}>
-                    {t("home.firstSection.btnNewsletter")}
+                  <button name="Créer un projet" className={`${classes.btn} ${classes.blueBtn}`}>
+                    {t("btn.createProject")}
                   </button>
-                </div>
+                  <button name="Demander une démo" className={`${classes.btn} ${classes.outlineBtn}`}>
+                    {t("btn.demo")}
+                  </button>
               </div>
-            </form>
             <div className={classes.validationMsg}>
           <span>
             {msgSent === true
@@ -72,9 +61,9 @@ function FirstSection() {
           <div>
             <span className={classes.lightText}>
               {t("home.firstSection.noSpamContainer")}
-              <span className={classes.boldText}>
+              <a href="https://calendly.com/newbrands/informations" className={classes.linkCommercial}>
                 {t("home.firstSection.noSpam")}
-              </span>
+              </a>
             </span>
           </div>
         </div>

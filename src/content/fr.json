@@ -9,11 +9,11 @@
     "home":{
         "firstSection": {
             "title": "Optimisons les chaînes de valeur de l’industrie textile française",
-            "subtitle": "NewBrands permet de simplifier et réduire les coûts de la chaîne de production Made In France en sélectionnant pour vous les acteurs les plus adaptés à vos projets de production.",
+            "subtitle": "NewBrands permet de simplifier et réduire les coûts de la chaîne de production Made In France et Made In Europe en sélectionnant pour vous les acteurs les plus adaptés à vos projets de productions.",
             "mailInput": "Entrez votre adresse e-mail",
             "btnNewsletter": "Être prévenu",
-            "noSpamContainer": "Nous vous préviendrons par e-mail de la disponibilité de notre plateforme gratuitement et sans engagement. ",
-            "noSpam": "Promis, sans spam."
+            "noSpamContainer": "Besoins d’informations complémentaires ?",
+            "noSpam": "Soyez recontacté par un commercial quand vous le souhaitez en cliquant ici"
         },
         "secondSection": {
             "title": "Nos services, votre marque",
@@ -113,5 +113,26 @@
     "footer": {
         "copyright": "© Copyright 2017-2021, NewBrands, SAS et ses partenaires / Siège Social: NEWBRANDS, 10 Place Vendôme, 75001 Paris. / № SIRET: 829 419 100 000 21 / № APE: 6201 Z / R.C.S: PARIS / № TVA: FR 23 829419100",
         "legals": "Mentions légales"
+    },
+    "createProject": {
+        "menu": {
+            "product": "Noms et nombre de produits",
+            "content": "Produits",
+            "file": "Photos/Documents",
+            "delai": "Délais attendus",
+            "livraison": "Lieu de livraison",
+            "budget": "Budget (facultatif)",
+            "info": "Description"
+        },
+        "submenu": {
+            "category": "Catégorie",
+            "matter": "Matière",
+            "grammage": "Grammage",
+            "gamme": "Gamme"
+        }
+    },
+    "btn" : {
+        "createProject": "Créer un projet",
+        "demo": "Demandez une demo"
     }
 }

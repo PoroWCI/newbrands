@@ -38,7 +38,7 @@ class UserInfo extends Component {
     const { pays } = this.state;
     return (
       <Layout>
-        <NavHeader title="Budget (facultatif)" />
+        <NavHeader title="Coordonnées" />
         <Content
           style={{
             margin: "0",
@@ -47,7 +47,7 @@ class UserInfo extends Component {
             backgroundColor: "white",
           }}
         >
-          <ContentTitle>Quel est votre budget ?</ContentTitle>
+          <ContentTitle>Vos coordonnées</ContentTitle>
           <ContentSubTitle>
             Merci de nous transmettre vos coordonnées afin de vous recontacter
           </ContentSubTitle>

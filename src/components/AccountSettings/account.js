@@ -84,7 +84,7 @@ function Dashboard() {
             resultsSiret = await axios(
                 `https://api.pappers.fr/v2/entreprise?api_token=4903a4d9aad033da2d7057e8c961859b2053fd859d86494b&siret=${query.siege.siret}`,
             )
-        getKbis(resultsSiret.data.extrait_immatriculation.token)
+        getKbis(resultsSiret.data?.extrait_immatriculation?.token)
         setDisabledInputs(true)
         setData(resultsSiret.data.nom_entreprise)
         setInputs(resultsSiret.data)

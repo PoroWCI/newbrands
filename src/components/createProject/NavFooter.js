@@ -28,9 +28,11 @@ class NavFooter extends Component {
         />
         <Row justify="space-between">
           <Col>
+          {this.props.percent !== 0 && <>
             <Link to={this.props.prev}>
               <ButtonFooterOutlined>Retour</ButtonFooterOutlined>
             </Link>
+            </>}
           </Col>
           <Col>
             {this.props.isFinished ? (

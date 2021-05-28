@@ -25,9 +25,9 @@
     display: block;
     h2 {
         font-weight: normal;
-        font-family: 'Gelion';
+        font-family: "Gelion";
     }
-    *{
+    * {
         display: inline;
     }
     align-items: center;
@@ -118,6 +118,29 @@
     }
 }
 
+.code {
+    transition: 0.3s;
+    border: 1px solid #e1e6e2;
+    width: 2rem;
+    border-radius: 10px;
+    outline: none;
+    height: 3rem;
+    text-align: center;
+    font-size: 2rem;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    &:focus {
+        transition: 0.3s;
+        border: 1px solid #333333;
+        outline: none;
+    }
+}
+
 .imgDiv {
     margin-left: -3rem;
     z-index: 2;
@@ -130,9 +153,36 @@
     }
 }
 
+.btnsContainer {
+    display: flex;
+    .backBtn {
+        cursor: pointer;
+        border-radius: 4px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Gelion SemiBold";
+        font-size: 1rem;
+        padding: 1rem;
+        margin-right: 1rem;
+        transition: 0.2s;
+        border: 1px solid #00798c;
+        color: #00798c;
+        &:hover {
+            transition: 0.2s;
+            background: transparent;
+            color: #333;
+            border-color: #333;
+        }
+    }
+}
+
 .filledBtn {
+    transition: 0.2s;
     cursor: pointer;
     border-radius: 4px;
+    margin-bottom: 1.5rem;
     width: 100%;
     height: 50px;
     display: flex;
@@ -145,8 +195,8 @@
     outline: none;
     border: 1px solid #00798c;
     &:hover {
+        transition: 0.2s;
         background: transparent;
         color: #00798c;
     }
 }
-
