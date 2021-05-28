@@ -24,16 +24,14 @@ function Header(props) {
   const [user, setUser] = useState([])
 
   useEffect(() => {
-    if (loggedIn) {
-      async function FetchData() {
-        axios.get(`${API}/api/user`, { headers: { "Authorization": `Bearer ${loggedIn}` } }).then((res) => {
-          window.localStorage.setItem('user', res.data)
-          setUser(res.data)
-          console.log("user:", res.data)
-        })
-      }
-      FetchData()
+    async function FetchData(){
+      axios.get(`${API}/api/user`, { headers: {"Authorization" : `Bearer ${loggedIn}`} }).then((res) => {
+        window.localStorage.setItem('user', res.data)
+        setUser(res.data)
+        console.log(user)
+      })
     }
+    FetchData()
   }, [])
   const handleBlur = (event) => {
     if (!event.currentTarget.contains(event.relatedTarget)) {
@@ -57,7 +55,7 @@ function Header(props) {
           />
         </div>
         <ul className={`${isActive === true ? classes.openMobile : null}
-        `}>
+        ${classes.bigMenu}`}>
           <Route
             render={({ history }) => (
               <li
@@ -70,7 +68,7 @@ function Header(props) {
               </li>
             )}
           />
-          {/* <Route
+          <Route
             render={({ history }) => (
               <li
                 className={`${classes.menuElement} ${props.page === "About" ? classes.active : ''}`}
@@ -93,13 +91,13 @@ function Header(props) {
                 </button>
               </li>
             )}
-          /> */}
+          />
 
-          {/* {!loggedIn ?
+          {loggedIn.length > 0 ?
             <div className={classes.profileMenuContainer} onClick={() => setOpenMenuProfile(!openMenuProfile)} tabIndex="0" onBlur={(e) => handleBlur(e)}>
               <div className={classes.profileDiv} >
                 <img className={classes.profilePicture} src={Picture} alt="profile" />
-                <span>{user.firstName} {user.lastName}</span>
+                <span>{ user.firstName} {  user.lastName}</span>
                 <span><AiFillCaretDown className={classes.dropDown} size=".5rem" /></span>
               </div>
               <div className={classes.pMenuContainer}>
@@ -148,7 +146,7 @@ function Header(props) {
                   )}
                 />
               </div>
-            </>} */}
+            </>}
         </ul>
       </div>
     </header>
