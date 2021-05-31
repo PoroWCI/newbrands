@@ -5,6 +5,7 @@ import NavHeader from "../../../../components/createProject/NavHeader";
 import CustomRadio from "../../../../components/createProject/customRadio";
 
 const { Content } = Layout;
+const index = document.location.pathname.split('/').pop();
 
 class ProductCategory extends Component {
     constructor(props) {
@@ -12,6 +13,7 @@ class ProductCategory extends Component {
         this.state = {
             selectedDelay: 0,
             date: "",
+            products: JSON.parse(localStorage.getItem("products"))
         };
         this.handleClick = this.handleClick.bind(this);
     }
@@ -35,9 +37,10 @@ class ProductCategory extends Component {
     };
 
     render() {
+        console.log("index:", index)
         return (
             <Layout>
-                <NavHeader title="Produit 1 : catégorie" />
+                <NavHeader title={`${this.state.products[index].name} : catégorie`} />
                 <Content
                     style={{
                         margin: "0",
@@ -47,7 +50,7 @@ class ProductCategory extends Component {
                     }}
                 >
                     <ContentSubTitle>
-                        Robes de cockail Nicole (4 pièces)
+                    {this.state.products[index].name} ({this.state.products[index].quantity} pièces)
             </ContentSubTitle>
                     <ContentTitle>Catégorie de produit</ContentTitle>
                     <ContentSubTitle>

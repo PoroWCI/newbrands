@@ -23,12 +23,16 @@ function NavSider(props) {
         await axios.post(API + "/api/project").then((result) => {
           localStorage.setItem("projectId", result.data.idProject)
           // localStorage.setItem("projectId", "4b7bf1f9-bd22-11eb-9a36-0050b6027878")
+        
         })
-        await axios.get(`${API}/api/project/${localStorage.getItem("projectId")}`).then((result) => {
-          setProducts(result.data.project[0].product)
-        })
-        setPage(1)
+        
       }
+      await axios.get(`${API}/api/project/${localStorage.getItem("projectId")}`).then((result) => {
+        setProducts(result.data.project[0].product)
+        localStorage.setItem("products", JSON.stringify(result.data.project[0].product))
+        console.log(result.data)
+      })
+      setPage(1)
     }
     fetchData()
   }, [localStorage])
@@ -57,7 +61,6 @@ function NavSider(props) {
         style={{ backgroundColor: "#F8F5F5" }}
       >
         <CustomItem
-          key={1}
           className="customclass"
         >
           <LinkButton to="/createProject">Type</LinkButton>
@@ -88,13 +91,14 @@ function NavSider(props) {
                 </span>
                 }
               >
-                {products.map((product, index) => {
-                  return (<Menu.ItemGroup key={index} title={product.name}>
+                {products.map((product, indexProduct) => {
+                  return (<Menu.ItemGroup key={indexProduct} title={product.name}>
                     {JSON.parse(localStorage.getItem("workflow")).map((menu, index) => {
+                      console.log("product", product)
                       if (menu.typeStep === "product") {
                         return (
                           <CustomItem key={index} >
-                            <LinkButton to={`/createProject/${menu.nameStep}`}>{t(`createProject.submenu.${menu.nameStep}`)}</LinkButton>
+                            <LinkButton to={`/createProject/${menu.nameStep}/${indexProduct}`}>{t(`createProject.submenu.${menu.nameStep}`)}</LinkButton>
                           </CustomItem>
                         )
                       }

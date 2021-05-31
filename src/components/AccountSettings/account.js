@@ -101,8 +101,8 @@ function Dashboard() {
                         <IoSettingsOutline className={classes.changePicture} color="#FFF" />
                     </div>
                     <div className={classes.profileName}>
-                        <h2>John Dupont</h2>
-                        <h2><span className={classes.companyName}>Zara</span><span className={classes.country}>France</span></h2>
+                        <h2>{`${JSON.parse(localStorage.getItem("user")).firstName} ${JSON.parse(localStorage.getItem("user")).lastName}`}</h2>
+                        <h2><span className={classes.companyName}>{JSON.parse(localStorage.getItem("user")).company[0].name}</span><span className={classes.country}>France</span></h2>
                     </div>
                 </div>
                 <div className={classes.formContainer}>

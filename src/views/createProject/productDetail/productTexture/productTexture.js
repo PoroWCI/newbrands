@@ -10,11 +10,14 @@ import { AiOutlineSearch } from 'react-icons/ai'
 const { Content } = Layout;
 let counting = [];
 let noResult = true;
+const index = document.location.pathname.split('/').pop();
+
 class ProductDelay extends Component {
     state = {
         matters: [],
         count: 0,
-        render: ""
+        render: "",
+        products: JSON.parse(localStorage.getItem("products"))
     }
 
     getData() {
@@ -40,7 +43,7 @@ class ProductDelay extends Component {
     }
   
   componentWillUnmount() {
-      axios.post(API + '/product/'+ this.state.count + "matter").then(
+      axios.post(API + '/product/'+ this.state.count + "/matter").then(
           res => {
               console.log(res)
           }
@@ -50,7 +53,7 @@ class ProductDelay extends Component {
     render() {
         return (
             <Layout>
-                <NavHeader title="Produit 1 : matière" />
+                <NavHeader title={`${this.state.products[index].name} : matière`} />
                 <Content
                     style={{
                         margin: "0",
@@ -60,7 +63,7 @@ class ProductDelay extends Component {
                     }}
                 >
                     <ContentSubTitle>
-                        Robes de cockail Nicole (4 pièces)   </ContentSubTitle>
+                    {this.state.products[index].name} ({this.state.products[index].quantity} pièces)   </ContentSubTitle>
                     <ContentTitle>Matières souhaitées</ContentTitle>
                     <ContentSubTitle>
                         Durant cet OnBoarding, plusieurs questions vont vous êtres posées afin de comprendre au mieux votre activité afin d’établir une offre correspondant à vos besoins adapté à votre projet.

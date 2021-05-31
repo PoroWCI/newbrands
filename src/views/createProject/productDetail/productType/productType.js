@@ -8,6 +8,7 @@ import { API } from '../../../../config'
 import axios from 'axios'
 
 const { Content } = Layout;
+const index = document.location.pathname.split('/').pop();
 
 class ProductType extends Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class ProductType extends Component {
     this.state = {
       selectedType: 0,
       date: "",
-      displayCategories: []
+      displayCategories: [],
+      products: JSON.parse(localStorage.getItem("products"))
     };
   }
 
@@ -44,14 +46,14 @@ class ProductType extends Component {
     axios.get(`${API}/api/gamme?id=${localStorage.getItem("projectId")}`)
       .then(res => {
         console.log(res)
-        // this.setState({ ...this.state, displayCategories: res.data })
+        // this.setState({ ...this.state, displayCategories: {matter :res.data} })
       })
   }
 
   render() {
     return (
       <Layout>
-        <NavHeader title="Produit 1 : gamme" />
+       <NavHeader title={`${this.state.products[index].name} : gamme`} />
         <Content
           style={{
             margin: "0",
@@ -61,7 +63,7 @@ class ProductType extends Component {
           }}
         >
           <ContentSubTitle>
-            Robes de cockail Nicole (4 pièces)
+          {this.state.products[index].name} ({this.state.products[index].quantity} pièces) 
           </ContentSubTitle>
           <ContentTitle>Gamme de votre produit</ContentTitle>
           <ContentSubTitle>

@@ -26,9 +26,9 @@ function Header(props) {
   useEffect(() => {
     async function FetchData(){
       axios.get(`${API}/api/user`, { headers: {"Authorization" : `Bearer ${loggedIn}`} }).then((res) => {
-        window.localStorage.setItem('user', res.data)
+        window.localStorage.setItem('user', JSON.stringify(res.data))
         setUser(res.data)
-        console.log(user)
+        console.log("user:", user)
       })
     }
     FetchData()

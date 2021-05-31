@@ -52,6 +52,19 @@ class RowNumberProduct extends Component {
             />
           </ThemeProvider>
         </Col>
+        <Col span={8}>
+          <ThemeProvider theme={theme}>
+            <TextField
+              type="text"
+              fullWidth
+              id="filled-secondary"
+              label={<CustomLabelInput>Taille</CustomLabelInput>}
+              variant="outlined"
+              color="primary"
+              onChange={this.props.onInput3}
+            />
+          </ThemeProvider>
+        </Col>
       </Row>
     );
   }

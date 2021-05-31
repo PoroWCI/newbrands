@@ -5,26 +5,47 @@ import { ContentTitle } from "../../../components/global";
 import NavHeader from "../../../components/createProject/NavHeader";
 import "./numberProduct.css";
 import RowNumberProduct from "../../../components/createProject/RowNumberProduct";
+import axios from "axios";
+import { API } from "../../../config";
+import { createNoSubstitutionTemplateLiteral } from "typescript";
 
 const { Content } = Layout;
 
 class NumberProduct extends Component {
   state = {
-    number: 1,
-    data: [{ name: "", number: "" }],
+    quantity: 1,
+    data: [{ name: "", quantity: "", size: "" }],
   };
 
-  changeState(index, name, number) {
+  // componentDidMount() {
+  //   await axios.get(`${API}/api/project/${localStorage.getItem("projectId")}`).then((result) => {
+  //     setProducts(result.data.project[0].product)
+  //     console.log(result.data)
+  //   })
+  // }
+
+  componentWillUnmount() {
+    const req = {productSelection : this.state.data}
+    console.log(req)
+    axios.post(`${API}/api/project/${localStorage.getItem("projectId")}/product`, req).then(
+        res => {
+            console.log(res)
+        }
+    )
+}
+
+  changeState(index, name, quantity, size) {
     const { data } = this.state;
 
     data[index].name = name;
-    data[index].number = number;
+    data[index].quantity = quantity;
+    data[index].size = size;
     this.setState({ data });
   }
 
   render() {
     const { data } = this.state;
-
+    console.log(this.state.data)
     return (
       <Layout>
         <NavHeader title="Noms et nombre de produit" />
@@ -53,15 +74,15 @@ class NumberProduct extends Component {
               size="large"
               onClick={() => {
                 const { data } = this.state;
-                if (this.state.number > 1) {
+                if (this.state.quantity > 1) {
                   data.pop();
                   this.setState({ data });
-                  this.setState({ number: this.state.number - 1 });
+                  this.setState({ quantity: this.state.quantity - 1 });
                 }
               }}
             />
             <ContentTitle style={{ margin: "10px 30px" }}>
-              {this.state.number}
+              {this.state.quantity}
             </ContentTitle>
 
             <Button
@@ -77,9 +98,9 @@ class NumberProduct extends Component {
               onClick={() => {
                 const { data } = this.state;
 
-                data.push({ name: "", number: "" });
+                data.push({ name: "", quantity: "", size: "" });
                 this.setState({ data });
-                this.setState({ number: this.state.number + 1 });
+                this.setState({ quantity: this.state.quantity + 1 });
               }}
             />
           </Row>
@@ -93,10 +114,13 @@ class NumberProduct extends Component {
             {data.map((e, index) => (
               <RowNumberProduct key={index}
                 onInput1={(str) =>
-                  this.changeState(index, str.currentTarget.value, e.number)
+                  this.changeState(index, str.currentTarget.value, e.quantity, e.size)
                 }
                 onInput2={(str) =>
-                  this.changeState(index, e.name, str.currentTarget.value)
+                  this.changeState(index, e.name, str.currentTarget.value, e.size)
+                }
+                onInput3={(str) =>
+                  this.changeState(index, e.name, e.quantity, str.currentTarget.value)
                 }
               />
             ))}

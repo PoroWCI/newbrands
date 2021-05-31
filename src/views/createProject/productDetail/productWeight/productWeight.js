@@ -5,6 +5,7 @@ import NavHeader from "../../../../components/createProject/NavHeader";
 import CustomTextField from "../../../../components/createProject/customTextField";
 
 const { Content } = Layout;
+const index = document.location.pathname.split('/').pop();
 
 class ProductWeight extends Component {
     constructor(props) {
@@ -12,6 +13,7 @@ class ProductWeight extends Component {
         this.state = {
             selectedDelay: 0,
             date: "",
+            products: JSON.parse(localStorage.getItem("products"))
         };
         this.handleClick = this.handleClick.bind(this);
     }
@@ -37,7 +39,7 @@ class ProductWeight extends Component {
     render() {
         return (
             <Layout>
-                <NavHeader title="Produit 1 : grammage" />
+               <NavHeader title={`${this.state.products[index].name} : grammage`} />
                 <Content
                     style={{
                         margin: "0",
@@ -47,7 +49,7 @@ class ProductWeight extends Component {
                     }}
                 >
                     <ContentSubTitle>
-                        Robes de cockail Nicole (4 pièces)
+                    {this.state.products[index].name} ({this.state.products[index].quantity} pièces) 
                       </ContentSubTitle>
                     <ContentTitle>Grammages souhaitées</ContentTitle>
                     <ContentSubTitle>

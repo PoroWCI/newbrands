@@ -129,7 +129,7 @@ class App extends Component {
               if (menu.nameStep === "content")
                 return false
               return (<Route
-                exact
+              key={index}
                 path={`/createProject/${menu.nameStep}`}
                 render={() => (
                   <>
