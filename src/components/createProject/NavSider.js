@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import { Layout, Menu } from "antd";
 import { Link } from "react-router-dom";
 import { LogoBrand, SiderTitle } from "../global";
@@ -9,35 +9,42 @@ import { useEffect } from "react";
 import axios from "axios";
 import { API } from "../../config";
 
+import { connect, useDispatch } from 'react-redux'
+
 const { Sider } = Layout;
 const { Item, SubMenu } = Menu;
 
 function NavSider(props) {
-  const [page, setPage] = useState(0)
-  const [products, setProducts] = useState([])
   const { t } = useTranslation("common");
-  console.log(localStorage)
-  useEffect(() => {
-    async function fetchData() {
-      if (localStorage.getItem("projectId") === null) {
-        await axios.post(API + "/api/project").then((result) => {
-          localStorage.setItem("projectId", result.data.idProject)
-          // localStorage.setItem("projectId", "4b7bf1f9-bd22-11eb-9a36-0050b6027878")
-        
+  const dispatch = useDispatch()
+    useEffect(() => {
+      function fetchData() {
+        if (!props.projectId) {
+          axios.post(API + "/api/project").then((result) => {
+            dispatch({
+              type: "updateProjectId",
+              payload: result.data.idProject
+            })
+          })
+        }
+        else {
+          console.log(props.projectId)
+        axios.get(`${API}/api/project/${props.projectId}`).then((result) => {
+          dispatch({
+            type: "updateProducts",
+            payload: result.data.project[0].product
+          })
         })
-        
+        }
       }
-      await axios.get(`${API}/api/project/${localStorage.getItem("projectId")}`).then((result) => {
-        setProducts(result.data.project[0].product)
-        localStorage.setItem("products", JSON.stringify(result.data.project[0].product))
-        console.log(result.data)
-      })
-      setPage(1)
-    }
-    fetchData()
-  }, [localStorage])
 
-  console.log(products)
+      fetchData()
+    }, [])
+
+    useEffect(() => {
+      
+    }, [props.workflow])
+
   return (
     <Sider
       trigger={null}
@@ -50,8 +57,6 @@ function NavSider(props) {
     >
       <Link to="/createProject/">
         <LogoBrand src={Logo} alt="NewBrands" />
-        {/* <button onClick={this.props.debug}>Debug</button>
-          <button onClick={() => localStorage.clear()}>Clear</button> */}
       </Link>
       <SiderTitle>Parlez nous de votre projet</SiderTitle>
       <Menu
@@ -65,7 +70,7 @@ function NavSider(props) {
         >
           <LinkButton to="/createProject">Type</LinkButton>
         </CustomItem>
-        {JSON.parse(localStorage.getItem("workflow"))?.map((menu, index) => {
+        {props.workflow?.map((menu, index) => {
           if (menu.typeStep !== "product" && menu.nameStep !== "content")
             return (
               <CustomItem
@@ -91,10 +96,10 @@ function NavSider(props) {
                 </span>
                 }
               >
-                {products.map((product, indexProduct) => {
+                {props.products?.length > 0 && props.products.map((product, indexProduct) => {
                   return (<Menu.ItemGroup key={indexProduct} title={product.name}>
-                    {JSON.parse(localStorage.getItem("workflow")).map((menu, index) => {
-                      console.log("product", product)
+                    {props.workflow.map((menu, index) => {
+                      // console.log("product", product)
                       if (menu.typeStep === "product") {
                         return (
                           <CustomItem key={index} >
@@ -109,6 +114,7 @@ function NavSider(props) {
               </SubMenu>
             )
           }
+          return false
         })}
         <CustomItem
           key="12"
@@ -225,7 +231,17 @@ function NavSider(props) {
 }
 
 
-export default NavSider;
+
+const mapStateToProps = (state) => {
+  return {
+      projectId: state.projectId,
+      workflow: state.workflow,
+      products: state.products
+  }
+}
+
+export default connect(mapStateToProps, null)(NavSider)
+
 
 const LinkButton = styled(Link)`
   color: black !important;

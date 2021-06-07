@@ -6,54 +6,57 @@ import { API } from '../../../../config'
 import axios from 'axios'
 import CustomRadio from "../../../../components/createProject/customRadio";
 import { AiOutlineSearch } from 'react-icons/ai'
+import { connect } from 'react-redux'
 
 const { Content } = Layout;
 let counting = [];
-let noResult = true;
-const index = document.location.pathname.split('/').pop();
+let index = document.location.pathname.split('/').pop();
 
 class ProductDelay extends Component {
     state = {
         matters: [],
         count: 0,
         render: "",
-        products: JSON.parse(localStorage.getItem("products"))
+        products: this.props.products
     }
 
     getData() {
         axios.get(API + '/api/matter')
-        .then(res => {
-            const matters = res.data
-            matters.map((value) => {
-
-                this.state.matters[value.nameMatterType] ?
-                    this.setState({
-                        matters: { ...this.state.matters, [value.nameMatterType]: this.state.matters[value.nameMatterType].concat([{ id: value.id, title: value.title, checked: false }]) }
-                    })
-                    :
-                    this.setState({
-                        matters: { ...this.state.matters, [value.nameMatterType]: [{ id: value.id, title: value.title, checked: false }] }
-                    })
+            .then(res => {
+                const matters = res.data
+                setTimeout(() => {
+                matters.map((value) => {
+                    this.state.matters[value.nameMatterType] ?
+                        this.setState({
+                            matters: { ...this.state.matters, [value.nameMatterType]: this.state.matters[value.nameMatterType].concat([{ id: value.id, title: value.title, checked: false }]) }
+                        })
+                        :
+                        this.setState({
+                            matters: { ...this.state.matters, [value.nameMatterType]: [{ id: value.id, title: value.title, checked: false }] }
+                        })
+                    return false
+                })
+            }, 200)
             })
-        })
     }
 
     componentDidMount() {
-      this.getData()
+        this.getData()
+        index = document.location.pathname.split('/').pop();
     }
-  
-  componentWillUnmount() {
-      axios.post(API + '/product/'+ this.state.count + "/matter").then(
-          res => {
-              console.log(res)
-          }
-      )
-  }
+
+    componentWillUnmount() {
+        axios.post(API + '/product/' + this.state.count + "/matter").then(
+            res => {
+                console.log(res)
+            }
+        )
+    }
 
     render() {
         return (
             <Layout>
-                <NavHeader title={`${this.state.products[index].name} : matière`} />
+                <NavHeader title={`${this.state.products[index]?.name} : matière`} />
                 <Content
                     style={{
                         margin: "0",
@@ -63,7 +66,7 @@ class ProductDelay extends Component {
                     }}
                 >
                     <ContentSubTitle>
-                    {this.state.products[index].name} ({this.state.products[index].quantity} pièces)   </ContentSubTitle>
+                        {this.state.products[index]?.name} ({this.state.products[index]?.quantity} pièces)   </ContentSubTitle>
                     <ContentTitle>Matières souhaitées</ContentTitle>
                     <ContentSubTitle>
                         Durant cet OnBoarding, plusieurs questions vont vous êtres posées afin de comprendre au mieux votre activité afin d’établir une offre correspondant à vos besoins adapté à votre projet.
@@ -71,8 +74,8 @@ class ProductDelay extends Component {
                     <center className="ant-searchBarContainer">
                         <AiOutlineSearch className="ant-searchBar" />
                         <input type="text" value={this.state.search} onChange={(e) => this.setState({ search: e.target.value })} className="ant-text-input" placeholder="Recherchez par nom, matières ou référence..." />
-                    <span href="#" className="ant-search-link" onClick={() => {this.state.matters.length === 0 ? this.getData() : this.setState({matters : []}); counting = []}}>
-                        {this.state.matters.length === 0 ? "Retour à la recherche" : "Recherche personnalisée ?"} 
+                        <span href="#" className="ant-search-link" onClick={() => { this.state.matters.length === 0 ? this.getData() : this.setState({ matters: [] }); counting = [] }}>
+                            {this.state.matters.length === 0 ? "Retour à la recherche" : "Recherche personnalisée ?"}
                         </span>
                     </center>
                     <Row gutter={[24, 24]} style={{ paddingTop: "3rem" }}>
@@ -87,7 +90,6 @@ class ProductDelay extends Component {
                                     {matterCategory[1].map((matter, index) => {
                                         if (matter.title.toLowerCase().search(this.state.search?.toLowerCase()) !== -1 || this.state.search.length === 0) {
                                             counting[matterCategory[0]]++
-                                            noResult = false
                                             return <CustomRadio
                                                 onClick={() => { this.setState({ ...this.state.matters[matterCategory[0]][index].checked = !matter.checked }); matter.checked ? this.setState((prevState) => ({ count: prevState.count + 1 })) : this.setState((prevState) => ({ count: prevState.count - 1 })) }}
                                                 key={index}
@@ -98,19 +100,22 @@ class ProductDelay extends Component {
                                         }
                                         else
                                             counting.splice(matterCategory[0], 1)
+                                        return false;
                                     })}
                                 </Col>
                                 if (counting[matterCategory[0]] > 0) {
                                     return render
                                 }
+                                return false
                             }
                             )
                         }
                     </Row>
                     {Object.entries(counting).map((matter, index) => {
                         if (matter[1] === 0)
-                           delete counting[matter[0]]
-                        }
+                            delete counting[matter[0]]
+                        return false;
+                    }
                     )}
                     {Object.keys(counting).length === 0 &&
                         <center className="antd-no-result">
@@ -129,4 +134,12 @@ class ProductDelay extends Component {
     }
 }
 
-export default ProductDelay;
+
+const mapStateToProps = (state) => {
+    return {
+      projectId: state.projectId,
+      products: state.products
+    }
+  }
+  
+  export default connect(mapStateToProps, null)(ProductDelay)

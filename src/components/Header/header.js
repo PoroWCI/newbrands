@@ -17,19 +17,20 @@ import { API } from "../../config";
 axios.defaults.headers.common['Authorization'] = localStorage.getItem("session")
 
 function Header(props) {
-  const loggedIn = window.localStorage.getItem('session') ? window.localStorage.getItem('session') : "";
+  // const loggedIn = window.localStorage.getItem('session') ? window.localStorage.getItem('session') : "";
+  const loggedIn = "" 
   const { t } = useTranslation("common");
   const [isActive, setIsActive] = useState(false);
   const [openMenuProfile, setOpenMenuProfile] = useState(false);
   const [user, setUser] = useState([])
 
   useEffect(() => {
-    async function FetchData(){
-      axios.get(`${API}/api/user`, { headers: {"Authorization" : `Bearer ${loggedIn}`} }).then((res) => {
-        window.localStorage.setItem('user', JSON.stringify(res.data))
-        setUser(res.data)
-        console.log("user:", user)
-      })
+    async function FetchData() {
+      if (loggedIn.length > 0 && !window.localStorage.getItem('user'))
+        axios.get(`${API}/api/user`, { headers: { "Authorization": `Bearer ${loggedIn}` } }).then((res) => {
+          window.localStorage.setItem('user', JSON.stringify(res.data))
+          setUser(res.data)
+        })
     }
     FetchData()
   }, [])
@@ -54,8 +55,7 @@ function Header(props) {
             {...{ isActive, toggleButton }}
           />
         </div>
-        <ul className={`${isActive === true ? classes.openMobile : null}
-        ${classes.bigMenu}`}>
+        <ul className={`${isActive === true ? classes.openMobile : null}`}>
           <Route
             render={({ history }) => (
               <li
@@ -68,7 +68,7 @@ function Header(props) {
               </li>
             )}
           />
-          <Route
+          {/* <Route
             render={({ history }) => (
               <li
                 className={`${classes.menuElement} ${props.page === "About" ? classes.active : ''}`}
@@ -91,17 +91,22 @@ function Header(props) {
                 </button>
               </li>
             )}
-          />
+          /> */}
 
           {loggedIn.length > 0 ?
             <div className={classes.profileMenuContainer} onClick={() => setOpenMenuProfile(!openMenuProfile)} tabIndex="0" onBlur={(e) => handleBlur(e)}>
               <div className={classes.profileDiv} >
                 <img className={classes.profilePicture} src={Picture} alt="profile" />
-                <span>{ user.firstName} {  user.lastName}</span>
+                <span>{window.localStorage.getItem('user') ? JSON.parse(window.localStorage.getItem('user')).firstName : user.firstName}{` `}
+                  {window.localStorage.getItem('user') ? JSON.parse(window.localStorage.getItem('user')).lastName : user.lastName}</span>
                 <span><AiFillCaretDown className={classes.dropDown} size=".5rem" /></span>
               </div>
               <div className={classes.pMenuContainer}>
                 {openMenuProfile ? <ul className={classes.profileMenu}>
+                  <Route
+                    render={({ history }) => (
+                      <li onClick={() => history.push("/dashboard")}><img src={User} alt="Dashboard" />Dashboard</li>)}
+                  />
                   <Route
                     render={({ history }) => (
                       <li onClick={() => history.push("/account/informations")}><img src={User} alt="my account" />Mon compte</li>)}
@@ -116,13 +121,13 @@ function Header(props) {
                   />
                   <Route
                     render={({ history }) => (
-                      <li onClick={() => { window.localStorage.removeItem('session'); history.push("/") }}><img src={Lock} alt="Sign out" />Déconnexion</li>)}
+                      <li onClick={() => { window.localStorage.clear(); history.push("/") }}><img src={Lock} alt="Sign out" />Déconnexion</li>)}
                   />
 
                 </ul> : (null)}
               </div>
             </div> : <>
-              <div className={classes.unloggedMenu}>
+              {/* <div className={classes.unloggedMenu}>
                 <Route
                   render={({ history }) => (
                     <li
@@ -145,7 +150,7 @@ function Header(props) {
                     </li>
                   )}
                 />
-              </div>
+              </div> */}
             </>}
         </ul>
       </div>

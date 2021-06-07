@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Switch, Route, Redirect } from "react-router-dom";
 import "../../index.css";
 import "./CreateProject.css";
 import { Layout } from "antd";
@@ -19,13 +19,12 @@ import ProductWeight from "./productDetail/productWeight/productWeight";
 import ProductType from "./productDetail/productType/productType";
 import ProductCategory from "./productDetail/productCategory/productCategory";
 
-let workflow = []
+import { connect } from 'react-redux'
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.goNext = this.goNext.bind(this);
-    this.debugMax = this.debugMax.bind(this);
 
     this.state = {
       maxPage: 1,
@@ -34,11 +33,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-
     localStorage.getItem("maxPage") &&
       this.setState({
         maxPage: localStorage.getItem("maxPage"),
-        workflow: JSON.parse(localStorage.getItem("workflow"))
       });
   }
 
@@ -61,18 +58,7 @@ class App extends Component {
     }
   }
 
-  allFinished() {
-    window.location.replace("/successMessage");
-  }
-
-  debugMax() {
-    console.log(this.state.maxPage);
-    console.log("==");
-    console.log(this.state.currentPage);
-  }
-
   render() {
-    console.log("CURRENTPAGE:", this.state.currentPage)
     return (
       <Switch>
         <Layout
@@ -85,7 +71,6 @@ class App extends Component {
           <NavSider
             maxPage={this.state.maxPage}
             currentPage={this.state.currentPage}
-            debug={this.debugMax}
           />
           <Layout style={{ minHeight: "80vh" }}>
             <Route
@@ -104,8 +89,9 @@ class App extends Component {
                 </>
               )}
             />
-            {this.state.workflow?.map((menu, index) => {
+            {this.props.workflow?.map((menu, index) => {
               let component = <TypeProject />
+
               if (menu.nameStep === "product")
                 component = <NumberProduct />
               if (menu.nameStep === "file")
@@ -129,16 +115,19 @@ class App extends Component {
               if (menu.nameStep === "content")
                 return false
               return (<Route
-              key={index}
+                key={window.location.pathname + index}
                 path={`/createProject/${menu.nameStep}`}
                 render={() => (
                   <>
-                    {this.setCurrentPage(index)}
                     {component}
                     <NavFooter
                       percent={index * 10}
-                      next={`/createProject/${this.state.workflow[index + 1]?.nameStep}`}
-                      prev={`/createProject/${this.state.workflow[index - 1]?.nameStep}`}
+                      next={`/createProject/${menu.nameStep === "info" ? "userInfo" : menu.nameStep === "gamme" ? "file" : menu.nameStep !== "product" ? 
+                      (this.props.workflow[index + 1]?.typeStep === "product" ? 
+                      this.props.workflow[index + 1].nameStep + "/" + document.location.pathname.split('/').pop() 
+                      : this.props.workflow[index + 1]?.nameStep) 
+                      : "category/0"}`}
+                      prev={`/createProject/${this.props.workflow[index - 1]?.nameStep}`}
                       goNext={this.goNext}
                     />
                   </>
@@ -149,7 +138,7 @@ class App extends Component {
               path="/createProject/userInfo"
               render={() => (
                 <>
-                  {this.setCurrentPage(this.state.workflow.length + 1)}
+                  {this.setCurrentPage(this.props.workflow.length + 1)}
                   <UserInfo />
                   <NavFooter
                     percent={100}
@@ -167,214 +156,15 @@ class App extends Component {
         </Layout>
       </Switch>
     );
-    // return (
-    //   <>
-    //     <Router>
-    //       <Switch>
-    //         <Layout
-    //           style={{
-    //             minHeight: "100vh",
-    //             marginLeft: "300px",
-    //             paddingBottom: "120px",
-    //           }}
-    //         >
-    //           <NavSider
-    //             maxPage={this.state.maxPage}
-    //             currentPage={this.state.currentPage}
-    //             debug={this.debugMax}
-    //           />
-    //           <Layout style={{ minHeight: "80vh" }}>
-    //             <Route
-    //               exact
-    //               path="/createProject"
-    //               render={() => (
-    //                 <>
-    //                   {this.setCurrentPage(1)}
-    //                   <TypeProject />
-    //                   <NavFooter
-    //                     percent={0}
-    //                     next="/createProject/numberProduct"
-    //                     prev="/"
-    //                     goNext={this.goNext}
-    //                   />
-    //                 </>
-    //               )}
-    //             />
-    //             <Route
-    //               path="/createProject/numberProduct"
-    //               render={() => (
-    //                 <>
-    //                   {this.setCurrentPage(2)}
-    //                   <NumberProduct />
-    //                   <NavFooter
-    //                     percent={0+10}
-    //                     next="/createProject/productDetail"
-    //                     prev="/createProject/"
-    //                     goNext={this.goNext}
-    //                   />
-    //                 </>
-    //               )}
-    //             />
-    //             <Route
-    //               path="/createProject/productDetail"
-    //               render={() => (
-    //                 <>
-    //                   {this.setCurrentPage(3)}
-    //                   <ProductTexture />
-    //                   <NavFooter
-    //                     percent={20}
-    //                     prev="/createProject/numberProduct"
-    //                     next="/createProject/productWeight"
-    //                     goNext={this.goNext}
-    //                   />
-    //                 </>
-    //               )}
-    //             />
-    //             <Route
-    //               path="/createProject/productWeight"
-    //               render={() => (
-    //                 <>
-    //                   {this.setCurrentPage(3)}
-    //                   <ProductWeight />
-    //                   <NavFooter
-    //                     percent={30}
-    //                     prev="/createProject/productDetail"
-    //                     next="/createProject/productType"
-    //                     goNext={this.goNext}
-    //                   />
-    //                 </>
-    //               )}
-    //             />
-    //             <Route
-    //               path="/createProject/productType"
-    //               render={() => (
-    //                 <>
-    //                   {this.setCurrentPage(3)}
-    //                   <ProductType />
-    //                   <NavFooter
-    //                     percent={40}
-    //                     prev="/createProject/productWeight"
-    //                     next="/createProject/productCategory"
-    //                     goNext={this.goNext}
-    //                   />
-    //                 </>
-    //               )}
-    //             />
-    //             <Route
-    //               path="/createProject/productCategory"
-    //               render={() => (
-    //                 <>
-    //                   {this.setCurrentPage(3)}
-    //                   <ProductCategory />
-    //                   <NavFooter
-    //                     percent={50}
-    //                     prev="/createProject/productType"
-    //                     next="/createProject/productDelay"
-    //                     goNext={this.goNext}
-    //                   />
-    //                 </>
-    //               )}
-    //             />
-    //             <Route
-    //               path="/createProject/productDelay"
-    //               render={() => (
-    //                 <>
-    //                   {this.setCurrentPage(3)}
-    //                   <ProductDelay />
-    //                   <NavFooter
-    //                     percent={60}
-    //                     prev="/createProject/productCategory"
-    //                     next="/createProject/placeOfShip"
-    //                     goNext={this.goNext}
-    //                   />
-    //                 </>
-    //               )}
-    //             />
-    //             <Route
-    //               path="/createProject/placeOfShip"
-    //               render={() => (
-    //                 <>
-    //                   {this.setCurrentPage(4)}
-    //                   <PlaceOfShip />
-    //                   <NavFooter
-    //                     percent={70}
-    //                     prev="/createProject/productDelay"
-    //                     next="/createProject/documentsProject"
-    //                     goNext={this.goNext}
-    //                   />
-    //                 </>
-    //               )}
-    //             />
-    //             <Route
-    //               path="/createProject/documentsProject"
-    //               render={() => (
-    //                 <>
-    //                   {this.setCurrentPage(5)}
-    //                   <DocumentsProject />
-    //                   <NavFooter
-    //                     percent={80}
-    //                     prev="/createProject/placeOfShip"
-    //                     next="/createProject/descriptionProject"
-    //                     goNext={this.goNext}
-    //                   />
-    //                 </>
-    //               )}
-    //             />
-    //             <Route
-    //               path="/createProject/descriptionProject"
-    //               render={() => (
-    //                 <>
-    //                   {this.setCurrentPage(6)}
-    //                   <DescriptionProject />
-    //                   <NavFooter
-    //                     percent={95}
-    //                     prev="/createProject/documentsProject"
-    //                     next="/createProject/budgetProject"
-    //                     goNext={this.goNext}
-    //                   />
-    //                 </>
-    //               )}
-    //             />
-    //             <Route
-    //               path="/createProject/budgetProject"
-    //               render={() => (
-    //                 <>
-    //                   {this.setCurrentPage(7)}
-    //                   <BudgetProject />
-    //                   <NavFooter
-    //                     percent={97}
-    //                     prev="/createProject/descriptionProject"
-    //                     next="/createProject/userInfo"
-    //                     goNext={this.goNext}
-    //                   />
-    //                 </>
-    //               )}
-    //             />
-    //             <Route
-    //               path="/createProject/userInfo"
-    //               render={() => (
-    //                 <>
-    //                   {this.setCurrentPage(8)}
-    //                   <UserInfo />
-    //                   <NavFooter
-    //                     percent={100}
-    //                     prev="/createProject/budgetProject"
-    //                     goNext={this.allFinished}
-    //                     isFinished={true}
-    //                   />
-    //                 </>
-    //               )}
-    //             />
-    //             <Route path ="/dashboard">
-    //               <Redirect to="/dashboard" />
-    //             </Route>
-    //           </Layout>
-    //         </Layout>
-    //       </Switch>
-    //     </Router>
-    //   </>
-    // );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    projectId: state.projectId,
+    workflow: state.workflow,
+    products: state.products
+  }
+}
+
+export default connect(mapStateToProps, null)(App)

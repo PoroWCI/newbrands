@@ -22,22 +22,36 @@ const theme = createMuiTheme({
 });
 
 class RowNumberProduct extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {defaultValue1: props.defaultValue1, defaultValue2: props.defaultValue2, defaultValue3: props.defaultValue3}
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({defaultValue1: this.props.defaultValue1, defaultValue2: this.props.defaultValue2, defaultValue3: this.props.defaultValue3})
+    }, 200)
+  }
+
   render() {
     return (
-      <Row gutter={24} justify="center" style={{ margin: "15px 0" }}>
-        <Col span={12}>
+      <Row gutter={12} justify="center" style={{ margin: "15px 0" }} 
+      key={this.state?.defaultValue1}>
+        <Col span={3}>
           <ThemeProvider theme={theme}>
             <TextField
+              key={this.state?.defaultValue1}
               fullWidth
               id="filled-secondary"
               label={<CustomLabelInput>Nom du produit</CustomLabelInput>}
               variant="outlined"
               color="primary"
               onChange={this.props.onInput1}
+              defaultValue={this.state?.defaultValue1}
             />
           </ThemeProvider>
         </Col>
-        <Col span={8}>
+        <Col span={3}>
           <ThemeProvider theme={theme}>
             <TextField
               type="number"
@@ -49,19 +63,21 @@ class RowNumberProduct extends Component {
               variant="outlined"
               color="primary"
               onChange={this.props.onInput2}
+              defaultValue={this.props.defaultValue2}
             />
           </ThemeProvider>
         </Col>
-        <Col span={8}>
+        <Col span={3}>
           <ThemeProvider theme={theme}>
             <TextField
               type="text"
               fullWidth
-              id="filled-secondary"
+              id="filled-third"
               label={<CustomLabelInput>Taille</CustomLabelInput>}
               variant="outlined"
               color="primary"
               onChange={this.props.onInput3}
+              defaultValue={this.props.defaultValue3}
             />
           </ThemeProvider>
         </Col>

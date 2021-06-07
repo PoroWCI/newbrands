@@ -9,6 +9,7 @@ class CustomRadio extends Component {
     const { isSelected } = this.props;
     return (
       <CustomRadioBtn
+      title={this.props.title}
         onClick={this.props.onClick}
         style={{
           borderColor: isSelected ? "#00798C" : "#dddddd",
@@ -26,7 +27,7 @@ class CustomRadio extends Component {
               }}
             />
           </Col>
-          <Col>{this.props.title}</Col>
+          <Col>{this.props.title.substr(0,10-1)+(this.props.title.length>10?'...':'')}</Col>
           {this.props.info && <>
             <Col style={{
               marginLeft: "auto",

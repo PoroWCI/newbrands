@@ -39,8 +39,15 @@ class NavFooter extends Component {
               <a href="/dashboard">
                 <ButtonFooter>Continuer</ButtonFooter>
               </a>
-            ) : (
-              <Link to={this.props.next}>
+            ) : this.props.next  &&(
+              <Link to={
+                {
+                  pathname: this.props.next,
+                  key: Date(), // we could use Math.random, but that's not guaranteed unique.
+                  state: {
+                    applied: true
+                  }
+                }}>
                 <ButtonFooter onClick={this.props.goNext}>
                   Continuer
                 </ButtonFooter>

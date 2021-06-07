@@ -7,7 +7,8 @@ import "./numberProduct.css";
 import RowNumberProduct from "../../../components/createProject/RowNumberProduct";
 import axios from "axios";
 import { API } from "../../../config";
-import { createNoSubstitutionTemplateLiteral } from "typescript";
+
+import { connect } from 'react-redux'
 
 const { Content } = Layout;
 
@@ -17,22 +18,38 @@ class NumberProduct extends Component {
     data: [{ name: "", quantity: "", size: "" }],
   };
 
-  // componentDidMount() {
-  //   await axios.get(`${API}/api/project/${localStorage.getItem("projectId")}`).then((result) => {
-  //     setProducts(result.data.project[0].product)
-  //     console.log(result.data)
-  //   })
-  // }
+  async componentDidMount() {
+    // if (this.props.products?.length > 0)
+    await axios.get(`${API}/api/project/${this.props.projectId}`).then((result) => {
+      if (result.data.project[0]?.product?.length > 0)
+        result.data.project[0].product.map((prod, i) => {
+          let data = []
+          if (i === 0)
+            data = [{ name: prod.name, quantity: prod.quantity, size: prod.size }]
+          else
+            data.push([{ name: prod.product[i].name, quantity: prod.product[i].quantity, size: prod.product[i].size }])
+
+          this.setState({ data });
+          this.setState({ quantity: result.data.project[0].product.length })
+          return false
+        })
+    })
+  }
 
   componentWillUnmount() {
-    const req = {productSelection : this.state.data}
-    console.log(req)
-    axios.post(`${API}/api/project/${localStorage.getItem("projectId")}/product`, req).then(
-        res => {
-            console.log(res)
-        }
-    )
-}
+    const req = { productSelection: this.state.data }
+    
+    if (this.state.data.length > 0)
+    {
+      axios.post(`${API}/api/project/${this.props.projectId}/product`, req).then(() => {
+        console.log(this.state.data)
+        this.props.dispatch({
+          type: "updateProducts",
+          payload: this.state.data
+        })
+      })
+    }
+  }
 
   changeState(index, name, quantity, size) {
     const { data } = this.state;
@@ -44,8 +61,8 @@ class NumberProduct extends Component {
   }
 
   render() {
+    // console.log("products", this.props.products)
     const { data } = this.state;
-    console.log(this.state.data)
     return (
       <Layout>
         <NavHeader title="Noms et nombre de produit" />
@@ -115,17 +132,15 @@ class NumberProduct extends Component {
               <RowNumberProduct key={index}
                 onInput1={(str) =>
                   this.changeState(index, str.currentTarget.value, e.quantity, e.size)
-                }
+                } defaultValue1={this.state.data[index].name}
                 onInput2={(str) =>
                   this.changeState(index, e.name, str.currentTarget.value, e.size)
-                }
+                } defaultValue2={this.state.data[index].quantity}
                 onInput3={(str) =>
                   this.changeState(index, e.name, e.quantity, str.currentTarget.value)
-                }
+                } defaultValue3={this.state.data[index].size}
               />
             ))}
-
-            {/* <Button onClick={() => console.log(data)}>VIEW</Button> */}
           </center>
         </Content>
       </Layout>
@@ -133,4 +148,11 @@ class NumberProduct extends Component {
   }
 }
 
-export default NumberProduct;
+const mapStateToProps = (state) => {
+  return {
+    projectId: state.projectId,
+    products: state.products
+  }
+}
+
+export default connect(mapStateToProps, null)(NumberProduct)

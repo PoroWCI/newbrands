@@ -3,44 +3,50 @@ import { Col, Layout, Row } from "antd";
 import { ContentTitle, ContentSubTitle } from "../../../../components/global";
 import NavHeader from "../../../../components/createProject/NavHeader";
 import CustomRadio from "../../../../components/createProject/customRadio";
+import axios from "axios";
+import { API } from "../../../../config";
+import { connect } from 'react-redux'
 
 const { Content } = Layout;
-const index = document.location.pathname.split('/').pop();
+let index = document.location.pathname.split('/').pop();
 
 class ProductCategory extends Component {
     constructor(props) {
         super(props);
+        // console.log(this.props.products)
         this.state = {
             selectedDelay: 0,
             date: "",
-            products: JSON.parse(localStorage.getItem("products"))
+            products: this.props.products
         };
+        // console.log(this.state)
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(value) {
-        if (this.state.selectedDelay !== value) {
-            this.setState({ selectedDelay: value });
-        } else {
-            this.setState({ selectedDelay: 0 });
-        }
+    handleClick(index) {
+        if (this.state.categories)
+            if (this.state.categories[index])
+                this.setState({ categories: { ...this.state.categories, [index]: false } })
+            else
+                this.setState({ categories: { ...this.state.categories, [index]: true } })
+        else
+            this.setState({ categories: { [index]: true } })
+        console.log(this.state)
     }
 
-    handleClick2(value) {
-        if (this.state.selectedDelay !== value) {
-            this.setState({ selectedDelay: value });
-        }
-    }
+     componentDidMount() {
+         index = document.location.pathname.split('/').pop();
+         axios.get(`${API}/api/category`)
+            .then(res => {
+                    this.setState({ displayCategories: res.data })
+            })
 
-    handleChange = async (e) => {
-        await this.setState({ date: e.target.value });
-    };
+    }
 
     render() {
-        console.log("index:", index)
         return (
             <Layout>
-                <NavHeader title={`${this.state.products[index].name} : catégorie`} />
+                <NavHeader title={`${this.state.products[index]?.name} : catégorie`} />
                 <Content
                     style={{
                         margin: "0",
@@ -50,114 +56,36 @@ class ProductCategory extends Component {
                     }}
                 >
                     <ContentSubTitle>
-                    {this.state.products[index].name} ({this.state.products[index].quantity} pièces)
+                        {this.state.products[index]?.name} ({this.state.products[index]?.quantity} pièces)
             </ContentSubTitle>
                     <ContentTitle>Catégorie de produit</ContentTitle>
                     <ContentSubTitle>
                         Durant cet OnBoarding, plusieurs questions vont vous êtres posées afin de comprendre au mieux votre activité afin d’établir une offre correspondant à vos besoins adapté à votre projet.
           </ContentSubTitle>
                     <Row gutter={[24, 24]} style={{ paddingTop: "3rem" }}>
-                        <Col span={3}>
-
-                            <CustomRadio
-                                onClick={() => this.handleClick(1)}
-                                isSelected={this.state.selectedDelay === 1}
-                                title="Catégorie_nom"
-                            />
-                        </Col>
-                        <Col span={3}>
-
-                            <CustomRadio
-                                onClick={() => this.handleClick(2)}
-                                isSelected={this.state.selectedDelay === 2}
-                                title="Catégorie_nom"
-                            />
-                        </Col>
-                        <Col span={3}>
-
-                            <CustomRadio
-                                onClick={() => this.handleClick(3)}
-                                isSelected={this.state.selectedDelay === 3}
-                                title="Catégorie_nom"
-                            />
-                        </Col>
-                        <Col span={3}>
-
-                            <CustomRadio
-                                onClick={() => this.handleClick(1)}
-                                isSelected={this.state.selectedDelay === 1}
-                                title="Catégorie_nom"
-                            />
-                        </Col>
-                        <Col span={3}>
-
-                            <CustomRadio
-                                onClick={() => this.handleClick(2)}
-                                isSelected={this.state.selectedDelay === 2}
-                                title="Catégorie_nom"
-                            />
-                        </Col>
-                        <Col span={3}>
-
-                            <CustomRadio
-                                onClick={() => this.handleClick(3)}
-                                isSelected={this.state.selectedDelay === 3}
-                                title="Catégorie_nom"
-                            />
-                        </Col>
-                        <Col span={3}>
-
-                            <CustomRadio
-                                onClick={() => this.handleClick(1)}
-                                isSelected={this.state.selectedDelay === 1}
-                                title="Catégorie_nom"
-                            />
-                        </Col>
-                        <Col span={3}>
-
-                            <CustomRadio
-                                onClick={() => this.handleClick(2)}
-                                isSelected={this.state.selectedDelay === 2}
-                                title="Catégorie_nom"
-                            />
-                        </Col>
-                        <Col span={3}>
-
-                            <CustomRadio
-                                onClick={() => this.handleClick(3)}
-                                isSelected={this.state.selectedDelay === 3}
-                                title="Catégorie_nom"
-                            />
-                        </Col>
-                        <Col span={3}>
-
-                            <CustomRadio
-                                onClick={() => this.handleClick(1)}
-                                isSelected={this.state.selectedDelay === 1}
-                                title="Catégorie_nom"
-                            />
-                        </Col>
-                        <Col span={3}>
-
-                            <CustomRadio
-                                onClick={() => this.handleClick(2)}
-                                isSelected={this.state.selectedDelay === 2}
-                                title="Catégorie_nom"
-                            />
-                        </Col>
-                        <Col span={3}>
-
-                            <CustomRadio
-                                onClick={() => this.handleClick(3)}
-                                isSelected={this.state.selectedDelay === 3}
-                                title="Catégorie_nom"
-                            />
-                        </Col>
+                        {this.state.displayCategories?.map((category, index) => {
+                            // console.log(this.state)
+                            return (
+                                <Col span={3} key={index}>
+                                    <CustomRadio
+                                        key={this.state.displayCategories[0].id}
+                                        title={category.name}
+                                        onClick={() => this.handleClick(index)}
+                                        isSelected={this.state.categories && this.state.categories[index]}
+                                    />
+                                </Col>)
+                        })}
                     </Row>
                 </Content>
             </Layout>
         );
     }
 }
-
-export default ProductCategory;
+const mapStateToProps = (state) => {
+    return {
+      projectId: state.projectId,
+      products: state.products
+    }
+  }
+  
+  export default connect(mapStateToProps, null)(ProductCategory)

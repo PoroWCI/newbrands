@@ -1,7 +1,7 @@
 import classes from "./fourthSection.module.css";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-import { Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 
 function FourthSection() {
   const { t } = useTranslation("common");
@@ -50,9 +50,12 @@ function FourthSection() {
               </div>
               <Route
                 render={({ history }) => (
-                  <button className={classes.btn} onClick={() => history.push("/instant-quote/register")}>
-                    {t("home.fourthSection.select")}
-                  </button>
+                  // <button className={classes.btn} onClick={() => history.push("/instant-quote/register")}>
+                  <Link to="https://calendly.com/newbrands/informations">
+                    <button className={`${classes.btn} ${classes.linkBtn}`}>
+                      {t("home.fourthSection.select")}
+                    </button>
+                  </Link>
                 )}
               />
             </div>
@@ -95,9 +98,14 @@ function FourthSection() {
               </div>
               <Route
                 render={({ history }) => (
-                  <button className={classes.btn} onClick={() => history.push("/committees/register")}>
-                    {t("home.fourthSection.select")}
-                  </button>
+                  // <button className={classes.btn} onClick={() => history.push("/committees/register")}>
+                  //   {t("home.fourthSection.select")}
+                  // </button>
+                  <Link to="https://calendly.com/newbrands/informations">
+                    <button className={`${classes.btn} ${classes.linkBtn}`}>
+                      {t("home.fourthSection.select")}
+                    </button>
+                  </Link>
                 )}
               />
             </div>

@@ -7,10 +7,9 @@ import axios from 'axios';
 import { API } from '../../../config'
 import "../../../assets/icons/typeIcons/css/typeicons.css";
 
-const { Content } = Layout;
+import { connect } from 'react-redux'
 
-// types : {id: blabla, id: blablou}
-// types : {blabla: true, blablou: false}
+const { Content } = Layout;
 
 let typesSelection = {}
 axios.defaults.headers.common['Authorization'] = localStorage.getItem("session")
@@ -18,47 +17,41 @@ axios.defaults.headers.common['Authorization'] = localStorage.getItem("session")
 class TypeProject extends Component {
   state = {
     types: [],
-    typesSelection: []
+    typesSelection: [],
+    typesAPI: []
   }
   handleSubmit = async (e) => {
     e.preventDefault()
-    await axios.post(API + '/api/project').then((result) => {
-      console.log("posted!:", result)
-    });
+    await axios.post(API + '/api/project');
   }
 
   async componentDidMount() {
-    // console.log(localStorage.getItem("session"))
-    if (!localStorage.getItem("projectId")) {
-      await axios.post(API + '/api/project').then((result) => {
-        localStorage.setItem("projectId", result.data.idProject)
-        // console.log("posted!:", result)
-      });
-    }
     await axios.get(API + '/api/type')
       .then(res => {
         const types = res.data
         this.setState({ types })
       })
-    // localStorage.setItem("projectId", "4b7bf1f9-bd22-11eb-9a36-0050b6027878")
   }
 
-  async componentWillUnmount() {
-    await axios.post(`${API}/api/project/${localStorage.getItem("projectId")}/type`, this.state).then((result) => {
-      console.log("types:", this.state)
-      return result
-    })
-    await axios.get(`${API}/api/workflowtype/${localStorage.getItem("projectId")}`).then((result) => {
-      localStorage.setItem("workflow", JSON.stringify(result.data.workflow))
-      this.setState({worflow: JSON.stringify(result.data.workflow)})
-      console.log(localStorage)
-      return result
-      // await axios.get(`${API}/api/workflowtype/4b7bf1f9-bd22-11eb-9a36-0050b6027878`).then((result) => {
-      //   console.log(localStorage)
-      //   return result
-    })
+  async componentDidUpdate() {
+    if (this.props.projectId)
+    await axios.get(`${API}/api/project/${this.props.projectId}`).then((res) => {
+      if (res.data.project[0].type)
+      this.setState({ typesAPI: res.data.project[0].type, typesSelection: res.data.project[0].type })
+    }).catch((error) => console.log(error, this.props.projectId) )
   }
 
+  componentWillUnmount() {
+    axios.post(`${API}/api/project/${this.props.projectId}/type`, this.state).then((result) => {
+      axios.get(`${API}/api/workflowtype/${this.props.projectId}`).then((result) => {
+        this.props.dispatch({
+          type: "updateWorkflow",
+          payload: result.data.workflow
+        })
+      }).catch((err) => console.log(err))
+    })
+    
+  }
 
   handleCheckboxes(e, index) {
     if (e.target.checked === true) {
@@ -69,17 +62,13 @@ class TypeProject extends Component {
     }
     else {
       typesSelection = this.state.typesSelection.filter(type => {
-        //  console.log(type.id, e.target.value)
         return type.id !== e.target.value
       }
       )
       this.setState({ typesSelection: typesSelection })
     }
   }
-
   render() {
-    console.log(this.state)
-    // console.log(typesSelection)
     return (
       <Layout>
         <NavHeader title="Produits" />
@@ -110,18 +99,30 @@ class TypeProject extends Component {
           >
             <form onSubmit={(e) => this.handleSubmit(e)}>
               <Row>
-                {this.state.types.map((value, index) =>
-                  <Col span={6} key={index} className="card-checkbox-col">
-                    <input type="checkbox" className="card-checkbox" value={value.id} onChange={(e) => this.handleCheckboxes(e, index)} />
-                    <BoxType style={{ borderColor: this.state[value.name] ? "#00798C" : "black" }}>
-                      <BoxIcon className={`icon-${value.name.toLowerCase()}-icon`} style={{ color: this.state[value.name] ? "#00798C" : "black" }} />
-                      <h3 style={{ color: this.state[value.name] ? "#00798C" : "black" }}>{value.name}</h3>
-                      <BoxDesc style={{ fontFamily: this.state[value.name] ? "Gelion" : "Gelion Light" }}>
-                        {value.content}
-                      </BoxDesc>
-                    </BoxType>
-                  </Col>
-                )}
+                {this.state.types.map((value, index) => {
+                  let isChecked = []
+                  this.state.typesAPI.some((type, i) => {
+                    if (type.id === value.id) {
+                      isChecked[index] = true;
+                      return true;
+                    }
+                    else
+                      isChecked[index] = false
+                    return false
+                  })
+                  return (
+                    <Col span={6} key={index} className="card-checkbox-col">
+                      <input type="checkbox" className="card-checkbox" value={value.id} defaultChecked={isChecked[index]} onChange={(e) => this.handleCheckboxes(e, index)} />
+                      <BoxType style={{ borderColor: this.state[value.name] ? "#00798C" : "black" }}>
+                        <BoxIcon className={`icon-${value.name.toLowerCase()}-icon`} style={{ color: this.state[value.name] ? "#00798C" : "black" }} />
+                        <h3 style={{ color: this.state[value.name] ? "#00798C" : "black" }}>{value.name}</h3>
+                        <BoxDesc style={{ fontFamily: this.state[value.name] ? "Gelion" : "Gelion Light" }}>
+                          {value.content}
+                        </BoxDesc>
+                      </BoxType>
+                    </Col>
+                  )
+                })}
               </Row>
             </form>
           </center>
@@ -131,7 +132,13 @@ class TypeProject extends Component {
   }
 }
 
-export default TypeProject;
+const mapStateToProps = (state) => {
+  return {
+    projectId: state.projectId
+  }
+}
+
+export default connect(mapStateToProps, null)(TypeProject)
 
 const BoxIcon = styled.i`
   font-size: 50px;

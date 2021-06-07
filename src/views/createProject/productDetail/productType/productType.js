@@ -7,8 +7,10 @@ import CustomRadio from "../../../../components/createProject/customRadio";
 import { API } from '../../../../config'
 import axios from 'axios'
 
+import { connect } from 'react-redux'
+
 const { Content } = Layout;
-const index = document.location.pathname.split('/').pop();
+let index = document.location.pathname.split('/').pop();
 
 class ProductType extends Component {
   constructor(props) {
@@ -16,22 +18,25 @@ class ProductType extends Component {
     this.state = {
       selectedType: 0,
       date: "",
-      displayCategories: [],
-      products: JSON.parse(localStorage.getItem("products"))
+      displayGammes: [],
+      products: this.props.products
     };
   }
 
-  handleClick(value) {
-    if (this.state.selectedType !== value) {
-      this.setState({ selectedType: value });
-    } else {
-      this.setState({ selectedType: 0 });
-    }
-    console.log(value, this.state.selectedType)
+  handleClick(index, e) {
+    e.preventDefault()
+    if (this.state.categories)
+      if (this.state.categories[index])
+        this.setState({ categories: { ...this.state.categories, [index]: false } })
+      else
+        this.setState({ categories: { ...this.state.categories, [index]: true } })
+    else
+      this.setState({ categories: { [index]: true } })
+    console.log(this.state)
   }
 
   displayContent() {
-    this.state.displayCategories.map((value, index) => {
+    this.state.displayGammes.map((value, index) => {
       index += 1;
       return <CustomRadio
         key={index}
@@ -43,17 +48,24 @@ class ProductType extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${API}/api/gamme?id=${localStorage.getItem("projectId")}`)
+    axios.get(`${API}/api/gamme`)
       .then(res => {
-        console.log(res)
-        // this.setState({ ...this.state, displayCategories: {matter :res.data} })
+        index = document.location.pathname.split('/').pop();
+        setTimeout(() => {
+          this.setState({ displayGammes: res.data })
+        }, 200)
+        console.log(res.data)
       })
+  }
+
+  componentDidUpdate () {
+    index = document.location.pathname.split('/').pop();
   }
 
   render() {
     return (
       <Layout>
-       <NavHeader title={`${this.state.products[index].name} : gamme`} />
+        <NavHeader title={`${this.state.products[index]?.name} : gamme`} />
         <Content
           style={{
             margin: "0",
@@ -63,31 +75,40 @@ class ProductType extends Component {
           }}
         >
           <ContentSubTitle>
-          {this.state.products[index].name} ({this.state.products[index].quantity} pièces) 
+            {this.state.products[index]?.name} ({this.state.products[index]?.quantity} pièces)
           </ContentSubTitle>
           <ContentTitle>Gamme de votre produit</ContentTitle>
           <ContentSubTitle>
             Durant cet OnBoarding, plusieurs questions vont vous êtres posées afin de comprendre au mieux votre activité afin d’établir une offre correspondant à vos besoins adapté à votre projet.
           </ContentSubTitle>
-          <Row justify="center">
-            <Col>
-              <center style={{fontFamily: "Gelion Medium", padding: "40px 100px 0 100px",}}>
-                {this.state.displayCategories.map((value, index) => {
-                  index += 1;
-                  return <CustomRadio
-                    key={index}
-                    onClick={() => this.handleClick(index)}
-                    isSelected={this.state.selectedType === index}
-                    title={value}
-                  />
-                })}
-              </center>
-            </Col>
-          </Row>
+          <center
+            style={{
+              fontFamily: "Gelion Medium",
+              padding: "40px 100px 0 100px",
+            }}
+          >
+            {this.state.displayGammes?.map((gamme, index) => {
+              return (
+                <CustomRadio
+                  key={this.state.displayGammes[index].id}
+                  title={gamme.title}
+                  onClick={(e) => this.handleClick(index, e)}
+                  isSelected={this.state.categories && this.state.categories[index]}
+                />)
+            })}
+          </center>
         </Content>
       </Layout>
     );
   }
 }
 
-export default ProductType;
+
+const mapStateToProps = (state) => {
+  return {
+    projectId: state.projectId,
+    products: state.products
+  }
+}
+
+export default connect(mapStateToProps, null)(ProductType)

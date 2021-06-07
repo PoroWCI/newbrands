@@ -4,18 +4,28 @@ import { ContentTitle, ContentSubTitle } from "../../../../components/global";
 import NavHeader from "../../../../components/createProject/NavHeader";
 import CustomTextField from "../../../../components/createProject/customTextField";
 
+
+import { connect } from 'react-redux'
+
 const { Content } = Layout;
-const index = document.location.pathname.split('/').pop();
+let index = document.location.pathname.split('/').pop();
 
 class ProductWeight extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            selectedDelay: 0,
-            date: "",
-            products: JSON.parse(localStorage.getItem("products"))
-        };
         this.handleClick = this.handleClick.bind(this);
+        this.state = { products: this.props.products }
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({
+                selectedDelay: 0,
+                date: "",
+                products: this.props.products
+            })
+        }, 200)
+        index = document.location.pathname.split('/').pop();
     }
 
     handleClick(value) {
@@ -39,7 +49,7 @@ class ProductWeight extends Component {
     render() {
         return (
             <Layout>
-               <NavHeader title={`${this.state.products[index].name} : grammage`} />
+                <NavHeader title={`${this.state.products[index]?.name} : grammage`} />
                 <Content
                     style={{
                         margin: "0",
@@ -49,14 +59,14 @@ class ProductWeight extends Component {
                     }}
                 >
                     <ContentSubTitle>
-                    {this.state.products[index].name} ({this.state.products[index].quantity} pièces) 
+                        {this.state.products[index]?.name} ({this.state.products[index]?.quantity} pièces)
                       </ContentSubTitle>
                     <ContentTitle>Grammages souhaitées</ContentTitle>
                     <ContentSubTitle>
                         Durant cet OnBoarding, plusieurs questions vont vous êtres posées afin de comprendre au mieux votre activité afin d’établir une offre correspondant à vos besoins adapté à votre projet.
           </ContentSubTitle>
                     <center>
-                        <Row gutter={[24, 24]} style={{ paddingTop: "3rem" }} justify="center">
+                        <Row gutter={[24, 24]} style={{ paddingTop: "1rem" }} justify="center">
                             <Col span={12}>
                                 <CustomTextField
                                     disabled={true}
@@ -71,11 +81,11 @@ class ProductWeight extends Component {
                                 />
                             </Col>
                         </Row>
-                        <Row gutter={[24, 24]} style={{ paddingTop: "3rem" }} justify="center" >
+                        <Row gutter={[24, 24]} style={{ paddingTop: "1rem" }} justify="center" >
                             <Col span={12}>
                                 <CustomTextField
-                                   disabled={true}
-                                   required={false}
+                                    disabled={true}
+                                    required={false}
                                     label="Nom_matiere_X"
                                 />
                             </Col>
@@ -86,7 +96,7 @@ class ProductWeight extends Component {
                                 />
                             </Col>
                         </Row>
-                        <Row gutter={[24, 24]} style={{ paddingTop: "3rem" }} justify="center">
+                        <Row gutter={[24, 24]} style={{ paddingTop: "1rem" }} justify="center">
                             <Col span={12}>
                                 <CustomTextField
                                     disabled={true}
@@ -108,4 +118,11 @@ class ProductWeight extends Component {
     }
 }
 
-export default ProductWeight;
+const mapStateToProps = (state) => {
+    return {
+        projectId: state.projectId,
+        products: state.products
+    }
+}
+
+export default connect(mapStateToProps, null)(ProductWeight)

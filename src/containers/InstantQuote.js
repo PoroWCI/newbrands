@@ -4,16 +4,17 @@ import Content from '../components/Billing/register'
 import Billing from '../components/Billing/billing'
 import PaymentSuccess from '../components/Billing/PaymentComplete'
 import CommandConfirmed from '../components/Billing/commandConfirmed'
+import { Redirect } from 'react-router'
 
 function InstantQuote(props) {
     return (
         <div>
             <Header />
-            {!props.step ? <Content price={props.price} /> 
-            : props.step === Billing ? <Billing /> 
+            {props.step === Billing ? <Billing /> 
             : props.step === PaymentSuccess ? <PaymentSuccess />
             : props.step === CommandConfirmed ? <CommandConfirmed />
-            : null} 
+            : !props.step  ? <Content price={props.price} /> 
+            : null } 
             <Footer />
         </div>
     );

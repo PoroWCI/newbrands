@@ -83,7 +83,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
 }
 
 .leftCol {
@@ -97,6 +96,7 @@
 .sideContainer {
     position: relative;
     box-sizing: border-box;
+    margin-top: 15%;
     width: 310px;
     height: 300px;
     display: flex;
@@ -148,6 +148,11 @@
         display: flex;
     }
 }
+
+.paymentType {
+    display: flex;
+    align-content: center;
+} 
 
 .visa {
     color: #172B85;

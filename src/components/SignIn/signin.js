@@ -11,27 +11,31 @@ function Login() {
     const [error, setError] = useState("")
     const [mail, setMail] = useState("")
     const [password, setPassword] = useState("")
-    
+
     const handleLogin = (e) => {
         e.preventDefault()
         setLogin("Connexion en cours...")
+        setError("");
         const request = { username: mail, password: password }
         axios.post(API + "/login_check", request).then(
             (res) => {
-                console.log(res.data)
-                console.log(res)
                 localStorage.clear();
                 window.localStorage.setItem("session", res.data.token);
                 setError("");
                 setLoggedIn(true)
+                axios.get(`${API}/api/user`, { headers: { "Authorization": `Bearer ${res.data.token}` } }).then((res) => {
+                    localStorage.setItem("userId", res.data.id)
+                  })
             }
-            ).catch(
-                    setError("Une erreur s'est produite. Veuillez vérifier vos identifiants et rééssayer.")
-                )
-                console.log(window.localStorage)
+        ).catch((err) => {
+            setError("Une erreur s'est produite. Veuillez vérifier vos identifiants et rééssayer.")
+            setLogin("Connexion")
+        }
+        )
+        console.log(window.localStorage)
     }
-    if (loggedIn) 
-        return (<Redirect to ="/dashboard" />)
+    if (loggedIn)
+        return (<Redirect to="/dashboard" />)
     return (
         <div className={classes.container}>
             <div className={classes.contentDiv}>
